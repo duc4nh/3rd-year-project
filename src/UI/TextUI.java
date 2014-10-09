@@ -6,8 +6,11 @@ import database.CatDatabase;
 import database.EnvironmentDatabase;
 import database.ObjectDatabase;
 import simulator.Cat;
+import simulator.CatGenerator;
 import simulator.Environment;
+import simulator.EnvironmentGenerator;
 import simulator.InteractionObject;
+import simulator.InteractionObjectGenerator;
 import simulator.Simulator;
 
 public class TextUI {
@@ -28,67 +31,63 @@ public class TextUI {
 		System.out.println(result);
 		
 		//POST-SIMULATION
-		Scanner reader = new Scanner(System.in);
 		System.out.println("New simulation(1)?");
-		input = reader.nextInt();		
+		input = read();		
 		}
 	}
 	
-	private static Cat inputCat() {
+	private static int read() {
 		Scanner reader = new Scanner(System.in);
-		
-		System.out.printf("Choose a preset cat(1) or Define new cat(2):");
 		int input = reader.nextInt();
+		return input;
+	}
+	
+	private static Cat inputCat() {
+		System.out.print("Choose a preset cat(1) or Define new cat(2):");
+		int input = read();
 		
 		Cat cat;
 		if (input == 1) {
 			CatDatabase.printAll();
-			//TODO choose 1
-			cat = new Cat();
+			System.out.print("Which do you want?:");
+			cat = CatDatabase.get(read());
 		}
 		else {
-			//TODO input information
-			cat = new Cat();
+			cat = CatGenerator.create();
 		}
 		
 		return cat;
 	}
 	
 	private static Environment inputEnvironment() {
-		Scanner reader = new Scanner(System.in);
-		
-		System.out.printf("Choose preset environment(1) or Define new environment(2):");
-		int input = reader.nextInt();
+		System.out.print("Choose preset environment(1) or Define new environment(2):");
+		int input = read();
 		
 		Environment environment;
 		if (input == 1) {
 			EnvironmentDatabase.printAll();
-			//TODO choose 1
-			environment = new Environment();
+			System.out.print("Which do you want?:");
+			environment = EnvironmentDatabase.get(read());
 		}
 		else {
-			//TODO input information
-			environment = new Environment();
+			environment = EnvironmentGenerator.create();
 		}
 		
 		return environment;
 	}
 
 	private static InteractionObject inputObject() {
-		Scanner reader = new Scanner(System.in);
-		
-		System.out.printf("Choose a preset interaction object(1) or Define new interaction object(2):");
-		int input = reader.nextInt();
+		System.out.print("Choose a preset interaction object(1) or Define new interaction object(2):");
+		int input = read();
 		
 		InteractionObject object;
 		if (input == 1) {
 			ObjectDatabase.printAll();
-			//TODO choose 1
-			object = new InteractionObject();
+			System.out.print("Which do you want?:");
+			object = ObjectDatabase.get(read());
 		}
 		else {
-			//TODO input information
-			object = new InteractionObject();
+			object = InteractionObjectGenerator.create();
 		}
 		
 		return object;
