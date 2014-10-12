@@ -1,0 +1,5 @@
+package object;
+
+public enum Emotion {
+	HAPPY, ANXIOUS, FEARFUL, FRUSTRATED, FOCUSED, RELIEVED, ANGRY, NEUTRAL
+}
