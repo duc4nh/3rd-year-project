@@ -42,6 +42,10 @@ public class ObjectDatabase {
 	public static void add(InteractionObject obj) {
 		objectDatabase.add(obj);
 	}
+	
+	public static void delete(int id) {
+		objectDatabase.remove(id-1);
+	}
 
 	public static void close() {
 		try {

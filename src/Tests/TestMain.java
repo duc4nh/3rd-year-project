@@ -9,26 +9,22 @@ import object.Cat;
 import object.Emotion;
 import object.Environment;
 import object.InteractionObject;
-import UI.EnvironmentGenerator;
-import UI.InteractionObjectGenerator;
 
 public class TestMain {
 
 	public static void main(String[] args) {
-		/*//Test EnvironmentGen
-		System.out.println("test envi generator");
-		Environment ele = EnvironmentGenerator.create();
-		System.out.println(ele.getName() + ele.getLight() + ele.getHumidity());
+		CatDatabase.openDatabase();
+		EnvironmentDatabase.openDatabase();
+		ObjectDatabase.openDatabase();
 		
-		//test obj gen
-		System.out.println("test obj generator");
-		InteractionObject obj = InteractionObjectGenerator.create();
-		System.out.println(obj.getName() + obj.getSize() + obj.getMove());*/
+		System.out.println("Welcome to Cat Simulator!");
+
+		CatDatabase.printAll();
 		
-		//gen cat
-		Cat cat = new Cat("Common Domestic Cat", 1, Emotion.NEUTRAL);
-		CatDatabase.add(cat);
-		CatDatabase.close();
+		Cat cat = CatDatabase.get(0);
+		System.out.println("CAT STATUS:");
+		System.out.println(cat.getName() + ": Age: " + cat.getAge()
+				+ "/ Emotion: " + cat.getEmotion());
 		
 		/*Scanner reader = new Scanner(System.in);
 		System.out.print("read:");
@@ -49,8 +45,6 @@ public class TestMain {
 		EnvironmentDatabase.save();
 		
 		*/
-		ObjectDatabase.openDatabase();
-		EnvironmentDatabase.openDatabase();
 		
 		ObjectDatabase.printAll();
 		EnvironmentDatabase.printAll();

@@ -47,6 +47,10 @@ public class EnvironmentDatabase {
 	public static void add(Environment envi) {
 		environmentDatabase.add(envi);
 	}
+	
+	public static void delete(int id) {
+		environmentDatabase.remove(id-1);
+	}
 
 	public static void close() {
 		try {
