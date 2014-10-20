@@ -84,17 +84,16 @@ public class Library {
 	}
 
 	private static Environment createEnvi() {
-		Scanner reader = new Scanner(System.in);
 
 		System.out.print("Name: ");
 		String name = reader.nextLine();
-		System.out.print("Hot(1) or Cold: ");
+		System.out.print("Hot(1) or Neutral(0) or Cold(-1): ");
 		int temperature = reader.nextInt();
-		System.out.print("Humid(1) or Dry: ");
+		System.out.print("Humid(1) or Dry(0): ");
 		int humidity = reader.nextInt();
-		System.out.print("Dark(1) or Light: ");
+		System.out.print("Dark(1) or Light(0): ");
 		int light = reader.nextInt();
-		System.out.print("Noisy(1) or Quite: ");
+		System.out.print("Noisy(1) or Normal(0): ");
 		int noise = reader.nextInt();
 
 		Environment environment = new Environment(name, temperature, humidity,
@@ -107,16 +106,20 @@ public class Library {
 	}
 
 	private static InteractionObject createObj() {
-		Scanner reader = new Scanner(System.in);
 
-		System.out.print("Name: ");
+		System.out.print("Object Name: ");
 		String name = reader.nextLine();
-		System.out.print("Big(1) or Small: ");
-		int size = reader.nextInt();
-		System.out.print("Moving(1) or Stay: ");
-		int move = reader.nextInt();
+		System.out.println("When the cat sees this, how likely do you think it will feel:");
+		System.out.print("Excited (between -2 and 2)? ");
+		int excited = reader.nextInt();
+		System.out.print("Fearful (between -2 and 2)? ");
+		int fearful = reader.nextInt();
+		System.out.print("Relieved (between -2 and 2)? ");
+		int relieved = reader.nextInt();
+		System.out.print("Angry (between -2 and 2)? ");
+		int angry = reader.nextInt();
 
-		InteractionObject obj = new InteractionObject(name, size, move);
+		InteractionObject obj = new InteractionObject(name, excited, fearful, relieved, angry);
 
 		// Save new thing to database
 		ObjectDatabase.add(obj);

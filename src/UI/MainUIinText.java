@@ -3,6 +3,7 @@ package UI;
 import java.util.Scanner;
 
 import object.Cat;
+import object.Emotion;
 import object.Environment;
 import object.InteractionObject;
 import database.CatDatabase;
@@ -16,55 +17,50 @@ public class MainUIinText {
 	public static void main(String[] args) {
 
 		// Initialise the program
-		CatDatabase.openDatabase();
+		// CatDatabase.openDatabase();
 		EnvironmentDatabase.openDatabase();
 		ObjectDatabase.openDatabase();
 
 		System.out.println("-------------------------------");
 		System.out.println("Welcome to Cat Simulator!");
 		System.out.println("-------------------------------");
-		
-		boolean replay = true;
-		while (replay == true) {
-			Cat cat = CatDatabase.get(1);
-			System.out.println("CAT STATUS:");
-			System.out.println(cat.getName() + ": Age: " + cat.getAge()
-					+ "/ Emotion: " + cat.getEmotion());
+
+		Emotion emo = new Emotion(0, 0, 0, 0);
+		Cat cat = new Cat("Common Domestic Cat", 1, emo);
+		Simulator.printStatus(cat);
+
+		boolean exit = false;
+		while (exit == false) {
 
 			// PRE-SIMULATION
-			boolean simulationStart = false;
-			while (simulationStart == false) {
+			System.out.println("-------------------------------");
+			System.out
+					.print("MAIN MENU: Start simulation(1), View Library(2), Exit(0): ");
+			int input = reader.nextInt();
+			if (input == 2) {
+				Library.ViewLibrary();
+			} else if (input == 1) {
+				// SIMULATION
 				System.out.println("-------------------------------");
-				System.out
-						.print("MAIN MENU: Start simulation(1), View Library(2): ");
-				int input = reader.nextInt();
-				if (input == 2) {
-					Library.ViewLibrary();
-				} else
-					simulationStart = true;
-			}
+				System.out.println("START SIMULATION");
+				Environment environment = inputEnvironment();
+				InteractionObject object = inputObject();
 
-			// SIMULATION
-			System.out.println("-------------------------------");
-			System.out.println("START SIMULATION");
-			Environment environment = inputEnvironment();
-			InteractionObject object = inputObject();
+				Simulator.simulation(cat, environment, object);
 
-			System.out.println("-------------------------------");
-			System.out.print("RESULT: ");
-			System.out.println(Simulator.simulation(cat, environment, object));
-
-			// POST-SIMULATION
-			System.out.println("-------------------------------");
-			System.out.print("Continue the simulation?(1) ");
-			if (reader.nextInt() != 1)
-				replay = false;
+				// POST-SIMULATION
+				System.out.println("-------------------------------");
+				System.out.print("Continue the simulation?(1) ");
+				if (reader.nextInt() != 1)
+					exit = true;
+			} else
+				exit = true;
 		}
 
 		// CLOSE DATABASE
 		ObjectDatabase.close();
 		EnvironmentDatabase.close();
-		CatDatabase.close();
+		// CatDatabase.close();
 	}
 
 	/*

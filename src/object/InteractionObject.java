@@ -3,32 +3,42 @@ package object;
 import java.io.Serializable;
 
 public class InteractionObject implements Serializable {
+
+	// TODO maybe ID
+	private String name;
+	private int excited;
+	private int fearful;
+	private int relieved;
+	private int angry;
+
+	public InteractionObject(String name_, int excited_, int fearful_,
+			int relieved_, int angry_) {
+		name = name_;
+		excited = excited_;
+		fearful = fearful_;
+		relieved = relieved_;
+		angry = angry_;
+	}
+
+	// GETTERS
+	public String getName() {
+		return name;
+	}
+
+	public int getExcited() {
+		return excited;
+	}
 	
-		//TODO maybe ID
-		private String name;
-		//for now: 1 = big, 0 = small;
-		private int size;
-		//for now: 1 = move, 0 = stay;
-		private int move;
-		//TODO more characteristics
-		
-		public InteractionObject(String name0, int size0, int move0) {
-			name = name0;
-			size = size0;
-			move = move0;
-		}
-		
-		//GETTERS
-		public String getName() {
-			return name;
-		}
-		
-		public int getSize() {
-			return size;
-		}
-		
-		public int getMove() {
-			return move;
-		}
-		
+	public int getFearful() {
+		return fearful;
+	}
+
+	public int getRelieved() {
+		return relieved;
+	}
+	
+	public int getAngry() {
+		return angry;
+	}
+	
 }

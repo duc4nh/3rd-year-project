@@ -29,22 +29,21 @@ public class ObjectDatabase {
 	public static void printAll() {
 		int i = 1;
 		for (InteractionObject object : objectDatabase) {
-			System.out.println(i + ". " + object.getName() + ": Size: "
-					+ object.getSize() + "/ Move: " + object.getMove());
+			System.out.println(i + ". " + object.getName());
 			i++;
 		}
 	}
 
 	public static InteractionObject get(int id) {
-		return objectDatabase.get(id-1);
+		return objectDatabase.get(id - 1);
 	}
 
 	public static void add(InteractionObject obj) {
 		objectDatabase.add(obj);
 	}
-	
+
 	public static void delete(int id) {
-		objectDatabase.remove(id-1);
+		objectDatabase.remove(id - 1);
 	}
 
 	public static void close() {

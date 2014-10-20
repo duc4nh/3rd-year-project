@@ -12,7 +12,7 @@ public class Environment implements Serializable {
 	private int humidity;
 	//for now: 1 = dark, 0 = light;
 	private int light;
-	//for now: 1 = noisy, 0 = normal, -1 = quite;
+	//for now: 1 = noisy, 0 = normal;
 	private int noise;
 	
 	public Environment(String name0, int temperature0, int humidity0, int light0, int noise0) {
