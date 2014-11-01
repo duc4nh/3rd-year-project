@@ -4,18 +4,18 @@ import java.util.Scanner;
 
 import database.CatDatabase;
 import database.EnvironmentDatabase;
-import database.ObjectDatabase;
+import database.InteractionDatabase;
 import object.Cat;
 import object.Emotion;
 import object.Environment;
-import object.InteractionObject;
+import object.Interaction;
 
 public class TestMain {
 
 	public static void main(String[] args) {
 		CatDatabase.openDatabase();
 		EnvironmentDatabase.openDatabase();
-		ObjectDatabase.openDatabase();
+		InteractionDatabase.openDatabase();
 		
 		System.out.println("Welcome to Cat Simulator!");
 
@@ -46,7 +46,7 @@ public class TestMain {
 		
 		*/
 		
-		ObjectDatabase.printAll();
+		InteractionDatabase.printAll();
 		EnvironmentDatabase.printAll();
 	}
 	

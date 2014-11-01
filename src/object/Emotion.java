@@ -11,40 +11,42 @@ package object;
  */
 
 public class Emotion {
+	// Emotion figures of the cat: -10 to 10
 	private int excited;
 	private int fearful;
 	private int relieved;
 	private int angry;
 
-	public Emotion(int excited_, int fearful_, int relieved_, int angry_) {
-		excited = excited_;
-		fearful = fearful_;
-		relieved = relieved_;
-		angry = angry_;
+	public Emotion(int excited, int fearful, int relieved, int angry) {
+		this.excited = excited;
+		this.fearful = fearful;
+		this.relieved = relieved;
+		this.angry = angry;
 	}
 
-	public void emoChange(int excited_, int fearful_, int relieved_, int angry_) {
-		excited += excited_;
-		fearful += fearful_;
-		relieved += relieved_;
-		angry += angry_;
+	public void emoChange(int[] emo) {
+		this.excited += emo[0];
+		this.fearful += emo[1];
+		this.relieved += emo[2];
+		this.angry += emo[3];
 
-		if (excited < -5)
-			excited = -5;
-		if (fearful < -5)
-			fearful = -5;
-		if (relieved < -5)
-			relieved = -5;
-		if (angry < -5)
-			angry = -5;
-		if (excited > 5)
-			excited = 5;
-		if (fearful > 5)
-			fearful = 5;
-		if (relieved > 5)
-			relieved = 5;
-		if (angry > 5)
-			angry = 5;
+		// set range -10 to 10
+		if (this.excited < -10)
+			this.excited = -10;
+		if (this.fearful < -10)
+			this.fearful = -10;
+		if (this.relieved < -10)
+			this.relieved = -10;
+		if (this.angry < -10)
+			this.angry = -10;
+		if (this.excited > 10)
+			this.excited = 10;
+		if (this.fearful > 10)
+			this.fearful = 10;
+		if (this.relieved > 10)
+			this.relieved = 10;
+		if (this.angry > 10)
+			this.angry = 10;
 
 	}
 

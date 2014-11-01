@@ -3,9 +3,10 @@ package UI;
 import java.util.Scanner;
 
 import object.Environment;
-import object.InteractionObject;
+import object.Interaction;
+import object.InteractionCategory;
 import database.EnvironmentDatabase;
-import database.ObjectDatabase;
+import database.InteractionDatabase;
 
 public class Library {
 
@@ -57,7 +58,7 @@ public class Library {
 		while (input != 3) {
 			System.out.println("-------------------------------");
 			System.out.println("OBJECT LIBRARY MENU");
-			ObjectDatabase.printAll();
+			InteractionDatabase.printAll();
 			System.out.print("OPTION: Add(1), Delete(2), BACK(3): ");
 			input = reader.nextInt();
 			switch (input) {
@@ -75,7 +76,7 @@ public class Library {
 	
 	private static void deleteObj() {
 		System.out.print("Which one to delete? ");
-		ObjectDatabase.delete(reader.nextInt());
+		InteractionDatabase.delete(reader.nextInt());
 	}
 	
 	private static void deleteEnvi() {
@@ -105,7 +106,7 @@ public class Library {
 		return environment;
 	}
 
-	private static InteractionObject createObj() {
+	private static Interaction createObj() {
 
 		System.out.print("Object Name: ");
 		String name = reader.nextLine();
@@ -119,10 +120,10 @@ public class Library {
 		System.out.print("Angry (between -2 and 2)? ");
 		int angry = reader.nextInt();
 
-		InteractionObject obj = new InteractionObject(name, excited, fearful, relieved, angry);
+		Interaction obj = new Interaction(name, InteractionCategory.ANIMAL, excited, fearful, relieved, angry);
 
 		// Save new thing to database
-		ObjectDatabase.add(obj);
+		InteractionDatabase.add(obj);
 
 		return obj;
 	}

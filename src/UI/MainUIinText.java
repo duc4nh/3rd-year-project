@@ -5,10 +5,10 @@ import java.util.Scanner;
 import object.Cat;
 import object.Emotion;
 import object.Environment;
-import object.InteractionObject;
+import object.Interaction;
 import database.CatDatabase;
 import database.EnvironmentDatabase;
-import database.ObjectDatabase;
+import database.InteractionDatabase;
 import simulator.Simulator;
 
 public class MainUIinText {
@@ -19,7 +19,7 @@ public class MainUIinText {
 		// Initialise the program
 		// CatDatabase.openDatabase();
 		EnvironmentDatabase.openDatabase();
-		ObjectDatabase.openDatabase();
+		InteractionDatabase.openDatabase();
 
 		System.out.println("-------------------------------");
 		System.out.println("Welcome to Cat Simulator!");
@@ -30,7 +30,7 @@ public class MainUIinText {
 		Simulator.printStatus(cat);
 
 		boolean exit = false;
-		while (exit == false) {
+		while (!exit) {
 
 			// PRE-SIMULATION
 			System.out.println("-------------------------------");
@@ -44,7 +44,7 @@ public class MainUIinText {
 				System.out.println("-------------------------------");
 				System.out.println("START SIMULATION");
 				Environment environment = inputEnvironment();
-				InteractionObject object = inputObject();
+				Interaction object = inputObject();
 
 				Simulator.simulation(cat, environment, object);
 
@@ -58,7 +58,7 @@ public class MainUIinText {
 		}
 
 		// CLOSE DATABASE
-		ObjectDatabase.close();
+		InteractionDatabase.close();
 		EnvironmentDatabase.close();
 		// CatDatabase.close();
 	}
@@ -83,12 +83,12 @@ public class MainUIinText {
 		return environment;
 	}
 
-	private static InteractionObject inputObject() {
+	private static Interaction inputObject() {
 		System.out.println("-------------------------------");
 		System.out.println("Choose an interaction object:");
-		ObjectDatabase.printAll();
+		InteractionDatabase.printAll();
 		System.out.print("Which do you want?: ");
-		InteractionObject object = ObjectDatabase.get(reader.nextInt());
+		Interaction object = InteractionDatabase.get(reader.nextInt());
 
 		return object;
 	}

@@ -6,21 +6,17 @@ public class Environment implements Serializable {
 	
 	//TODO maybe ID
 	private String name;
-	//for now: 1 = hot, 0 = neutral, -1 = cold;
-	private int temperature;
-	//for now: 1 = humid, 0 = dry;
-	private int humidity;
-	//for now: 1 = dark, 0 = light;
-	private int light;
-	//for now: 1 = noisy, 0 = normal;
-	private int noise;
+	private int temperature; //-5 = very hot; 5 = very cold
+	private int humidity; //-5 = very humid; 5 = very dry
+	private int light; //-5 to 5 = light
+	private int noise; //-5 to 5 = noisy
 	
-	public Environment(String name0, int temperature0, int humidity0, int light0, int noise0) {
-		name = name0;
-		temperature = temperature0;
-		humidity = humidity0;
-		light = light0;
-		noise = noise0;
+	public Environment(String name, int temperature, int humidity, int light, int noise) {
+		this.name = name;
+		this.temperature = temperature;
+		this.humidity = humidity;
+		this.light = light;
+		this.noise = noise;
 	}
 	
 	//GETTERS
