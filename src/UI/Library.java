@@ -14,21 +14,19 @@ public class Library {
 
 	public static void ViewLibrary() {
 		int input = 0;
-		while (input != 3) {
-			System.out.println("-------------------------------");
-			System.out
-					.print("LIBRARY MENU: View Environment(1), View Object(2), BACK(3): ");
-			input = reader.nextInt();
-			switch (input) {
-			case 1:
-				enviLibrary();
-				break;
-			case 2:
-				objLibrary();
-				break;
-			default:
-				break;
-			}
+		System.out.println("-------------------------------");
+		System.out
+				.print("LIBRARY MENU: View Environment(1), View Interaction(2), BACK(3): ");
+		input = reader.nextInt();
+		switch (input) {
+		case 1:
+			enviLibrary();
+			break;
+		case 2:
+			objLibrary();
+			break;
+		default:
+			break;
 		}
 	}
 
@@ -57,7 +55,7 @@ public class Library {
 		int input = 0;
 		while (input != 3) {
 			System.out.println("-------------------------------");
-			System.out.println("OBJECT LIBRARY MENU");
+			System.out.println("INTERACTION LIBRARY MENU");
 			InteractionDatabase.printAll();
 			System.out.print("OPTION: Add(1), Delete(2), BACK(3): ");
 			input = reader.nextInt();
@@ -73,12 +71,12 @@ public class Library {
 			}
 		}
 	}
-	
+
 	private static void deleteObj() {
 		System.out.print("Which one to delete? ");
 		InteractionDatabase.delete(reader.nextInt());
 	}
-	
+
 	private static void deleteEnvi() {
 		System.out.print("Which one to delete? ");
 		EnvironmentDatabase.delete(reader.nextInt());
@@ -87,14 +85,16 @@ public class Library {
 	private static Environment createEnvi() {
 
 		System.out.print("Name: ");
-		String name = reader.nextLine();
-		System.out.print("Hot(1) or Neutral(0) or Cold(-1): ");
+		Scanner stringReader = new Scanner(System.in);
+		String name = stringReader.nextLine();
+
+		System.out.print("Hot or Cold (-5 to 5): ");
 		int temperature = reader.nextInt();
-		System.out.print("Humid(1) or Dry(0): ");
+		System.out.print("Humid or Dry(-5 to 5): ");
 		int humidity = reader.nextInt();
-		System.out.print("Dark(1) or Light(0): ");
+		System.out.print("Dark or Light(-5 to 5): ");
 		int light = reader.nextInt();
-		System.out.print("Noisy(1) or Normal(0): ");
+		System.out.print("Noisy or Normal(-5 to 5): ");
 		int noise = reader.nextInt();
 
 		Environment environment = new Environment(name, temperature, humidity,
@@ -108,9 +108,30 @@ public class Library {
 
 	private static Interaction createObj() {
 
-		System.out.print("Object Name: ");
-		String name = reader.nextLine();
-		System.out.println("When the cat sees this, how likely do you think it will feel:");
+		System.out.print("Name: ");
+		Scanner stringReader = new Scanner(System.in);
+		String name = stringReader.nextLine();
+
+		System.out.print("Type: OBJECT(1), ANIMAL(2), FOOD(3), HUMAN(4):");
+		int typeInput = reader.nextInt();
+		InteractionCategory type;
+		switch (typeInput) {
+		case 1:
+			type = InteractionCategory.OBJECT;
+			break;
+		case 2:
+			type = InteractionCategory.ANIMAL;
+			break;
+		case 3:
+			type = InteractionCategory.FOOD;
+			break;
+		default:
+			type = InteractionCategory.HUMAN;
+			break;
+		}
+
+		System.out
+				.println("When the cat sees this, how likely do you think it will feel:");
 		System.out.print("Excited (between -2 and 2)? ");
 		int excited = reader.nextInt();
 		System.out.print("Fearful (between -2 and 2)? ");
@@ -120,7 +141,8 @@ public class Library {
 		System.out.print("Angry (between -2 and 2)? ");
 		int angry = reader.nextInt();
 
-		Interaction obj = new Interaction(name, InteractionCategory.ANIMAL, excited, fearful, relieved, angry);
+		Interaction obj = new Interaction(name, type, excited, fearful,
+				relieved, angry);
 
 		// Save new thing to database
 		InteractionDatabase.add(obj);

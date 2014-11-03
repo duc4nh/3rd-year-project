@@ -4,18 +4,17 @@ import java.io.Serializable;
 
 public class Cat implements Serializable {
 
-	// TODO maybe ID
-	// TODO breeds
+	// maybe ID
 	private String name;
-	// for now: 1 = adult, 0 = baby;
-	private int age;
+	private String breed;
+	//private int age; 	// for now: 1 = adult, 0 = baby;
 	private Emotion emotion;
 
 	// TODO habits/memory
 
-	public Cat(String nam0, int age, Emotion emotion) {
+	public Cat(String name, String breed, Emotion emotion) {
 		this.name = name;
-		this.age = age;
+		this.breed = breed;
 		this.emotion = emotion;
 	}
 
@@ -24,10 +23,16 @@ public class Cat implements Serializable {
 		return name;
 	}
 
+	public String getBreed() {
+		return breed;
+	}
+	
+	/*
 	public int getAge() {
 		return age;
 	}
-
+	*/
+	
 	public int[] getEmotion() {
 		return emotion.getEmo();
 	}

@@ -28,10 +28,10 @@ public class CatDatabase {
 	}
 
 	public static void printAll() {
+		//TODO: if empty
 		int i = 1;
 		for (Cat cat : catDatabase) {
-			System.out.println(i + ". " + cat.getName() + ": Age: "
-					+ cat.getAge() + "/ Emotion: "
+			System.out.println(i + ". " + cat.getName() + "/ Emotion: "
 					+ cat.getEmotion());
 			i++;
 		}

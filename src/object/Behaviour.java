@@ -4,17 +4,17 @@ import java.io.Serializable;
 
 public class Behaviour implements Serializable {
 
-	// TODO maybe ID
+	// maybe ID
 	private String name;
 	private InteractionCategory category;
-	// factors: how likely cat'll do this with his current emotions
+	// factors: how likely cat'll do this with his current emotions: -1 to 1
 	private double excited; 
 	private double fearful;
 	private double relieved;
 	private double angry;
 
-	public Behaviour(String name, InteractionCategory category, int excited, int fearful, int relieved,
-			int angry) {
+	public Behaviour(String name, InteractionCategory category, double excited, double fearful, double relieved,
+			double angry) {
 		this.name = name;
 		this.category = category;
 		this.excited = excited;
@@ -28,6 +28,22 @@ public class Behaviour implements Serializable {
 		return name;
 	}
 	
+	public double getExcited() {
+		return excited;
+	}
+
+	public double getFearful() {
+		return fearful;
+	}
+
+	public double getRelieved() {
+		return relieved;
+	}
+
+	public double getAngry() {
+		return angry;
+	}
+	
 	public InteractionCategory getCate() {
 		return category;
 	}
@@ -35,13 +51,5 @@ public class Behaviour implements Serializable {
 	public double getScore(int[] emo) {
 		return excited * emo[0] + fearful * emo[1] + relieved * emo[2] + angry * emo[3];
 	}
-	
-	public void printStatus() {
-		System.out.print("BEHAVIOUR.STATUS: ");
-		System.out.print("Name:" + name);
-		System.out.print("Excited:" + excited);
-		System.out.print("Fearful:" + fearful);
-		System.out.print("Relieved:" + relieved);
-		System.out.println("Angry:" + angry);
-	}
+
 }

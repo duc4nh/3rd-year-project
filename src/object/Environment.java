@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Environment implements Serializable {
 	
-	//TODO maybe ID
+	// maybe ID
 	private String name;
 	private int temperature; //-5 = very hot; 5 = very cold
 	private int humidity; //-5 = very humid; 5 = very dry

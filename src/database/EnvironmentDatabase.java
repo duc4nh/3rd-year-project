@@ -26,27 +26,37 @@ public class EnvironmentDatabase {
 		}
 	}
 
+	public static void printAllDetails() {
+		// TODO: if empty
+		int i = 1;
+		System.out.println("ENVI DATABASE: ");
+		for (Environment envi : environmentDatabase) {
+			System.out.println(i + ". " + envi.getName() + "\t\t\t"
+					+ envi.getTemperature() + "\t" + envi.getHumidity() + "\t"
+					+ envi.getLight() + "\t" + envi.getNoise());
+			i++;
+		}
+	}
+
 	public static void printAll() {
+		// TODO: if empty
 		int i = 1;
 		for (Environment envi : environmentDatabase) {
-			System.out.println(i + ". " + envi.getName() + ": Temp: "
-					+ envi.getTemperature() + "/ Humidity: "
-					+ envi.getHumidity() + "/ Light: " + envi.getLight()
-					+ "/ Noise: " + envi.getNoise());
+			System.out.println(i + ". " + envi.getName());
 			i++;
 		}
 	}
 
 	public static Environment get(int id) {
-		return environmentDatabase.get(id-1);
+		return environmentDatabase.get(id - 1);
 	}
 
 	public static void add(Environment envi) {
 		environmentDatabase.add(envi);
 	}
-	
+
 	public static void delete(int id) {
-		environmentDatabase.remove(id-1);
+		environmentDatabase.remove(id - 1);
 	}
 
 	public static void close() {

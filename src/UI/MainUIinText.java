@@ -6,7 +6,7 @@ import object.Cat;
 import object.Emotion;
 import object.Environment;
 import object.Interaction;
-import database.CatDatabase;
+import database.BehaviourDatabase;
 import database.EnvironmentDatabase;
 import database.InteractionDatabase;
 import simulator.Simulator;
@@ -20,13 +20,14 @@ public class MainUIinText {
 		// CatDatabase.openDatabase();
 		EnvironmentDatabase.openDatabase();
 		InteractionDatabase.openDatabase();
-
+		BehaviourDatabase.openDatabase();
+		
 		System.out.println("-------------------------------");
 		System.out.println("Welcome to Cat Simulator!");
 		System.out.println("-------------------------------");
 
 		Emotion emo = new Emotion(0, 0, 0, 0);
-		Cat cat = new Cat("Common Domestic Cat", 1, emo);
+		Cat cat = new Cat("Tom", "Common Domestic Cat", emo);
 		Simulator.printStatus(cat);
 
 		boolean exit = false;
@@ -35,7 +36,7 @@ public class MainUIinText {
 			// PRE-SIMULATION
 			System.out.println("-------------------------------");
 			System.out
-					.print("MAIN MENU: Start simulation(1), View Library(2), Exit(0): ");
+					.print("MAIN MENU: Start simulation(1), View Library(2), Exit(3): ");
 			int input = reader.nextInt();
 			if (input == 2) {
 				Library.ViewLibrary();
@@ -60,6 +61,8 @@ public class MainUIinText {
 		// CLOSE DATABASE
 		InteractionDatabase.close();
 		EnvironmentDatabase.close();
+		// No need to close behaviour database, as we want it to be read-only
+		// BehaviourDatabase.close();
 		// CatDatabase.close();
 	}
 
@@ -85,7 +88,7 @@ public class MainUIinText {
 
 	private static Interaction inputObject() {
 		System.out.println("-------------------------------");
-		System.out.println("Choose an interaction object:");
+		System.out.println("Choose an interaction:");
 		InteractionDatabase.printAll();
 		System.out.print("Which do you want?: ");
 		Interaction object = InteractionDatabase.get(reader.nextInt());

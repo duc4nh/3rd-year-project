@@ -26,11 +26,14 @@ public class BehaviourDatabase {
 		}
 	}
 
-	public static void printAll() {
+	public static void printAllDetails() {
 		int i = 1;
+		System.out.println("BEHAVIOUR DATABASE: ");
 		for (Behaviour behaviour : behaviourDatabase) {
-			System.out.print(i + ". ");
-			behaviour.printStatus();
+			System.out.println(i + ". " + behaviour.getName() + "\t\t\t"
+					+ behaviour.getExcited() + "\t" + behaviour.getFearful()
+					+ "\t" + behaviour.getRelieved() + "\t"
+					+ behaviour.getAngry());
 			i++;
 		}
 	}
@@ -39,8 +42,8 @@ public class BehaviourDatabase {
 		return behaviourDatabase.get(id - 1);
 	}
 
-	public static void add(Behaviour obj) {
-		behaviourDatabase.add(obj);
+	public static void add(Behaviour beha) {
+		behaviourDatabase.add(beha);
 	}
 
 	public static void delete(int id) {
@@ -50,7 +53,7 @@ public class BehaviourDatabase {
 	public static void close() {
 		try {
 			// Open a file to write to
-			FileOutputStream saveFile = new FileOutputStream("object.sav");
+			FileOutputStream saveFile = new FileOutputStream("behaviour.sav");
 			// Create an ObjectOutputStream to put objects into save file.
 			ObjectOutputStream save = new ObjectOutputStream(saveFile);
 			save.writeObject(behaviourDatabase);
@@ -61,7 +64,7 @@ public class BehaviourDatabase {
 		}
 	}
 
-	public static List<Behaviour> getList() {
+	public static List<Behaviour> getAll() {
 		return behaviourDatabase;
 	}
 

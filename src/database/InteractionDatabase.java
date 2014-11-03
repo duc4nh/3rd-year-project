@@ -27,9 +27,24 @@ public class InteractionDatabase {
 	}
 
 	public static void printAll() {
+		// TODO: if empty
 		int i = 1;
 		for (Interaction interaction : interactionDatabase) {
 			System.out.println(i + ". " + interaction.getName());
+			i++;
+		}
+	}
+
+	public static void printAllDetails() {
+		// TODO: if empty
+		int i = 1;
+		System.out.println("INTER DATABASE: ");
+		for (Interaction interaction : interactionDatabase) {
+			System.out.println(i + ". " + interaction.getName() + "\t\t\t"
+					+ interaction.getExcited() + "\t"
+					+ interaction.getFearful() + "\t"
+					+ interaction.getRelieved() + "\t" + interaction.getAngry()
+					+ "\t" + interaction.getCate());
 			i++;
 		}
 	}
@@ -38,8 +53,8 @@ public class InteractionDatabase {
 		return interactionDatabase.get(id - 1);
 	}
 
-	public static void add(Interaction obj) {
-		interactionDatabase.add(obj);
+	public static void add(Interaction inter) {
+		interactionDatabase.add(inter);
 	}
 
 	public static void delete(int id) {
@@ -49,7 +64,7 @@ public class InteractionDatabase {
 	public static void close() {
 		try {
 			// Open a file to write to
-			FileOutputStream saveFile = new FileOutputStream("object.sav");
+			FileOutputStream saveFile = new FileOutputStream("interaction.sav");
 			// Create an ObjectOutputStream to put objects into save file.
 			ObjectOutputStream save = new ObjectOutputStream(saveFile);
 			save.writeObject(interactionDatabase);
