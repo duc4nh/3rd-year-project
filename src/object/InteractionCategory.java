@@ -1,5 +1,6 @@
 package object;
 
-public enum InteractionCategory {
-	OBJECT, ANIMAL, FOOD, HUMAN
+public enum InteractionCategory
+{
+    OBJECT, ANIMAL, FOOD, HUMAN
 }

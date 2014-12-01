@@ -16,7 +16,7 @@ public class MainUIinText {
 
 	public static void main(String[] args) {
 
-		// Initialise the program
+		// Initialize the program
 		// CatDatabase.openDatabase();
 		EnvironmentDatabase.openDatabase();
 		InteractionDatabase.openDatabase();
@@ -28,7 +28,7 @@ public class MainUIinText {
 
 		Emotion emo = new Emotion(0, 0, 0, 0);
 		Cat cat = new Cat("Tom", "Common Domestic Cat", emo);
-		Simulator.printStatus(cat);
+		cat.printStatus();
 
 		boolean exit = false;
 		while (!exit) {
@@ -47,7 +47,7 @@ public class MainUIinText {
 				Environment environment = inputEnvironment();
 				Interaction object = inputObject();
 
-				Simulator.simulation(cat, environment, object);
+				Simulator.printSimulation(cat, environment, object);
 
 				// POST-SIMULATION
 				System.out.println("-------------------------------");
@@ -61,7 +61,7 @@ public class MainUIinText {
 		// CLOSE DATABASE
 		InteractionDatabase.close();
 		EnvironmentDatabase.close();
-		// No need to close behaviour database, as we want it to be read-only
+		// No need to close behavior database, as we want it to be read-only
 		// BehaviourDatabase.close();
 		// CatDatabase.close();
 	}

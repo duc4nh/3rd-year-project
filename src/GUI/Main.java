@@ -1,28 +1,33 @@
 package GUI;
 
+import object.Cat;
+import object.Emotion;
+import simulator.Simulator;
+import database.BehaviourDatabase;
+import database.EnvironmentDatabase;
+import database.InteractionDatabase;
+
 import java.awt.EventQueue;
-
 import javax.swing.*;
-
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import javax.swing.border.LineBorder;
-
-import database.BehaviourDatabase;
-import database.EnvironmentDatabase;
-import database.InteractionDatabase;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
-import javax.swing.border.EtchedBorder;
+import javax.swing.border.LineBorder;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class Main
 {
-
+    // initialize a neutral cat
+    private Cat cat = new Cat("Tom", "Common Domestic Cat", new Emotion(0, 0,
+            0, 0));
+    private int enviID;
+    private int inteID;
+    private boolean enviChosen = false;
+    private boolean inteChosen = false;
     private JFrame frmCatSimulator;
 
     /**
@@ -137,7 +142,7 @@ public class Main
         result.setLayout(null);
         result.setVisible(false);
 
-        // -------------------------- END of PANELS
+        // -------------------------- END of MAIN PANELS
         // -----------------------------
 
         JButton btnNewButton_13 = new JButton("Main Menu");
@@ -158,10 +163,21 @@ public class Main
         lblSimulationResult.setBounds(6, 11, 488, 40);
         result.add(lblSimulationResult);
 
-        JLabel lblNewLabel_8 = new JLabel("");
-        lblNewLabel_8.setIcon(new ImageIcon(Main.class.getResource("/images/tumblr_m8hv515XTT1qhlsrfo1_500.gif")));
-        lblNewLabel_8.setBounds(113, 63, 272, 250);
-        result.add(lblNewLabel_8);
+        // ---
+
+        JPanel catStatus = new JPanel();
+        catStatus.setBackground(Color.WHITE);
+        catStatus.setBorder(new TitledBorder(null, "Current Cat Status",
+                TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        catStatus.setBounds(16, 235, 180, 124);
+        simulation.add(catStatus);
+        catStatus.setLayout(new GridLayout(0, 1, 0, 0));
+
+        final JTextArea status = new JTextArea();
+        catStatus.add(status);
+        status.setLineWrap(true);
+        status.setText(cat.printStatusGUI());
+        status.setEditable(false);
 
         JButton btnNewSimulation = new JButton("Run Again");
         btnNewSimulation.addActionListener(new ActionListener()
@@ -170,11 +186,20 @@ public class Main
             {
                 result.setVisible(false);
                 simulation.setVisible(true);
+
+                status.setText(cat.printStatusGUI());
             }
         });
         btnNewSimulation.setBounds(233, 325, 117, 29);
         result.add(btnNewSimulation);
-        result.setVisible(false);
+
+        // ---
+
+        JLabel lblNewLabel_2 = new JLabel("");
+        lblNewLabel_2.setIcon(new ImageIcon(Main.class
+                .getResource("/images/tumblr_m8hv515XTT1qhlsrfo1_500.gif")));
+        lblNewLabel_2.setBounds(16, 63, 228, 210);
+        result.add(lblNewLabel_2);
 
         JButton btnNewButton_6 = new JButton("OK");
         btnNewButton_6.setBounds(362, 326, 117, 29);
@@ -251,25 +276,25 @@ public class Main
         JComboBox comboBox = new JComboBox();
         comboBox.setBounds(150, 131, 160, 27);
         newInter.add(comboBox);
-        
+
         JTextField textField_4 = new JTextField();
         textField_4.setEditable(false);
         textField_4.setColumns(10);
         textField_4.setBounds(362, 185, 117, 28);
         newInter.add(textField_4);
-        
+
         JTextField textField_5 = new JTextField();
         textField_5.setEditable(false);
         textField_5.setColumns(10);
         textField_5.setBounds(362, 213, 117, 28);
         newInter.add(textField_5);
-        
+
         JTextField textField_6 = new JTextField();
         textField_6.setEditable(false);
         textField_6.setColumns(10);
         textField_6.setBounds(362, 241, 117, 28);
         newInter.add(textField_6);
-        
+
         JTextField textField_7 = new JTextField();
         textField_7.setEditable(false);
         textField_7.setColumns(10);
@@ -310,12 +335,33 @@ public class Main
         lblNewLabel_4.setBounds(6, 6, 488, 101);
         environment.add(lblNewLabel_4);
 
+        JPanel panel = new JPanel();
+        panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+        panel.setBounds(26, 228, 319, 111);
+        environment.add(panel);
+        panel.setLayout(new GridLayout(1, 0, 0, 0));
+
+        final JTextArea enviInfo = new JTextArea();
+        panel.add(enviInfo);
+
         JScrollPane scrollPane = new JScrollPane();
         scrollPane.setBounds(26, 105, 319, 111);
         environment.add(scrollPane);
 
-        JList list_1 = new JList();
-        list_1.setModel(new AbstractListModel()
+        final JList enviList = new JList();
+        enviList.addListSelectionListener(new ListSelectionListener()
+        {
+            public void valueChanged(ListSelectionEvent arg0)
+            {
+                if (!arg0.getValueIsAdjusting())
+                {
+                    String selected = enviList.getSelectedValue().toString();
+                    enviInfo.setText(EnvironmentDatabase.get(
+                            (int) selected.charAt(0) - 48).infoGUI());
+                }
+            }
+        });
+        enviList.setModel(new AbstractListModel()
         {
             String[] values = EnvironmentDatabase.getArray();
 
@@ -329,16 +375,7 @@ public class Main
                 return values[index];
             }
         });
-        scrollPane.setViewportView(list_1);
-
-        JPanel panel = new JPanel();
-        panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-        panel.setBounds(26, 228, 319, 111);
-        environment.add(panel);
-        panel.setLayout(new GridLayout(1, 0, 0, 0));
-
-        JTextArea textArea = new JTextArea();
-        panel.add(textArea);
+        scrollPane.setViewportView(enviList);
 
         JButton btnNewButton_12 = new JButton("Create");
         btnNewButton_12.addActionListener(new ActionListener()
@@ -374,12 +411,34 @@ public class Main
         lblNewLabel_42.setBounds(6, 6, 488, 101);
         interaction.add(lblNewLabel_42);
 
+        JPanel panel2 = new JPanel();
+        panel2.setBorder(new LineBorder(new Color(0, 0, 0)));
+        panel2.setLocation(2, 0);
+        panel2.setBounds(26, 228, 319, 111);
+        interaction.add(panel2);
+        panel2.setLayout(new GridLayout(1, 0, 0, 0));
+
+        final JTextArea inteInfo = new JTextArea();
+        panel2.add(inteInfo);
+
         JScrollPane scrollPane2 = new JScrollPane();
         scrollPane2.setBounds(26, 105, 319, 111);
         interaction.add(scrollPane2);
 
-        JList list_2 = new JList();
-        list_2.setModel(new AbstractListModel()
+        final JList inteList = new JList();
+        inteList.addListSelectionListener(new ListSelectionListener()
+        {
+            public void valueChanged(ListSelectionEvent e)
+            {
+                if (!e.getValueIsAdjusting())
+                {
+                    String selected = inteList.getSelectedValue().toString();
+                    inteInfo.setText(InteractionDatabase.get(
+                            (int) selected.charAt(0) - 48).infoGUI());
+                }
+            }
+        });
+        inteList.setModel(new AbstractListModel()
         {
             String[] values = InteractionDatabase.getArray();
 
@@ -393,29 +452,62 @@ public class Main
                 return values[index];
             }
         });
-        scrollPane2.setViewportView(list_2);
+        scrollPane2.setViewportView(inteList);
 
-        JPanel panel2 = new JPanel();
-        panel2.setBorder(new LineBorder(new Color(0, 0, 0)));
-        panel2.setLocation(2, 0);
-        panel2.setBounds(26, 228, 319, 111);
-        interaction.add(panel2);
-        panel2.setLayout(new GridLayout(1, 0, 0, 0));
+        // --- THE SIMULATION IS HERE ---
 
-        JTextArea textArea2 = new JTextArea();
-        panel2.add(textArea2);
+        JPanel panel_1 = new JPanel();
+        panel_1.setBackground(Color.WHITE);
+        panel_1.setBorder(new TitledBorder(null, "Scenario",
+                TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_1.setBounds(256, 63, 223, 75);
+        result.add(panel_1);
+        panel_1.setLayout(new GridLayout(0, 1, 0, 0));
 
-        JButton btnNewButton_8 = new JButton("Start");
-        btnNewButton_8.addActionListener(new ActionListener()
+        final JTextArea scenario = new JTextArea();
+        scenario.setLineWrap(true);
+        panel_1.add(scenario);
+
+        JPanel panel_2 = new JPanel();
+        panel_2.setBackground(Color.WHITE);
+        panel_2.setBorder(new TitledBorder(null, "Emotions",
+                TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        panel_2.setBounds(256, 150, 223, 123);
+        result.add(panel_2);
+        panel_2.setLayout(new GridLayout(0, 1, 0, 0));
+
+        final JTextArea emochange = new JTextArea();
+        emochange.setLineWrap(true);
+        panel_2.add(emochange);
+
+        final JTextField textResult = new JTextField();
+        textResult.setEditable(false);
+        textResult.setBounds(58, 285, 377, 28);
+        result.add(textResult);
+        textResult.setColumns(10);
+
+        final JButton start = new JButton("Start");
+        start.setEnabled(false);
+        start.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent arg0)
             {
+                // the simulation is here
+                String[] s = Simulator.simulationResultGUI(cat,
+                        EnvironmentDatabase.get(enviID),
+                        InteractionDatabase.get(inteID));
+                scenario.setText(s[0]);
+                emochange.setText(s[1]);
+                textResult.setText(s[2]);
+
                 simulation.setVisible(false);
                 result.setVisible(true);
             }
         });
-        btnNewButton_8.setBounds(218, 330, 117, 29);
-        simulation.add(btnNewButton_8);
+        start.setBounds(218, 330, 117, 29);
+        simulation.add(start);
+
+        // ---
 
         JButton btnNewButton_9 = new JButton("Back");
         btnNewButton_9.addActionListener(new ActionListener()
@@ -435,12 +527,39 @@ public class Main
         lblNewLabel_5.setBounds(6, 6, 488, 43);
         simulation.add(lblNewLabel_5);
 
+        // ---
+
+        final JTextField chooseInte = new JTextField();
+        chooseInte.setHorizontalAlignment(SwingConstants.CENTER);
+        chooseInte.setEditable(false);
+        chooseInte.setColumns(10);
+        chooseInte.setBounds(347, 290, 127, 28);
+        simulation.add(chooseInte);
+
         JScrollPane imenu = new JScrollPane();
         imenu.setBounds(347, 106, 127, 80);
         simulation.add(imenu);
 
-        JList list_5 = new JList();
-        list_5.setModel(new AbstractListModel()
+        final JList chooseInteList = new JList();
+        chooseInteList.addListSelectionListener(new ListSelectionListener()
+        {
+            public void valueChanged(ListSelectionEvent e)
+            {
+                if (!e.getValueIsAdjusting())
+                {
+                    String selected = chooseInteList.getSelectedValue()
+                            .toString();
+                    chooseInte.setText(selected.substring(3));
+
+                    inteID = (int) selected.charAt(0) - 48;
+
+                    inteChosen = true;
+                    if (enviChosen)
+                        start.setEnabled(true);
+                }
+            }
+        });
+        chooseInteList.setModel(new AbstractListModel()
         {
             String[] values = InteractionDatabase.getArray();
 
@@ -454,14 +573,41 @@ public class Main
                 return values[index];
             }
         });
-        imenu.setViewportView(list_5);
+        imenu.setViewportView(chooseInteList);
+
+        // ---
+
+        final JTextField chooseEnvi = new JTextField();
+        chooseEnvi.setHorizontalAlignment(SwingConstants.CENTER);
+        chooseEnvi.setEditable(false);
+        chooseEnvi.setBounds(208, 290, 127, 28);
+        simulation.add(chooseEnvi);
+        chooseEnvi.setColumns(10);
 
         JScrollPane emenu = new JScrollPane();
         emenu.setBounds(208, 106, 127, 80);
         simulation.add(emenu);
 
-        JList list_4 = new JList();
-        list_4.setModel(new AbstractListModel()
+        final JList chooseEnviList = new JList();
+        chooseEnviList.addListSelectionListener(new ListSelectionListener()
+        {
+            public void valueChanged(ListSelectionEvent e)
+            {
+                if (!e.getValueIsAdjusting())
+                {
+                    String selected = chooseEnviList.getSelectedValue()
+                            .toString();
+                    chooseEnvi.setText(selected.substring(3));
+
+                    enviID = (int) selected.charAt(0) - 48;
+
+                    enviChosen = true;
+                    if (inteChosen)
+                        start.setEnabled(true);
+                }
+            }
+        });
+        chooseEnviList.setModel(new AbstractListModel()
         {
             String[] values = EnvironmentDatabase.getArray();
 
@@ -475,7 +621,9 @@ public class Main
                 return values[index];
             }
         });
-        emenu.setViewportView(list_4);
+        emenu.setViewportView(chooseEnviList);
+
+        // ---
 
         JPanel pic = new JPanel();
         pic.setBackground(Color.WHITE);
@@ -504,34 +652,11 @@ public class Main
         lblNewLabel_6.setBounds(218, 50, 250, 16);
         simulation.add(lblNewLabel_6);
 
-        JTextField textField = new JTextField();
-        textField.setEditable(false);
-        textField.setBounds(208, 290, 127, 28);
-        simulation.add(textField);
-        textField.setColumns(10);
-
-        JTextField textField_1 = new JTextField();
-        textField_1.setEditable(false);
-        textField_1.setColumns(10);
-        textField_1.setBounds(347, 290, 127, 28);
-        simulation.add(textField_1);
-
-        JPanel catStatus = new JPanel();
-        catStatus.setBackground(Color.WHITE);
-        catStatus.setBorder(new TitledBorder(null, "Current Cat Status", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        catStatus.setBounds(16, 235, 180, 124);
-        simulation.add(catStatus);
-        catStatus.setLayout(new GridLayout(0, 1, 0, 0));
-
-        JTextArea textArea_1 = new JTextArea();
-        textArea_1.setEditable(false);
-        catStatus.add(textArea_1);
-        
         JLabel lblEnvironment = new JLabel("Environment");
         lblEnvironment.setHorizontalAlignment(SwingConstants.CENTER);
         lblEnvironment.setBounds(208, 78, 127, 16);
         simulation.add(lblEnvironment);
-        
+
         JLabel lblInteraction = new JLabel("Interaction");
         lblInteraction.setHorizontalAlignment(SwingConstants.CENTER);
         lblInteraction.setBounds(347, 78, 127, 16);
@@ -612,12 +737,6 @@ public class Main
             }
         });
 
-        JLabel lblNewLabel_2 = new JLabel("Duc Anh Nguyen");
-        lblNewLabel_2.setBackground(Color.WHITE);
-        lblNewLabel_2.setFont(new Font("Lucida Grande", Font.PLAIN, 15));
-        lblNewLabel_2.setBounds(6, 351, 143, 21);
-        lblNewLabel_2.setForeground(Color.BLACK);
-
         JButton btnNewButton_5 = new JButton("Credit");
         btnNewButton_5.setBounds(321, 253, 157, 29);
         btnNewButton_5.addActionListener(new ActionListener()
@@ -636,7 +755,6 @@ public class Main
         main.add(btnNewButton_4);
         main.add(btnNewButton_1);
         main.add(btnNewButton_2);
-        main.add(lblNewLabel_2);
 
         JLabel lblNewLabel_1 = new JLabel("");
         lblNewLabel_1.setBackground(Color.WHITE);
@@ -673,13 +791,14 @@ public class Main
             }
         });
         credit.add(btnBack);
-        
+
         JScrollPane scrollPane_1 = new JScrollPane();
         scrollPane_1.setBounds(16, 115, 299, 237);
         credit.add(scrollPane_1);
-        
+
         JTextArea txtrCatBehaviourSimulator = new JTextArea();
-        txtrCatBehaviourSimulator.setText("Cat Behaviour Simulator\n\nThird Year Project\n\nUniversity of Manchester\n\nAuthor: Duc A. Nguyen\n\nSupervisor: Dr John Sargeant\n\nReference Sources:\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n");
+        txtrCatBehaviourSimulator
+                .setText("Cat Behaviour Simulator\n\nThird Year Project\n\nUniversity of Manchester\n\nAuthor: Duc A. Nguyen\n\nSupervisor: Dr John Sargeant\n\nReference Sources:\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n");
         scrollPane_1.setViewportView(txtrCatBehaviourSimulator);
         JButton btnOk = new JButton("OK");
         btnOk.setBounds(367, 327, 117, 29);
@@ -703,12 +822,12 @@ public class Main
         lblNewEnvironment.setBounds(0, 0, 488, 89);
         newEnvi.add(lblNewEnvironment);
 
-        JLabel lblNewEnvironmentDetails = new JLabel(
-                "Environment Name:");
+        JLabel lblNewEnvironmentDetails = new JLabel("Environment Name:");
         lblNewEnvironmentDetails.setBounds(23, 101, 130, 16);
         newEnvi.add(lblNewEnvironmentDetails);
 
-        JLabel lblPleaseSpecifyThe = new JLabel("Please specify the characteristics of this environment :");
+        JLabel lblPleaseSpecifyThe = new JLabel(
+                "Please specify the characteristics of this environment :");
         lblPleaseSpecifyThe.setBounds(23, 129, 375, 16);
         newEnvi.add(lblPleaseSpecifyThe);
 
@@ -727,46 +846,46 @@ public class Main
         JLabel lblNoise = new JLabel("Noise :");
         lblNoise.setBounds(23, 241, 130, 16);
         newEnvi.add(lblNoise);
-        
+
         JTextField textField_3 = new JTextField();
         textField_3.setBounds(165, 95, 168, 28);
         newEnvi.add(textField_3);
         textField_3.setColumns(10);
-        
+
         JSlider slider_4 = new JSlider();
         slider_4.setBounds(115, 157, 281, 22);
         newEnvi.add(slider_4);
-        
+
         JSlider slider_5 = new JSlider();
         slider_5.setBounds(115, 185, 281, 22);
         newEnvi.add(slider_5);
-        
+
         JSlider slider_6 = new JSlider();
         slider_6.setBounds(115, 213, 281, 22);
         newEnvi.add(slider_6);
-        
+
         JSlider slider_7 = new JSlider();
         slider_7.setBounds(115, 243, 281, 22);
         newEnvi.add(slider_7);
-        
+
         JTextField textField_8 = new JTextField();
         textField_8.setEditable(false);
         textField_8.setBounds(393, 151, 91, 28);
         newEnvi.add(textField_8);
         textField_8.setColumns(10);
-        
+
         JTextField textField_9 = new JTextField();
         textField_9.setEditable(false);
         textField_9.setColumns(10);
         textField_9.setBounds(393, 179, 91, 28);
         newEnvi.add(textField_9);
-        
+
         JTextField textField_10 = new JTextField();
         textField_10.setEditable(false);
         textField_10.setColumns(10);
         textField_10.setBounds(393, 207, 91, 28);
         newEnvi.add(textField_10);
-        
+
         JTextField textField_11 = new JTextField();
         textField_11.setEditable(false);
         textField_11.setColumns(10);

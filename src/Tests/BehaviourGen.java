@@ -3,7 +3,7 @@ package Tests;
 
 import database.BehaviourDatabase;
 
-public class BehaviourTest {
+public class BehaviourGen {
 
 	public static void main(String[] args) {
 		//CatDatabase.openDatabase();
