@@ -30,10 +30,6 @@ public class Cat implements Serializable
         return breed;
     }
 
-    /*
-     * public int getAge() { return age; }
-     */
-
     public int[] getEmotion()
     {
         return emotion.getEmo();

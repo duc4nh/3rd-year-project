@@ -79,8 +79,13 @@ public class EnvironmentDatabase
     {
         environmentDatabase.remove(id - 1);
     }
+    
+    public static int getSize()
+    {
+        return environmentDatabase.size();
+    }
 
-    public static void close()
+    public static void save()
     {
         try
         {

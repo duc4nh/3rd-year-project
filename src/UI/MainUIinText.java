@@ -59,8 +59,8 @@ public class MainUIinText {
 		}
 
 		// CLOSE DATABASE
-		InteractionDatabase.close();
-		EnvironmentDatabase.close();
+		InteractionDatabase.save();
+		EnvironmentDatabase.save();
 		// No need to close behavior database, as we want it to be read-only
 		// BehaviourDatabase.close();
 		// CatDatabase.close();

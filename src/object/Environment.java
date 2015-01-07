@@ -5,16 +5,17 @@ import java.io.Serializable;
 public class Environment implements Serializable
 {
 
-    // maybe ID
+    private int id;
     private String name;
     private int temperature; // -5 = very hot; 5 = very cold
     private int humidity; // -5 = very humid; 5 = very dry
     private int light; // -5 to 5 = light
     private int noise; // -5 to 5 = noisy
 
-    public Environment(String name, int temperature, int humidity, int light,
+    public Environment(int id, String name, int temperature, int humidity, int light,
             int noise)
     {
+        this.id = id;
         this.name = name;
         this.temperature = temperature;
         this.humidity = humidity;
@@ -23,6 +24,11 @@ public class Environment implements Serializable
     }
 
     // GETTERS
+    public int getId()
+    {
+        return id;
+    }
+    
     public String getName()
     {
         return name;

@@ -38,7 +38,7 @@ public class BehaviourDatabase
             System.out.println(i + ". " + behaviour.getName() + "\t\t\t"
                     + behaviour.getExcited() + "\t" + behaviour.getFearful()
                     + "\t" + behaviour.getRelieved() + "\t"
-                    + behaviour.getAngry());
+                    + behaviour.getAngry() + "\t" + behaviour.getCate());
             i++;
         }
     }
@@ -58,7 +58,7 @@ public class BehaviourDatabase
         behaviourDatabase.remove(id - 1);
     }
 
-    public static void close()
+    public static void save()
     {
         try
         {

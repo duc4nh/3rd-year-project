@@ -30,7 +30,7 @@ public class Simulator
      * @param interaction
      * @return how emotions changed
      */
-    private static int[] simulationEmo(Environment environment,
+    public static int[] simulationEmo(Environment environment,
             Interaction interaction)
     {
         // emotion change figures
@@ -39,7 +39,7 @@ public class Simulator
         int relieved = 0;
         int angry = 0;
 
-        // FROM ENVIRONTMENT
+        // FROM ENVIRONTMENT: -5 to 5
         // temperature
         if (environment.getTemperature() > 1)
         { // hot and warm
@@ -87,14 +87,14 @@ public class Simulator
             relieved += random() - 1;
             angry += random() + 1;
         } else
-        { // normal or quite
+        { // normal or quiet
             excited += random();
             fearful += random();
             relieved += random() + 1;
             angry += random();
         }
 
-        // FROM INTERACTION interaction
+        // FROM INTERACTION interaction: get directly from the interactions' figures
         excited += random() + interaction.getExcited();
         fearful += random() + interaction.getFearful();
         relieved += random() + interaction.getRelieved();
@@ -110,16 +110,15 @@ public class Simulator
      * Choose an appropriate behavior
      * 
      * @param cat
-     * @param interaction
+     * @param interaction: only for the category
      * @return a behavior
      */
-    private static Behaviour chooseBehaviour(Cat cat, Interaction interaction)
+    public static Behaviour chooseBehaviour(Cat cat, Interaction interaction)
     {
         int[] emo = cat.getEmotion();
         List<Behaviour> behaviourDatabase = BehaviourDatabase.getAll();
         Behaviour[] candidates = new Behaviour[3];
-        double[] candidateScores =
-        { -80, -80, -80 }; // -80 is minimum score
+        int[] candidateScores = { -80, -80, -80 }; // -80 is minimum score
 
         // choose 3 best appropriate behaviors
         for (Behaviour behaviour : behaviourDatabase)
@@ -151,9 +150,9 @@ public class Simulator
         // 1 behavior is chosen by probability: 50% 30% 20%
         Behaviour chosenBehaviour;
         double random = Math.random();
-        if (random < 0.6)
+        if (random < 0.5)
             chosenBehaviour = candidates[0];
-        else if (random < 0.9)
+        else if (random < 0.8)
             chosenBehaviour = candidates[1];
         else
             chosenBehaviour = candidates[2];

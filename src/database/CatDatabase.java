@@ -50,7 +50,7 @@ public class CatDatabase
         catDatabase.add(cat);
     }
 
-    public static void close()
+    public static void save()
     {
         try
         {

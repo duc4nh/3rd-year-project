@@ -109,7 +109,7 @@ public class Library
         System.out.print("Noisy or Normal(-5 to 5): ");
         int noise = reader.nextInt();
 
-        Environment environment = new Environment(name, temperature, humidity,
+        Environment environment = new Environment(EnvironmentDatabase.getSize() + 1, name, temperature, humidity,
                 light, noise);
 
         // Save new thing to database
@@ -155,7 +155,7 @@ public class Library
         System.out.print("Angry (between -2 and 2)? ");
         int angry = reader.nextInt();
 
-        Interaction obj = new Interaction(name, type, excited, fearful,
+        Interaction obj = new Interaction(InteractionDatabase.getSize() + 1, name, type, excited, fearful,
                 relieved, angry);
 
         // Save new thing to database

@@ -2,22 +2,30 @@ package GUI;
 
 import object.Cat;
 import object.Emotion;
+import object.Environment;
+import object.Interaction;
+import object.InteractionCategory;
 import simulator.Simulator;
 import database.BehaviourDatabase;
 import database.EnvironmentDatabase;
 import database.InteractionDatabase;
 
 import java.awt.EventQueue;
+
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+
 import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.event.ChangeEvent;
 
 public class Main
 {
@@ -28,7 +36,24 @@ public class Main
     private int inteID;
     private boolean enviChosen = false;
     private boolean inteChosen = false;
+    private boolean jlistEnviModified = false;
+    private boolean jlistInteModified = false;
+    private int enviMenuID;
+    private int inteMenuID;
     private JFrame frmCatSimulator;
+
+    private int newE;
+    private int newF;
+    private int newR;
+    private int newA;
+    private int newT;
+    private int newH;
+    private int newL;
+    private int newN;
+
+    private final int MIN = -5;
+    private final int MAX = 5;
+    private final int INIT = 0;
 
     /**
      * Launch the application.
@@ -63,10 +88,6 @@ public class Main
 
         // GUI
         initialize();
-
-        // CLOSE DATABASE
-        InteractionDatabase.close();
-        EnvironmentDatabase.close();
     }
 
     /**
@@ -77,7 +98,7 @@ public class Main
         frmCatSimulator = new JFrame();
         frmCatSimulator.setTitle("Cat Simulator");
         frmCatSimulator.getContentPane().setBackground(new Color(0, 51, 0));
-        frmCatSimulator.setBounds(100, 100, 500, 400);
+        frmCatSimulator.setBounds(100, 100, 1000, 600);
         frmCatSimulator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frmCatSimulator.getContentPane().setLayout(new CardLayout(0, 0));
 
@@ -154,7 +175,7 @@ public class Main
                 main.setVisible(true);
             }
         });
-        btnNewButton_13.setBounds(362, 325, 117, 29);
+        btnNewButton_13.setBounds(442, 515, 117, 29);
         result.add(btnNewButton_13);
 
         JLabel lblSimulationResult = new JLabel("Simulation Result");
@@ -169,7 +190,7 @@ public class Main
         catStatus.setBackground(Color.WHITE);
         catStatus.setBorder(new TitledBorder(null, "Current Cat Status",
                 TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        catStatus.setBounds(16, 235, 180, 124);
+        catStatus.setBounds(27, 370, 200, 136);
         simulation.add(catStatus);
         catStatus.setLayout(new GridLayout(0, 1, 0, 0));
 
@@ -190,20 +211,217 @@ public class Main
                 status.setText(cat.printStatusGUI());
             }
         });
-        btnNewSimulation.setBounds(233, 325, 117, 29);
+        btnNewSimulation.setBounds(313, 515, 117, 29);
         result.add(btnNewSimulation);
 
-        // ---
+        // --- ---
 
-        JLabel lblNewLabel_2 = new JLabel("");
-        lblNewLabel_2.setIcon(new ImageIcon(Main.class
-                .getResource("/images/tumblr_m8hv515XTT1qhlsrfo1_500.gif")));
-        lblNewLabel_2.setBounds(16, 63, 228, 210);
-        result.add(lblNewLabel_2);
+        // --- ENVIRONMENT MENU ---
 
-        JButton btnNewButton_6 = new JButton("OK");
-        btnNewButton_6.setBounds(362, 326, 117, 29);
-        newInter.add(btnNewButton_6);
+        JButton btnNewButton_10 = new JButton("Create");
+        btnNewButton_10.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                newEnvi.setVisible(true);
+                environment.setVisible(false);
+            }
+        });
+        btnNewButton_10.setBounds(357, 119, 117, 29);
+        environment.add(btnNewButton_10);
+
+        JButton btnBack_2 = new JButton("Back");
+        btnBack_2.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                environment.setVisible(false);
+                main.setVisible(true);
+            }
+        });
+        btnBack_2.setBounds(357, 201, 117, 29);
+        environment.add(btnBack_2);
+
+        JLabel lblNewLabel_4 = new JLabel("Environment Library");
+        lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_4.setFont(new Font("Lucida Grande", Font.BOLD, 24));
+        lblNewLabel_4.setBounds(6, 6, 488, 101);
+        environment.add(lblNewLabel_4);
+
+        JPanel panel = new JPanel();
+        panel.setBorder(new LineBorder(new Color(0, 0, 0)));
+        panel.setBounds(26, 228, 319, 111);
+        environment.add(panel);
+        panel.setLayout(new GridLayout(1, 0, 0, 0));
+
+        final JTextArea enviInfo = new JTextArea();
+        panel.add(enviInfo);
+
+        final JScrollPane scrollPaneE = new JScrollPane();
+        scrollPaneE.setBounds(26, 105, 319, 111);
+        environment.add(scrollPaneE);
+
+        final JList enviList = new JList();
+        enviList.addListSelectionListener(new ListSelectionListener()
+        {
+            public void valueChanged(ListSelectionEvent arg0)
+            {
+                if (!arg0.getValueIsAdjusting())
+                {
+                    if (!jlistEnviModified)
+                    {
+                        String selected = enviList.getSelectedValue()
+                                .toString();
+                        enviMenuID = Integer.parseInt(selected.split("\\.")[0]);
+                        enviInfo.setText(EnvironmentDatabase.get(enviMenuID)
+                                .infoGUI());
+                    } else
+                        jlistEnviModified = false;
+                }
+            }
+        });
+        enviList.setModel(new AbstractListModel()
+        {
+            String[] values = EnvironmentDatabase.getArray();
+
+            public int getSize()
+            {
+                return values.length;
+            }
+
+            public Object getElementAt(int index)
+            {
+                return values[index];
+            }
+        });
+        scrollPaneE.setViewportView(enviList);
+
+        JButton btnNewButton_11 = new JButton("Delete");
+        btnNewButton_11.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                EnvironmentDatabase.delete(enviMenuID);
+                EnvironmentDatabase.save();
+
+                // refresh jlist
+                jlistEnviModified = true;
+
+                enviList.setListData(EnvironmentDatabase.getArray());
+                scrollPaneE.revalidate();
+                scrollPaneE.repaint();
+
+                enviInfo.setText("Chosen environment object has been deleted!");
+            }
+        });
+        btnNewButton_11.setBounds(357, 160, 117, 29);
+        environment.add(btnNewButton_11);
+
+        // --- ---
+
+        // --- INTERACTION MENU ---
+
+        JButton btnNewButton_12 = new JButton("Create");
+        btnNewButton_12.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                newInter.setVisible(true);
+                interaction.setVisible(false);
+            }
+        });
+        btnNewButton_12.setBounds(357, 119, 117, 29);
+        interaction.add(btnNewButton_12);
+
+        JButton btnBack_3 = new JButton("Back");
+        btnBack_3.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                interaction.setVisible(false);
+                main.setVisible(true);
+            }
+        });
+        btnBack_3.setBounds(357, 201, 117, 29);
+        interaction.add(btnBack_3);
+
+        JLabel lblNewLabel_42 = new JLabel("Interaction Library");
+        lblNewLabel_42.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewLabel_42.setFont(new Font("Lucida Grande", Font.BOLD, 24));
+        lblNewLabel_42.setBounds(6, 6, 488, 101);
+        interaction.add(lblNewLabel_42);
+
+        JPanel panel2 = new JPanel();
+        panel2.setBorder(new LineBorder(new Color(0, 0, 0)));
+        panel2.setLocation(2, 0);
+        panel2.setBounds(26, 228, 319, 111);
+        interaction.add(panel2);
+        panel2.setLayout(new GridLayout(1, 0, 0, 0));
+
+        final JTextArea inteInfo = new JTextArea();
+        panel2.add(inteInfo);
+
+        final JScrollPane scrollPaneI = new JScrollPane();
+        scrollPaneI.setBounds(26, 105, 319, 111);
+        interaction.add(scrollPaneI);
+
+        final JList inteList = new JList();
+        inteList.addListSelectionListener(new ListSelectionListener()
+        {
+            public void valueChanged(ListSelectionEvent e)
+            {
+                if (!e.getValueIsAdjusting())
+                {
+                    if (!jlistInteModified)
+                    {
+                        String selected = inteList.getSelectedValue()
+                                .toString();
+                        inteMenuID = Integer.parseInt(selected.split("\\.")[0]);
+                        inteInfo.setText(InteractionDatabase.get(inteMenuID)
+                                .infoGUI());
+                    } else
+                        jlistInteModified = false;
+                }
+            }
+        });
+        inteList.setModel(new AbstractListModel()
+        {
+            String[] values = InteractionDatabase.getArray();
+
+            public int getSize()
+            {
+                return values.length;
+            }
+
+            public Object getElementAt(int index)
+            {
+                return values[index];
+            }
+        });
+        scrollPaneI.setViewportView(inteList);
+
+        JButton btnDelete = new JButton("Delete");
+        btnDelete.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e)
+            {
+                InteractionDatabase.delete(inteMenuID);
+                InteractionDatabase.save();
+
+                // refresh jlist
+                jlistInteModified = true;
+
+                inteList.setListData(InteractionDatabase.getArray());
+                scrollPaneI.revalidate();
+                scrollPaneI.repaint();
+
+                inteInfo.setText("Chosen interaction object has been deleted!");
+            }
+        });
+        btnDelete.setBounds(357, 160, 117, 29);
+        interaction.add(btnDelete);
+
+        // --- NEW INTERACTION ---
 
         JButton btnNewButton_7 = new JButton("Back");
         btnNewButton_7.addActionListener(new ActionListener()
@@ -252,215 +470,328 @@ public class Main
         lblAngry.setBounds(16, 275, 70, 16);
         newInter.add(lblAngry);
 
-        JSlider slider = new JSlider();
-        slider.setBounds(88, 191, 281, 22);
-        newInter.add(slider);
+        // --- sliders
 
-        JSlider slider_1 = new JSlider();
-        slider_1.setBounds(88, 219, 281, 22);
-        newInter.add(slider_1);
+        final JTextField textFieldE = new JTextField();
+        textFieldE.setText("0");
+        textFieldE.setHorizontalAlignment(SwingConstants.CENTER);
+        textFieldE.setEditable(false);
+        textFieldE.setColumns(10);
+        textFieldE.setBounds(362, 185, 117, 28);
+        newInter.add(textFieldE);
 
-        JSlider slider_2 = new JSlider();
-        slider_2.setBounds(88, 247, 281, 22);
-        newInter.add(slider_2);
+        final JTextField textFieldF = new JTextField();
+        textFieldF.setText("0");
+        textFieldF.setHorizontalAlignment(SwingConstants.CENTER);
+        textFieldF.setEditable(false);
+        textFieldF.setColumns(10);
+        textFieldF.setBounds(362, 213, 117, 28);
+        newInter.add(textFieldF);
 
-        JSlider slider_3 = new JSlider();
-        slider_3.setBounds(88, 275, 281, 22);
-        newInter.add(slider_3);
+        final JTextField textFieldR = new JTextField();
+        textFieldR.setText("0");
+        textFieldR.setHorizontalAlignment(SwingConstants.CENTER);
+        textFieldR.setEditable(false);
+        textFieldR.setColumns(10);
+        textFieldR.setBounds(362, 241, 117, 28);
+        newInter.add(textFieldR);
 
-        JTextField textField_2 = new JTextField();
-        textField_2.setBounds(150, 101, 160, 28);
-        newInter.add(textField_2);
-        textField_2.setColumns(10);
+        final JTextField textFieldA = new JTextField();
+        textFieldA.setText("0");
+        textFieldA.setHorizontalAlignment(SwingConstants.CENTER);
+        textFieldA.setEditable(false);
+        textFieldA.setColumns(10);
+        textFieldA.setBounds(362, 269, 117, 28);
+        newInter.add(textFieldA);
 
-        JComboBox comboBox = new JComboBox();
-        comboBox.setBounds(150, 131, 160, 27);
-        newInter.add(comboBox);
-
-        JTextField textField_4 = new JTextField();
-        textField_4.setEditable(false);
-        textField_4.setColumns(10);
-        textField_4.setBounds(362, 185, 117, 28);
-        newInter.add(textField_4);
-
-        JTextField textField_5 = new JTextField();
-        textField_5.setEditable(false);
-        textField_5.setColumns(10);
-        textField_5.setBounds(362, 213, 117, 28);
-        newInter.add(textField_5);
-
-        JTextField textField_6 = new JTextField();
-        textField_6.setEditable(false);
-        textField_6.setColumns(10);
-        textField_6.setBounds(362, 241, 117, 28);
-        newInter.add(textField_6);
-
-        JTextField textField_7 = new JTextField();
-        textField_7.setEditable(false);
-        textField_7.setColumns(10);
-        textField_7.setBounds(362, 269, 117, 28);
-        newInter.add(textField_7);
-
-        JButton btnNewButton_10 = new JButton("Create");
-        btnNewButton_10.addActionListener(new ActionListener()
+        final JSlider sliderE = new JSlider(JSlider.HORIZONTAL, MIN, MAX, INIT);
+        sliderE.addChangeListener(new ChangeListener()
         {
-            public void actionPerformed(ActionEvent e)
+            public void stateChanged(ChangeEvent arg0)
             {
-                newEnvi.setVisible(true);
-                environment.setVisible(false);
+                int value = sliderE.getValue();
+                textFieldE.setText("" + value);
+                newE = value;
             }
         });
-        btnNewButton_10.setBounds(357, 119, 117, 29);
-        environment.add(btnNewButton_10);
+        sliderE.setBounds(88, 191, 281, 22);
+        newInter.add(sliderE);
 
-        JButton btnNewButton_11 = new JButton("Delete");
-        btnNewButton_11.setBounds(357, 160, 117, 29);
-        environment.add(btnNewButton_11);
-
-        JButton btnBack_2 = new JButton("Back");
-        btnBack_2.addActionListener(new ActionListener()
+        final JSlider sliderF = new JSlider(JSlider.HORIZONTAL, MIN, MAX, INIT);
+        sliderF.addChangeListener(new ChangeListener()
         {
-            public void actionPerformed(ActionEvent e)
+            public void stateChanged(ChangeEvent e)
             {
-                environment.setVisible(false);
-                main.setVisible(true);
+                int value = sliderF.getValue();
+                textFieldF.setText("" + value);
+                newF = value;
             }
         });
-        btnBack_2.setBounds(357, 201, 117, 29);
-        environment.add(btnBack_2);
+        sliderF.setBounds(88, 219, 281, 22);
+        newInter.add(sliderF);
 
-        JLabel lblNewLabel_4 = new JLabel("Environment Library");
-        lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_4.setFont(new Font("Lucida Grande", Font.BOLD, 24));
-        lblNewLabel_4.setBounds(6, 6, 488, 101);
-        environment.add(lblNewLabel_4);
-
-        JPanel panel = new JPanel();
-        panel.setBorder(new LineBorder(new Color(0, 0, 0)));
-        panel.setBounds(26, 228, 319, 111);
-        environment.add(panel);
-        panel.setLayout(new GridLayout(1, 0, 0, 0));
-
-        final JTextArea enviInfo = new JTextArea();
-        panel.add(enviInfo);
-
-        JScrollPane scrollPane = new JScrollPane();
-        scrollPane.setBounds(26, 105, 319, 111);
-        environment.add(scrollPane);
-
-        final JList enviList = new JList();
-        enviList.addListSelectionListener(new ListSelectionListener()
+        final JSlider sliderR = new JSlider(JSlider.HORIZONTAL, MIN, MAX, INIT);
+        sliderR.addChangeListener(new ChangeListener()
         {
-            public void valueChanged(ListSelectionEvent arg0)
+            public void stateChanged(ChangeEvent e)
             {
-                if (!arg0.getValueIsAdjusting())
+                int value = sliderR.getValue();
+                textFieldR.setText("" + value);
+                newR = value;
+            }
+        });
+        sliderR.setBounds(88, 247, 281, 22);
+        newInter.add(sliderR);
+
+        final JSlider sliderA = new JSlider(JSlider.HORIZONTAL, MIN, MAX, INIT);
+        sliderA.addChangeListener(new ChangeListener()
+        {
+            public void stateChanged(ChangeEvent e)
+            {
+                int value = sliderA.getValue();
+                textFieldA.setText("" + value);
+                newA = value;
+            }
+        });
+        sliderA.setBounds(88, 275, 281, 22);
+        newInter.add(sliderA);
+
+        // --- New interaction name and type
+
+        final JTextField newNameI = new JTextField();
+        newNameI.setBounds(150, 101, 160, 28);
+        newInter.add(newNameI);
+        newNameI.setColumns(10);
+
+        final JComboBox newTypeI = new JComboBox(InteractionCategory.values());
+        newTypeI.setBounds(150, 131, 160, 27);
+        newInter.add(newTypeI);
+
+        // --- create new Interaction when button clicked
+
+        JButton btnNewButton_6 = new JButton("OK");
+        btnNewButton_6.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent arg0)
+            {
+                String name = newNameI.getText();
+                newNameI.setText("");
+
+                // TODO invalid output
+                if (name != "")
                 {
-                    String selected = enviList.getSelectedValue().toString();
-                    enviInfo.setText(EnvironmentDatabase.get(
-                            (int) selected.charAt(0) - 48).infoGUI());
-                }
+                    InteractionCategory type = (InteractionCategory) newTypeI
+                            .getSelectedItem();
+                    Interaction inter = new Interaction(InteractionDatabase.getSize() + 1, name, type, newE, newF,
+                            newR, newA);
+                    InteractionDatabase.add(inter);
+
+                    // save to file
+                    InteractionDatabase.save();
+
+                    // Refresh list
+                    jlistInteModified = true;
+
+                    inteList.setListData(InteractionDatabase.getArray());
+                    scrollPaneI.revalidate();
+                    scrollPaneI.repaint();
+
+                    inteInfo.setText("New interaction object has been created!");
+
+                } else
+                    inteInfo.setText("Invalid input!");
+
+                newInter.setVisible(false);
+                interaction.setVisible(true);
             }
         });
-        enviList.setModel(new AbstractListModel()
-        {
-            String[] values = EnvironmentDatabase.getArray();
+        btnNewButton_6.setBounds(362, 326, 117, 29);
+        newInter.add(btnNewButton_6);
 
-            public int getSize()
-            {
-                return values.length;
-            }
+        // --- ---
 
-            public Object getElementAt(int index)
-            {
-                return values[index];
-            }
-        });
-        scrollPane.setViewportView(enviList);
+        // --- New environment ---
 
-        JButton btnNewButton_12 = new JButton("Create");
-        btnNewButton_12.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                newInter.setVisible(true);
-                interaction.setVisible(false);
-            }
-        });
-        btnNewButton_12.setBounds(357, 119, 117, 29);
-        interaction.add(btnNewButton_12);
-
-        JButton btnDelete = new JButton("Delete");
-        btnDelete.setBounds(357, 160, 117, 29);
-        interaction.add(btnDelete);
-
-        JButton btnBack_3 = new JButton("Back");
-        btnBack_3.addActionListener(new ActionListener()
+        JButton btnBack_1 = new JButton("Back");
+        btnBack_1.addActionListener(new ActionListener()
         {
             public void actionPerformed(ActionEvent e)
             {
-                interaction.setVisible(false);
-                main.setVisible(true);
+                newEnvi.setVisible(false);
+                environment.setVisible(true);
             }
         });
-        btnBack_3.setBounds(357, 201, 117, 29);
-        interaction.add(btnBack_3);
+        btnBack_1.setBounds(237, 327, 117, 29);
+        newEnvi.add(btnBack_1);
 
-        JLabel lblNewLabel_42 = new JLabel("Interaction Library");
-        lblNewLabel_42.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_42.setFont(new Font("Lucida Grande", Font.BOLD, 24));
-        lblNewLabel_42.setBounds(6, 6, 488, 101);
-        interaction.add(lblNewLabel_42);
+        JLabel lblNewEnvironment = new JLabel("New Environment");
+        lblNewEnvironment.setHorizontalAlignment(SwingConstants.CENTER);
+        lblNewEnvironment.setFont(new Font("Lucida Grande", Font.BOLD, 24));
+        lblNewEnvironment.setBounds(0, 0, 488, 89);
+        newEnvi.add(lblNewEnvironment);
 
-        JPanel panel2 = new JPanel();
-        panel2.setBorder(new LineBorder(new Color(0, 0, 0)));
-        panel2.setLocation(2, 0);
-        panel2.setBounds(26, 228, 319, 111);
-        interaction.add(panel2);
-        panel2.setLayout(new GridLayout(1, 0, 0, 0));
+        JLabel lblNewEnvironmentDetails = new JLabel("Environment Name:");
+        lblNewEnvironmentDetails.setBounds(23, 101, 130, 16);
+        newEnvi.add(lblNewEnvironmentDetails);
 
-        final JTextArea inteInfo = new JTextArea();
-        panel2.add(inteInfo);
+        JLabel lblPleaseSpecifyThe = new JLabel(
+                "Please specify the characteristics of this environment :");
+        lblPleaseSpecifyThe.setBounds(23, 129, 375, 16);
+        newEnvi.add(lblPleaseSpecifyThe);
 
-        JScrollPane scrollPane2 = new JScrollPane();
-        scrollPane2.setBounds(26, 105, 319, 111);
-        interaction.add(scrollPane2);
+        JLabel lblTemperature = new JLabel("Temperature :");
+        lblTemperature.setBounds(23, 157, 130, 16);
+        newEnvi.add(lblTemperature);
 
-        final JList inteList = new JList();
-        inteList.addListSelectionListener(new ListSelectionListener()
+        JLabel lblHumidity = new JLabel("Humidity :");
+        lblHumidity.setBounds(23, 185, 130, 16);
+        newEnvi.add(lblHumidity);
+
+        JLabel lblLight = new JLabel("Light :");
+        lblLight.setBounds(23, 213, 130, 16);
+        newEnvi.add(lblLight);
+
+        JLabel lblNoise = new JLabel("Noise :");
+        lblNoise.setBounds(23, 241, 130, 16);
+        newEnvi.add(lblNoise);
+
+        final JTextField newNameE = new JTextField();
+        newNameE.setBounds(165, 95, 168, 28);
+        newEnvi.add(newNameE);
+        newNameE.setColumns(10);
+
+        final JTextField textFieldT = new JTextField();
+        textFieldT.setHorizontalAlignment(SwingConstants.CENTER);
+        textFieldT.setText("0");
+        textFieldT.setEditable(false);
+        textFieldT.setBounds(393, 151, 91, 28);
+        newEnvi.add(textFieldT);
+        textFieldT.setColumns(10);
+
+        final JTextField textFieldH = new JTextField();
+        textFieldH.setText("0");
+        textFieldH.setHorizontalAlignment(SwingConstants.CENTER);
+        textFieldH.setEditable(false);
+        textFieldH.setColumns(10);
+        textFieldH.setBounds(393, 179, 91, 28);
+        newEnvi.add(textFieldH);
+
+        final JTextField textFieldL = new JTextField();
+        textFieldL.setHorizontalAlignment(SwingConstants.CENTER);
+        textFieldL.setText("0");
+        textFieldL.setEditable(false);
+        textFieldL.setColumns(10);
+        textFieldL.setBounds(393, 207, 91, 28);
+        newEnvi.add(textFieldL);
+
+        final JTextField textFieldN = new JTextField();
+        textFieldN.setHorizontalAlignment(SwingConstants.CENTER);
+        textFieldN.setText("0");
+        textFieldN.setEditable(false);
+        textFieldN.setColumns(10);
+        textFieldN.setBounds(393, 235, 91, 28);
+        newEnvi.add(textFieldN);
+
+        final JSlider sliderT = new JSlider(JSlider.HORIZONTAL, MIN, MAX, INIT);
+        sliderT.addChangeListener(new ChangeListener()
         {
-            public void valueChanged(ListSelectionEvent e)
+            public void stateChanged(ChangeEvent e)
             {
-                if (!e.getValueIsAdjusting())
+                int value = sliderT.getValue();
+                textFieldT.setText("" + value);
+                newT = value;
+            }
+        });
+        sliderT.setBounds(115, 157, 281, 22);
+        newEnvi.add(sliderT);
+
+        final JSlider sliderH = new JSlider(JSlider.HORIZONTAL, MIN, MAX, INIT);
+        sliderH.addChangeListener(new ChangeListener()
+        {
+            public void stateChanged(ChangeEvent e)
+            {
+                int value = sliderH.getValue();
+                textFieldH.setText("" + value);
+                newH = value;
+            }
+        });
+        sliderH.setBounds(115, 185, 281, 22);
+        newEnvi.add(sliderH);
+
+        final JSlider sliderL = new JSlider(JSlider.HORIZONTAL, MIN, MAX, INIT);
+        sliderL.addChangeListener(new ChangeListener()
+        {
+            public void stateChanged(ChangeEvent e)
+            {
+                int value = sliderL.getValue();
+                textFieldL.setText("" + value);
+                newL = value;
+            }
+        });
+        sliderL.setBounds(115, 213, 281, 22);
+        newEnvi.add(sliderL);
+
+        final JSlider sliderN = new JSlider(JSlider.HORIZONTAL, MIN, MAX, INIT);
+        sliderN.addChangeListener(new ChangeListener()
+        {
+            public void stateChanged(ChangeEvent e)
+            {
+                int value = sliderN.getValue();
+                textFieldN.setText("" + value);
+                newN = value;
+            }
+        });
+        sliderN.setBounds(115, 243, 281, 22);
+        newEnvi.add(sliderN);
+
+        // --- create new Environment when button clicked
+
+        JButton btnOk = new JButton("OK");
+        btnOk.addActionListener(new ActionListener()
+        {
+            public void actionPerformed(ActionEvent arg0)
+            {
+                String name = newNameE.getText();
+                newNameE.setText("");
+
+                // TODO invalid output
+                if (name != "")
                 {
-                    String selected = inteList.getSelectedValue().toString();
-                    inteInfo.setText(InteractionDatabase.get(
-                            (int) selected.charAt(0) - 48).infoGUI());
-                }
+                    Environment envi = new Environment(EnvironmentDatabase.getSize() + 1, name, newT, newH, newL,
+                            newN);
+                    EnvironmentDatabase.add(envi);
+
+                    // save to file
+                    EnvironmentDatabase.save();
+
+                    // Refresh list
+                    jlistEnviModified = true;
+
+                    enviList.setListData(EnvironmentDatabase.getArray());
+                    scrollPaneE.revalidate();
+                    scrollPaneE.repaint();
+
+                    enviInfo.setText("New environment has been created!");
+
+                } else
+                    enviInfo.setText("Invalid input!");
+
+                newEnvi.setVisible(false);
+                environment.setVisible(true);
             }
         });
-        inteList.setModel(new AbstractListModel()
-        {
-            String[] values = InteractionDatabase.getArray();
+        btnOk.setBounds(367, 327, 117, 29);
+        newEnvi.add(btnOk);
 
-            public int getSize()
-            {
-                return values.length;
-            }
+        // --- ---
 
-            public Object getElementAt(int index)
-            {
-                return values[index];
-            }
-        });
-        scrollPane2.setViewportView(inteList);
-
-        // --- THE SIMULATION IS HERE ---
+        // --- THE SIMULATION ---
 
         JPanel panel_1 = new JPanel();
         panel_1.setBackground(Color.WHITE);
         panel_1.setBorder(new TitledBorder(null, "Scenario",
                 TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_1.setBounds(256, 63, 223, 75);
+        panel_1.setBounds(646, 63, 260, 187);
         result.add(panel_1);
         panel_1.setLayout(new GridLayout(0, 1, 0, 0));
 
@@ -472,7 +803,7 @@ public class Main
         panel_2.setBackground(Color.WHITE);
         panel_2.setBorder(new TitledBorder(null, "Emotions",
                 TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        panel_2.setBounds(256, 150, 223, 123);
+        panel_2.setBounds(646, 262, 260, 201);
         result.add(panel_2);
         panel_2.setLayout(new GridLayout(0, 1, 0, 0));
 
@@ -482,9 +813,20 @@ public class Main
 
         final JTextField textResult = new JTextField();
         textResult.setEditable(false);
-        textResult.setBounds(58, 285, 377, 28);
+        textResult.setBounds(134, 475, 840, 28);
         result.add(textResult);
         textResult.setColumns(10);
+        
+        JPanel panel_3 = new JPanel();
+        panel_3.setBounds(134, 63, 500, 400);
+        result.add(panel_3);
+        
+                // ---
+        
+                JLabel lblNewLabel_2 = new JLabel("");
+                panel_3.add(lblNewLabel_2);
+                lblNewLabel_2.setIcon(new ImageIcon(Main.class
+                        .getResource("/images/tumblr_m8hv515XTT1qhlsrfo1_500.gif")));
 
         final JButton start = new JButton("Start");
         start.setEnabled(false);
@@ -504,7 +846,7 @@ public class Main
                 result.setVisible(true);
             }
         });
-        start.setBounds(218, 330, 117, 29);
+        start.setBounds(288, 477, 117, 29);
         simulation.add(start);
 
         // ---
@@ -518,13 +860,13 @@ public class Main
                 main.setVisible(true);
             }
         });
-        btnNewButton_9.setBounds(347, 330, 117, 29);
+        btnNewButton_9.setBounds(288, 521, 117, 29);
         simulation.add(btnNewButton_9);
 
         JLabel lblNewLabel_5 = new JLabel("Simulation");
         lblNewLabel_5.setHorizontalAlignment(SwingConstants.CENTER);
         lblNewLabel_5.setFont(new Font("Lucida Grande", Font.BOLD, 24));
-        lblNewLabel_5.setBounds(6, 6, 488, 43);
+        lblNewLabel_5.setBounds(6, 16, 988, 43);
         simulation.add(lblNewLabel_5);
 
         // ---
@@ -533,11 +875,11 @@ public class Main
         chooseInte.setHorizontalAlignment(SwingConstants.CENTER);
         chooseInte.setEditable(false);
         chooseInte.setColumns(10);
-        chooseInte.setBounds(347, 290, 127, 28);
+        chooseInte.setBounds(239, 411, 224, 28);
         simulation.add(chooseInte);
 
         JScrollPane imenu = new JScrollPane();
-        imenu.setBounds(347, 106, 127, 80);
+        imenu.setBounds(239, 299, 224, 100);
         simulation.add(imenu);
 
         final JList chooseInteList = new JList();
@@ -551,7 +893,8 @@ public class Main
                             .toString();
                     chooseInte.setText(selected.substring(3));
 
-                    inteID = (int) selected.charAt(0) - 48;
+                    inteID = Integer.parseInt(selected.split("\\.")[0]);
+                    ;
 
                     inteChosen = true;
                     if (enviChosen)
@@ -580,12 +923,12 @@ public class Main
         final JTextField chooseEnvi = new JTextField();
         chooseEnvi.setHorizontalAlignment(SwingConstants.CENTER);
         chooseEnvi.setEditable(false);
-        chooseEnvi.setBounds(208, 290, 127, 28);
+        chooseEnvi.setBounds(239, 218, 224, 28);
         simulation.add(chooseEnvi);
         chooseEnvi.setColumns(10);
 
         JScrollPane emenu = new JScrollPane();
-        emenu.setBounds(208, 106, 127, 80);
+        emenu.setBounds(239, 106, 224, 100);
         simulation.add(emenu);
 
         final JList chooseEnviList = new JList();
@@ -599,7 +942,7 @@ public class Main
                             .toString();
                     chooseEnvi.setText(selected.substring(3));
 
-                    enviID = (int) selected.charAt(0) - 48;
+                    enviID = Integer.parseInt(selected.split("\\.")[0]);
 
                     enviChosen = true;
                     if (inteChosen)
@@ -628,7 +971,7 @@ public class Main
         JPanel pic = new JPanel();
         pic.setBackground(Color.WHITE);
         pic.setBorder(new LineBorder(new Color(0, 0, 0)));
-        pic.setBounds(16, 55, 180, 168);
+        pic.setBounds(27, 106, 200, 250);
         simulation.add(pic);
         pic.setLayout(new GridLayout(0, 1, 0, 0));
 
@@ -638,28 +981,23 @@ public class Main
         pic.add(lblNewLabel_7);
 
         JPanel pic2 = new JPanel();
-        pic2.setBounds(208, 198, 127, 80);
+        pic2.setBounds(475, 106, 500, 400);
         simulation.add(pic2);
-
-        JPanel pic3 = new JPanel();
-        pic3.setBounds(347, 198, 127, 80);
-        simulation.add(pic3);
-        pic3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
         JLabel lblNewLabel_6 = new JLabel(
                 "Input information for the simulation:");
         lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewLabel_6.setBounds(218, 50, 250, 16);
+        lblNewLabel_6.setBounds(27, 78, 250, 16);
         simulation.add(lblNewLabel_6);
 
         JLabel lblEnvironment = new JLabel("Environment");
         lblEnvironment.setHorizontalAlignment(SwingConstants.CENTER);
-        lblEnvironment.setBounds(208, 78, 127, 16);
+        lblEnvironment.setBounds(288, 78, 127, 16);
         simulation.add(lblEnvironment);
 
         JLabel lblInteraction = new JLabel("Interaction");
         lblInteraction.setHorizontalAlignment(SwingConstants.CENTER);
-        lblInteraction.setBounds(347, 78, 127, 16);
+        lblInteraction.setBounds(288, 271, 127, 16);
         simulation.add(lblInteraction);
 
         JButton btnBack_4 = new JButton("Back");
@@ -770,7 +1108,7 @@ public class Main
                 .setIcon(new ImageIcon(
                         Main.class
                                 .getResource("/images/how-to-draw-the-grumpy-cat-tard-the-grumpy-cat-step-9_1_000000122943_5.gif")));
-        lblNewLabel_3.setBounds(327, 115, 130, 165);
+        lblNewLabel_3.setBounds(327, 115, 130, 170);
         credit.add(lblNewLabel_3);
 
         JLabel lblCredit = new JLabel("CREDIT");
@@ -800,96 +1138,5 @@ public class Main
         txtrCatBehaviourSimulator
                 .setText("Cat Behaviour Simulator\n\nThird Year Project\n\nUniversity of Manchester\n\nAuthor: Duc A. Nguyen\n\nSupervisor: Dr John Sargeant\n\nReference Sources:\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n");
         scrollPane_1.setViewportView(txtrCatBehaviourSimulator);
-        JButton btnOk = new JButton("OK");
-        btnOk.setBounds(367, 327, 117, 29);
-        newEnvi.add(btnOk);
-
-        JButton btnBack_1 = new JButton("Back");
-        btnBack_1.addActionListener(new ActionListener()
-        {
-            public void actionPerformed(ActionEvent e)
-            {
-                newEnvi.setVisible(false);
-                environment.setVisible(true);
-            }
-        });
-        btnBack_1.setBounds(237, 327, 117, 29);
-        newEnvi.add(btnBack_1);
-
-        JLabel lblNewEnvironment = new JLabel("New Environment");
-        lblNewEnvironment.setHorizontalAlignment(SwingConstants.CENTER);
-        lblNewEnvironment.setFont(new Font("Lucida Grande", Font.BOLD, 24));
-        lblNewEnvironment.setBounds(0, 0, 488, 89);
-        newEnvi.add(lblNewEnvironment);
-
-        JLabel lblNewEnvironmentDetails = new JLabel("Environment Name:");
-        lblNewEnvironmentDetails.setBounds(23, 101, 130, 16);
-        newEnvi.add(lblNewEnvironmentDetails);
-
-        JLabel lblPleaseSpecifyThe = new JLabel(
-                "Please specify the characteristics of this environment :");
-        lblPleaseSpecifyThe.setBounds(23, 129, 375, 16);
-        newEnvi.add(lblPleaseSpecifyThe);
-
-        JLabel lblTemperature = new JLabel("Temperature :");
-        lblTemperature.setBounds(23, 157, 130, 16);
-        newEnvi.add(lblTemperature);
-
-        JLabel lblHumidity = new JLabel("Humidity :");
-        lblHumidity.setBounds(23, 185, 130, 16);
-        newEnvi.add(lblHumidity);
-
-        JLabel lblLight = new JLabel("Light :");
-        lblLight.setBounds(23, 213, 130, 16);
-        newEnvi.add(lblLight);
-
-        JLabel lblNoise = new JLabel("Noise :");
-        lblNoise.setBounds(23, 241, 130, 16);
-        newEnvi.add(lblNoise);
-
-        JTextField textField_3 = new JTextField();
-        textField_3.setBounds(165, 95, 168, 28);
-        newEnvi.add(textField_3);
-        textField_3.setColumns(10);
-
-        JSlider slider_4 = new JSlider();
-        slider_4.setBounds(115, 157, 281, 22);
-        newEnvi.add(slider_4);
-
-        JSlider slider_5 = new JSlider();
-        slider_5.setBounds(115, 185, 281, 22);
-        newEnvi.add(slider_5);
-
-        JSlider slider_6 = new JSlider();
-        slider_6.setBounds(115, 213, 281, 22);
-        newEnvi.add(slider_6);
-
-        JSlider slider_7 = new JSlider();
-        slider_7.setBounds(115, 243, 281, 22);
-        newEnvi.add(slider_7);
-
-        JTextField textField_8 = new JTextField();
-        textField_8.setEditable(false);
-        textField_8.setBounds(393, 151, 91, 28);
-        newEnvi.add(textField_8);
-        textField_8.setColumns(10);
-
-        JTextField textField_9 = new JTextField();
-        textField_9.setEditable(false);
-        textField_9.setColumns(10);
-        textField_9.setBounds(393, 179, 91, 28);
-        newEnvi.add(textField_9);
-
-        JTextField textField_10 = new JTextField();
-        textField_10.setEditable(false);
-        textField_10.setColumns(10);
-        textField_10.setBounds(393, 207, 91, 28);
-        newEnvi.add(textField_10);
-
-        JTextField textField_11 = new JTextField();
-        textField_11.setEditable(false);
-        textField_11.setColumns(10);
-        textField_11.setBounds(393, 235, 91, 28);
-        newEnvi.add(textField_11);
     }
 }

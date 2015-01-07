@@ -83,7 +83,12 @@ public class InteractionDatabase
         interactionDatabase.remove(id - 1);
     }
 
-    public static void close()
+    public static int getSize()
+    {
+        return interactionDatabase.size();
+    }
+    
+    public static void save()
     {
         try
         {

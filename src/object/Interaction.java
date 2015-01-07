@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Interaction implements Serializable
 {
 
-    // maybe ID
+    private int id;
     private String name;
     private InteractionCategory category;
     // how cat's emotions are likely to be affected by this interaction: -5 to 5
@@ -14,9 +14,10 @@ public class Interaction implements Serializable
     private int relieved;
     private int angry;
 
-    public Interaction(String name, InteractionCategory category, int excited,
+    public Interaction(int id, String name, InteractionCategory category, int excited,
             int fearful, int relieved, int angry)
     {
+        this.id = id;
         this.name = name;
         this.category = category;
         this.excited = excited;
@@ -26,6 +27,11 @@ public class Interaction implements Serializable
     }
 
     // GETTERS
+    public int getId()
+    {
+        return id;
+    }
+    
     public String getName()
     {
         return name;
