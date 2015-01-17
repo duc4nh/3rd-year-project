@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Environment implements Serializable
 {
-
+	// -5-4 -3-2 -101 23 45
     private int id;
     private String name;
     private int temperature; // -5 = very hot; 5 = very cold

@@ -16,7 +16,7 @@ public class Emotion
         this.angry = angry;
     }
 
-    public void setEmo(int[] emo)
+    public void updateEmo(int[] emo)
     {
         this.excited += emo[0];
         this.fearful += emo[1];
@@ -41,6 +41,32 @@ public class Emotion
         if (this.angry > 10)
             this.angry = 10;
 
+    }
+    
+    public void setEmo(int a, int b, int c, int d)
+    {
+        this.excited = a;
+        this.fearful = b;
+        this.relieved = c;
+        this.angry = d;
+
+        // set range -10 to 10
+        if (this.excited < -10)
+            this.excited = -10;
+        if (this.fearful < -10)
+            this.fearful = -10;
+        if (this.relieved < -10)
+            this.relieved = -10;
+        if (this.angry < -10)
+            this.angry = -10;
+        if (this.excited > 10)
+            this.excited = 10;
+        if (this.fearful > 10)
+            this.fearful = 10;
+        if (this.relieved > 10)
+            this.relieved = 10;
+        if (this.angry > 10)
+            this.angry = 10;
     }
 
     public int[] getEmo()

@@ -35,9 +35,14 @@ public class Cat implements Serializable
         return emotion.getEmo();
     }
 
-    public void setEmotion(int[] emo)
+    public void updateEmotion(int[] emo)
     {
-        emotion.setEmo(emo);
+        emotion.updateEmo(emo);
+    }
+    
+    public void setEmotion(int a, int b, int c, int d)
+    {
+        emotion.setEmo(a, b, c, d);
     }
 
     public void printStatusTest()

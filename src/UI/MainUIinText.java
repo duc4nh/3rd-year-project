@@ -11,17 +11,25 @@ import database.EnvironmentDatabase;
 import database.InteractionDatabase;
 import simulator.Simulator;
 
-public class MainUIinText {
+/**
+ * UI in text for testing purpose
+ * 
+ * @author DucAnh
+ *
+ */
+public class MainUIinText
+{
 	private static Scanner reader = new Scanner(System.in);
 
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 
 		// Initialize the program
 		// CatDatabase.openDatabase();
 		EnvironmentDatabase.openDatabase();
 		InteractionDatabase.openDatabase();
 		BehaviourDatabase.openDatabase();
-		
+
 		System.out.println("-------------------------------");
 		System.out.println("Welcome to Cat Simulator!");
 		System.out.println("-------------------------------");
@@ -31,16 +39,19 @@ public class MainUIinText {
 		cat.printStatus();
 
 		boolean exit = false;
-		while (!exit) {
+		while (!exit)
+		{
 
 			// PRE-SIMULATION
 			System.out.println("-------------------------------");
 			System.out
-					.print("MAIN MENU: Start simulation(1), View Library(2), Exit(3): ");
+			        .print("MAIN MENU: Start simulation(1), View Library(2), Exit(3): ");
 			int input = reader.nextInt();
-			if (input == 2) {
+			if (input == 2)
+			{
 				Library.ViewLibrary();
-			} else if (input == 1) {
+			} else if (input == 1)
+			{
 				// SIMULATION
 				System.out.println("-------------------------------");
 				System.out.println("START SIMULATION");
@@ -76,7 +87,8 @@ public class MainUIinText {
 	 * return cat; }
 	 */
 
-	private static Environment inputEnvironment() {
+	private static Environment inputEnvironment()
+	{
 		System.out.println("-------------------------------");
 		System.out.println("Choose an environment:");
 		EnvironmentDatabase.printAll();
@@ -86,7 +98,8 @@ public class MainUIinText {
 		return environment;
 	}
 
-	private static Interaction inputObject() {
+	private static Interaction inputObject()
+	{
 		System.out.println("-------------------------------");
 		System.out.println("Choose an interaction:");
 		InteractionDatabase.printAll();
