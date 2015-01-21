@@ -11,6 +11,7 @@ public class CatDatabase
 
     private static List<Cat> catDatabase = new ArrayList<Cat>();
 
+    @SuppressWarnings("unchecked")
     public static void openDatabase()
     {
         // Wrap all in a try/catch block to trap I/O errors.

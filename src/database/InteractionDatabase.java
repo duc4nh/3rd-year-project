@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import object.Environment;
 import object.Interaction;
 
 public class InteractionDatabase
@@ -12,6 +11,7 @@ public class InteractionDatabase
 
     private static List<Interaction> interactionDatabase = new ArrayList<Interaction>();
 
+    @SuppressWarnings("unchecked")
     public static void openDatabase()
     {
 

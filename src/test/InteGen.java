@@ -2,7 +2,6 @@ package test;
 
 import object.Interaction;
 import object.InteractionCategory;
-import database.EnvironmentDatabase;
 import database.InteractionDatabase;
 
 public class InteGen

@@ -4,6 +4,10 @@ import java.io.Serializable;
 
 public class Environment implements Serializable
 {
+	/**
+	 * 
+	 */
+    private static final long serialVersionUID = -6670912949099871588L;
 	// -5-4 -3-2 -101 23 45
     private int id;
     private String name;

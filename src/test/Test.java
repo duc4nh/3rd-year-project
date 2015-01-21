@@ -1,14 +1,5 @@
 package test;
 
-import java.util.Random;
-
-import object.Cat;
-import object.Emotion;
-import simulator.Simulator;
-import database.BehaviourDatabase;
-import database.EnvironmentDatabase;
-import database.InteractionDatabase;
-
 public class Test
 {
 
@@ -22,3 +13,16 @@ public class Test
         //System.out.println(Integer.parseInt (selected.split(".")[1]));
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

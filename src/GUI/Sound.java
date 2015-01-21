@@ -15,7 +15,7 @@ public class Sound
 	private ContinuousAudioDataStream music;
 	private AudioData button1;
 	private AudioData button2;
-	private boolean musicOn = false;
+	private boolean musicOn = true;
 	private boolean soundOn = true;
 
 	/**

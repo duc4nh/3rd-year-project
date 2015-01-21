@@ -11,6 +11,7 @@ public class EnvironmentDatabase
 
     private static List<Environment> environmentDatabase = new ArrayList<Environment>();
 
+    @SuppressWarnings("unchecked")
     public static void openDatabase()
     {
 

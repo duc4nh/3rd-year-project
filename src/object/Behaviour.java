@@ -4,8 +4,11 @@ import java.io.Serializable;
 
 public class Behaviour implements Serializable
 {
-
-    private int id;
+	/**
+	 * 
+	 */
+    private static final long serialVersionUID = 5404601626573927512L;
+	private int id;
     private String name;
     private InteractionCategory category;
     // factors: how likely cat'll do this with his current emotions: -5 to 5

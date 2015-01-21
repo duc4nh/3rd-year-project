@@ -16,7 +16,12 @@ public class Emotion
         this.angry = angry;
     }
 
-    public void updateEmo(int[] emo)
+    public Emotion()
+    {
+    	this.excited = this.fearful = this.relieved = this.angry = 0;
+    }
+
+	public void updateEmo(int[] emo)
     {
         this.excited += emo[0];
         this.fearful += emo[1];

@@ -11,6 +11,7 @@ public class BehaviourDatabase
 
     private static List<Behaviour> behaviourDatabase = new ArrayList<Behaviour>();
 
+    @SuppressWarnings("unchecked")
     public static void openDatabase()
     {
         // Wrap all in a try/catch block to trap I/O errors.

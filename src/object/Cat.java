@@ -5,7 +5,11 @@ import java.io.Serializable;
 public class Cat implements Serializable
 {
 
-    private String name;
+    /**
+	 * 
+	 */
+    private static final long serialVersionUID = 1L;
+	private String name;
     private String breed;
     // private int age;
     private Emotion emotion;

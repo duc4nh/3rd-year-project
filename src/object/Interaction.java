@@ -4,8 +4,11 @@ import java.io.Serializable;
 
 public class Interaction implements Serializable
 {
-
-    private int id;
+	/**
+	 * 
+	 */
+    private static final long serialVersionUID = 8091932044987609543L;
+	private int id;
     private String name;
     private InteractionCategory category;
     // how cat's emotions are likely to be affected by this interaction: -5 to 5
