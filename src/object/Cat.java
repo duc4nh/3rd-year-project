@@ -2,9 +2,14 @@ package object;
 
 import java.io.Serializable;
 
+/**
+ * A cat
+ * 
+ * @author DucAnh
+ *
+ */
 public class Cat implements Serializable
 {
-
     /**
 	 * 
 	 */
@@ -13,7 +18,6 @@ public class Cat implements Serializable
     private String breed;
     // private int age;
     private Emotion emotion;
-
     // TODO habits/memory
 
     public Cat(String name, String breed, Emotion emotion)
@@ -150,19 +154,16 @@ public class Cat implements Serializable
                 // [-10 -8] [-7 -4] [-3 0 3] [4 7] [8 10]
                 if (emo[i] < -7)
                 {
-                    s += "The cat does not feel " + emoType + " at all!! ("
-                            + emo[i] + ")\n";
+                    s += "The cat does not feel " + emoType + " at all!!\n";
                 } else if (emo[i] < -3)
                 {
-                    s += "The cat is not " + emoType + "...(" + emo[i] + ")\n";
+                    s += "The cat is not " + emoType + "...\n";
                 } else if (emo[i] > 3 && emo[i] < 8)
                 {
-                    s += "The cat feels little " + emoType + "...(" + emo[i]
-                            + ")\n";
+                    s += "The cat feels little " + emoType + "...\n";
                 } else if (emo[i] > 7)
                 {
-                    s += "The cat feels extremely " + emoType + "!! (" + emo[i]
-                            + ")\n";
+                    s += "The cat feels extremely " + emoType + "!!\n";
                 }
             }
         }

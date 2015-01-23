@@ -2,6 +2,12 @@ package object;
 
 import java.io.Serializable;
 
+/**
+ * A behaviour that the cat may perform
+ * 
+ * @author DucAnh
+ *
+ */
 public class Behaviour implements Serializable
 {
 	/**

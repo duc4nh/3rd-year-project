@@ -2,6 +2,12 @@ package object;
 
 import java.io.Serializable;
 
+/**
+ * An object that the cat interacting with
+ * 
+ * @author DucAnh
+ *
+ */
 public class Interaction implements Serializable
 {
 	/**

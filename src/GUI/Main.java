@@ -44,6 +44,9 @@ public class Main
 	private boolean inteChosen = false;
 	private boolean jlistEnviModified = false;
 	private boolean jlistInteModified = false;
+	private Boolean firstTimeClicked = true;
+	private boolean enviList_simulation_modified = false;
+	private boolean inteList_simulation_modified = false;
 	private int enviMenuID;
 	private int inteMenuID;
 	private int newE;
@@ -162,8 +165,9 @@ public class Main
 	private JTextArea scenario;
 	private JPanel panel_2;
 	private JTextArea textResult;
-	private JPanel panel_3;
-	private JLabel lblNewLabel_2;
+	private JLabel pic_envi_result;
+	private JLabel pic_inte_result;
+	private JLabel pic_beha_result;
 	private JButton btnQuickSimulation_1;
 	private JButton start;
 	private JButton btnNewButton_9;
@@ -174,7 +178,7 @@ public class Main
 	private JTextField chooseEnvi;
 	private JScrollPane emenu;
 	private JList chooseEnviList;
-	private JLabel pic_envi;
+	private JLabel pic_envi_simulation;
 	private JLabel pic_cat_status;
 	private JLabel lblNewLabel_6;
 	private JLabel lblEnvironment;
@@ -190,7 +194,7 @@ public class Main
 	// behaviour
 	private JButton btnBack_4;
 	private JLabel bg1;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -272,8 +276,9 @@ public class Main
 	private void initialize_panels()
 	{
 		frmCatSimulator = new JFrame();
+		frmCatSimulator.setResizable(false);
 		frmCatSimulator.setTitle("Cat Simulator");
-		frmCatSimulator.setBounds(100, 100, 1000, 800);
+		frmCatSimulator.setBounds(100, 100, 1000, 700);
 		frmCatSimulator.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCatSimulator.getContentPane().setLayout(new CardLayout(0, 0));
 
@@ -365,15 +370,9 @@ public class Main
 		result.setBackground(color);
 		settings.setBackground(color);
 	}
-	
+
 	private void main_menu()
 	{
-		lblNewLabel = new JLabel("CAT SIMULATOR");
-		lblNewLabel.setBounds(0, 29, 1000, 35);
-		lblNewLabel.setForeground(SystemColor.textHighlightText);
-		lblNewLabel.setFont(new Font("Diwan Kufi", Font.BOLD, 20));
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-
 		btnStartSimulation = new JButton("Start Simulation");
 		btnStartSimulation.setBounds(321, 89, 157, 29);
 		btnStartSimulation.addActionListener(new ActionListener()
@@ -383,6 +382,20 @@ public class Main
 				sound.playButton2();
 				main.setVisible(false);
 				simulation.setVisible(true);
+
+				if (!firstTimeClicked)
+				{
+					inteList_simulation_modified = true;
+					enviList_simulation_modified = true;
+				} else
+					firstTimeClicked = false;
+				
+				chooseEnviList.setListData(EnvironmentDatabase.getArray());
+				emenu.revalidate();
+				emenu.repaint();
+				chooseInteList.setListData(InteractionDatabase.getArray());
+				imenu.revalidate();
+				imenu.repaint();
 			}
 		});
 
@@ -431,13 +444,6 @@ public class Main
 			public void mouseClicked(MouseEvent e)
 			{
 				sound.musicStop();
-				// delay
-				try
-				{
-					Thread.sleep(800);
-				} catch (InterruptedException ie)
-				{
-				}
 				System.exit(0);
 			}
 		});
@@ -452,13 +458,14 @@ public class Main
 				settings.setVisible(true);
 			}
 		});
+		lblNewLabel = new JLabel("CAT SIMULATOR");
+		lblNewLabel.setBounds(0, 29, 1000, 35);
+		lblNewLabel.setForeground(SystemColor.textHighlightText);
+		lblNewLabel.setFont(new Font("Diwan Kufi", Font.BOLD, 20));
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		main.add(lblNewLabel);
 		btnSettings.setBounds(548, 253, 157, 29);
 		main.add(btnSettings);
-		
-		bg1 = new JLabel("bg1");
-		bg1.setIcon(new ImageIcon(Main.class.getResource("/images/bg1.gif")));
-		bg1.setBounds(248, 400, 500, 282);
-		main.add(bg1);
 
 		btnCredit = new JButton("Credit");
 		btnCredit.setBounds(321, 253, 157, 29);
@@ -472,37 +479,12 @@ public class Main
 			}
 		});
 		main.setLayout(null);
-		main.add(lblNewLabel);
 		main.add(btnBehaviourLibrary);
 		main.add(btnCredit);
 		main.add(btnStartSimulation);
 		main.add(btnExit);
 		main.add(btnEnviLibrary);
 		main.add(btnInteLibrary);
-
-		mainBackground = new JLabel("");
-		mainBackground.setBounds(0, 0, 1000, 778);
-		main.add(mainBackground);
-		SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>()
-		{
-			@Override
-			protected Void doInBackground() throws Exception
-			{
-				// Keep changing main background
-				int id = 1;
-				while(true)
-				{
-					if (id == 4)
-						id = 1;
-					else
-						id++;
-					mainBackground.setIcon(getImageIcon("envi" + id, 1000, 778));
-					
-					Thread.sleep(5000);
-				}
-			}
-		};
-		worker.execute();
 
 		btnQuickSimulation = new JButton("Quick Simulation");
 		btnQuickSimulation.addActionListener(new ActionListener()
@@ -514,14 +496,12 @@ public class Main
 				Cat randomCat = new Cat("Random Cat", "Common Domestic Cat",
 				        new Emotion(random(-10, 10), random(-10, 10), random(
 				                -10, 10), random(-10, 10)));
-				String[] s = Simulator.simulationResultGUI(
-				        randomCat,
-				        EnvironmentDatabase.get(random(1,
-				                EnvironmentDatabase.getSize())),
-				        InteractionDatabase.get(random(1,
-				                InteractionDatabase.getSize())));
-				scenario.setText(s[0]);
-				textResult.setText(s[1] + " " + s[2]);
+				int random_envi = random(1, EnvironmentDatabase.getSize());
+				int random_inte = random(1, InteractionDatabase.getSize());
+				String[] s = Simulator.simulationResultGUI(randomCat,
+				        EnvironmentDatabase.get(random_envi),
+				        InteractionDatabase.get(random_inte));
+				updateResultPanel(s, random_envi, random_inte, 0);
 
 				main.setVisible(false);
 				result.setVisible(true);
@@ -529,6 +509,36 @@ public class Main
 		});
 		btnQuickSimulation.setBounds(548, 171, 157, 29);
 		main.add(btnQuickSimulation);
+
+		bg1 = new JLabel("bg1");
+		bg1.setIcon(new ImageIcon(Main.class.getResource("/images/bg1.gif")));
+		bg1.setBounds(250, 335, 500, 282);
+		main.add(bg1);
+
+		mainBackground = new JLabel("");
+		mainBackground.setBounds(0, 0, 1000, 678);
+		main.add(mainBackground);
+		SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>()
+		{
+			@Override
+			protected Void doInBackground() throws Exception
+			{
+				// Keep changing main background
+				int id = 0;
+				while (true)
+				{
+					if (id == 4)
+						id = 0;
+					else
+						id++;
+					mainBackground
+					        .setIcon(getImageIcon("envi" + id, 1000, 778));
+
+					Thread.sleep(5000);
+				}
+			}
+		};
+		worker.execute();
 	}
 
 	private void settings_panel()
@@ -536,7 +546,7 @@ public class Main
 		btnMusicToggle = new JButton("Music: Off");
 		btnMusicToggle.addActionListener(new ActionListener()
 		{
-			public void actionPerformed(ActionEvent arg0)
+			public void actionPerformed(ActionEvent e)
 			{
 				sound.toggleMusic();
 				sound.playButton2();
@@ -581,7 +591,7 @@ public class Main
 		btnTheme = new JButton("Theme: Light");
 		btnTheme.addActionListener(new ActionListener()
 		{
-			public void actionPerformed(ActionEvent arg0)
+			public void actionPerformed(ActionEvent e)
 			{
 				sound.playButton2();
 				switch (theme)
@@ -618,40 +628,41 @@ public class Main
 		btnNewButton_13 = new JButton("Main Menu");
 		btnNewButton_13.addActionListener(new ActionListener()
 		{
-			public void actionPerformed(ActionEvent arg0)
+			public void actionPerformed(ActionEvent e)
 			{
 				sound.playButton2();
 				result.setVisible(false);
 				main.setVisible(true);
 			}
 		});
-		btnNewButton_13.setBounds(411, 515, 150, 29);
+		btnNewButton_13.setBounds(762, 556, 150, 29);
 		result.add(btnNewButton_13);
 
-		lblSimulationResult = new JLabel("Simulation Result");
-		lblSimulationResult.setFont(new Font("Lucida Grande", Font.BOLD, 24));
-		lblSimulationResult.setHorizontalAlignment(SwingConstants.CENTER);
-		lblSimulationResult.setBounds(6, 11, 488, 40);
-		result.add(lblSimulationResult);
-
-		catStatus = new JPanel();
-		catStatus.setBackground(Color.WHITE);
-		catStatus.setBorder(new TitledBorder(null, "Current Cat Status",
-		        TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		catStatus.setBounds(27, 370, 200, 136);
-		simulation.add(catStatus);
-		catStatus.setLayout(new GridLayout(0, 1, 0, 0));
-
-		status = new JTextArea();
-		catStatus.add(status);
-		status.setLineWrap(true);
-		status.setText(cat.printStatusGUI());
-		status.setEditable(false);
+		btnQuickSimulation_1 = new JButton("Quick Simulation");
+		btnQuickSimulation_1.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				sound.playButton2();
+				// the random simulation is here
+				Cat randomCat = new Cat("Random Cat", "Common Domestic Cat",
+				        new Emotion(random(-10, 10), random(-10, 10), random(
+				                -10, 10), random(-10, 10)));
+				int random_envi = random(1, EnvironmentDatabase.getSize());
+				int random_inte = random(1, InteractionDatabase.getSize());
+				String[] s = Simulator.simulationResultGUI(randomCat,
+				        EnvironmentDatabase.get(random_envi),
+				        InteractionDatabase.get(random_inte));
+				updateResultPanel(s, random_envi, random_inte, 0);
+			}
+		});
+		btnQuickSimulation_1.setBounds(762, 475, 150, 29);
+		result.add(btnQuickSimulation_1);
 
 		btnNewSimulation = new JButton("Run Again");
 		btnNewSimulation.addActionListener(new ActionListener()
 		{
-			public void actionPerformed(ActionEvent arg0)
+			public void actionPerformed(ActionEvent e)
 			{
 				sound.playButton2();
 				result.setVisible(false);
@@ -660,8 +671,61 @@ public class Main
 				status.setText(cat.printStatusGUI());
 			}
 		});
-		btnNewSimulation.setBounds(249, 515, 150, 29);
+		btnNewSimulation.setBounds(762, 515, 150, 29);
 		result.add(btnNewSimulation);
+
+		lblSimulationResult = new JLabel("Simulation Result");
+		lblSimulationResult.setFont(new Font("Lucida Grande", Font.BOLD, 24));
+		lblSimulationResult.setHorizontalAlignment(SwingConstants.CENTER);
+		lblSimulationResult.setBounds(0, 11, 1000, 40);
+		result.add(lblSimulationResult);
+
+		panel_1 = new JPanel();
+		panel_1.setBackground(Color.WHITE);
+		panel_1.setBorder(new TitledBorder(null, "Scenario",
+		        TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		panel_1.setBounds(707, 63, 260, 187);
+		result.add(panel_1);
+		panel_1.setLayout(new GridLayout(0, 1, 0, 0));
+
+		scenario = new JTextArea();
+		scenario.setLineWrap(true);
+		panel_1.add(scenario);
+
+		panel_2 = new JPanel();
+		panel_2.setBackground(Color.WHITE);
+		panel_2.setBorder(new TitledBorder(new EtchedBorder(
+		        EtchedBorder.LOWERED, null, null), "Result",
+		        TitledBorder.LEADING, TitledBorder.TOP, null,
+		        new Color(0, 0, 0)));
+		panel_2.setBounds(707, 262, 260, 201);
+		result.add(panel_2);
+		panel_2.setLayout(new GridLayout(0, 1, 0, 0));
+
+		textResult = new JTextArea();
+		textResult.setLineWrap(true);
+		panel_2.add(textResult);
+
+		pic_inte_result = new JLabel("pic_inte_result");
+		pic_inte_result.setLocation(364, 344);
+		pic_inte_result.setSize(200, 200);
+		result.add(pic_inte_result);
+		// TODO
+		pic_inte_result.setIcon(new ImageIcon(Main.class
+		        .getResource("/images/example_pic2.gif")));
+
+		pic_beha_result = new JLabel("pic_beha_result");
+		pic_beha_result.setLocation(102, 294);
+		pic_beha_result.setSize(250, 250);
+		result.add(pic_beha_result);
+		// TODO
+		pic_beha_result.setIcon(new ImageIcon(Main.class
+		        .getResource("/images/example_pic1.gif")));
+
+		pic_envi_result = new JLabel("pic_envi_result");
+		pic_envi_result.setLocation(20, 65);
+		pic_envi_result.setSize(675, 540);
+		result.add(pic_envi_result);
 	}
 
 	private void envi_menu()
@@ -692,6 +756,7 @@ public class Main
 		panel.setLayout(new GridLayout(1, 0, 0, 0));
 
 		enviInfo = new JTextArea();
+		enviInfo.setEditable(false);
 		panel.add(enviInfo);
 
 		scrollPaneE = new JScrollPane();
@@ -701,9 +766,9 @@ public class Main
 		enviList = new JList();
 		enviList.addListSelectionListener(new ListSelectionListener()
 		{
-			public void valueChanged(ListSelectionEvent arg0)
+			public void valueChanged(ListSelectionEvent e)
 			{
-				if (!arg0.getValueIsAdjusting())
+				if (!e.getValueIsAdjusting())
 				{
 					if (!jlistEnviModified)
 					{
@@ -712,7 +777,8 @@ public class Main
 						enviMenuID = Integer.parseInt(selected.split("\\.")[0]);
 						enviInfo.setText(EnvironmentDatabase.get(enviMenuID)
 						        .infoGUI());
-						pic_envi_menu.setIcon(getImageIcon("envi" + enviMenuID, 1000, 778));
+						pic_envi_menu.setIcon(getImageIcon("envi" + enviMenuID,
+						        1000, 778));
 					} else
 						jlistEnviModified = false;
 				}
@@ -723,7 +789,7 @@ public class Main
 			/**
 			 * 
 			 */
-            private static final long serialVersionUID = 1L;
+			private static final long serialVersionUID = 1L;
 			String[] values = EnvironmentDatabase.getArray();
 
 			public int getSize()
@@ -749,7 +815,7 @@ public class Main
 					EnvironmentDatabase.delete(enviMenuID);
 					EnvironmentDatabase.save();
 
-					// refresh jlist
+					// refresh jlist envi
 					jlistEnviModified = true;
 					enviList.setListData(EnvironmentDatabase.getArray());
 					scrollPaneE.revalidate();
@@ -776,9 +842,10 @@ public class Main
 		});
 		btnBack_2.setBounds(357, 201, 117, 29);
 		environment.add(btnBack_2);
-		
+
 		pic_envi_menu = new JLabel("pic_envi_menu");
-		pic_envi_menu.setBounds(0, 0, 1000, 778);
+		pic_envi_menu.setBounds(0, 0, 1000, 678);
+		pic_envi_menu.setIcon(getImageIcon("envi" + enviMenuID, 1000, 778));
 		environment.add(pic_envi_menu);
 	}
 
@@ -811,6 +878,7 @@ public class Main
 		panel2.setLayout(new GridLayout(1, 0, 0, 0));
 
 		inteInfo = new JTextArea();
+		inteInfo.setEditable(false);
 		panel2.add(inteInfo);
 
 		scrollPaneI = new JScrollPane();
@@ -841,7 +909,7 @@ public class Main
 			/**
 			 * 
 			 */
-            private static final long serialVersionUID = 1L;
+			private static final long serialVersionUID = 1L;
 			String[] values = InteractionDatabase.getArray();
 
 			public int getSize()
@@ -867,9 +935,8 @@ public class Main
 					InteractionDatabase.delete(inteMenuID);
 					InteractionDatabase.save();
 
-					// refresh jlist
+					// refresh jlist inte
 					jlistInteModified = true;
-
 					inteList.setListData(InteractionDatabase.getArray());
 					scrollPaneI.revalidate();
 					scrollPaneI.repaint();
@@ -985,7 +1052,7 @@ public class Main
 		sliderE.setPaintTicks(true);
 		sliderE.addChangeListener(new ChangeListener()
 		{
-			public void stateChanged(ChangeEvent arg0)
+			public void stateChanged(ChangeEvent e)
 			{
 				int value = sliderE.getValue();
 				if (value < -3)
@@ -1095,14 +1162,15 @@ public class Main
 		btnNewButton_6 = new JButton("OK");
 		btnNewButton_6.addActionListener(new ActionListener()
 		{
-			public void actionPerformed(ActionEvent arg0)
+			public void actionPerformed(ActionEvent e)
 			{
 				sound.playButton2();
 				String name = newNameI.getText();
 				newNameI.setText("");
 
-				// TODO invalid output
-				if (name != "")
+				if (name.equals(""))
+					inteInfo.setText("Invalid input!");
+				else
 				{
 					InteractionCategory type = (InteractionCategory) newTypeI
 					        .getSelectedItem();
@@ -1112,15 +1180,14 @@ public class Main
 					// save to file
 					InteractionDatabase.save();
 
-					// Refresh list
+					// Refresh jlist inte
 					jlistInteModified = true;
 					inteList.setListData(InteractionDatabase.getArray());
 					scrollPaneI.revalidate();
 					scrollPaneI.repaint();
 
 					inteInfo.setText("New interaction object has been created!");
-				} else
-					inteInfo.setText("Invalid input!");
+				}
 
 				newInter.setVisible(false);
 				interaction.setVisible(true);
@@ -1129,7 +1196,7 @@ public class Main
 		btnNewButton_6.setBounds(362, 326, 117, 29);
 		newInter.add(btnNewButton_6);
 	}
-	
+
 	private void new_environment()
 	{
 		btnBack_1 = new JButton("Back");
@@ -1318,14 +1385,15 @@ public class Main
 		btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener()
 		{
-			public void actionPerformed(ActionEvent arg0)
+			public void actionPerformed(ActionEvent e)
 			{
 				sound.playButton2();
 				String name = newNameE.getText();
 				newNameE.setText("");
 
-				// TODO invalid output
-				if (name != "")
+				if (name.equals(""))
+					enviInfo.setText("Invalid input!");
+				else
 				{
 					Environment envi = new Environment(EnvironmentDatabase
 					        .getSize() + 1, name, newT, newH, newL, newN);
@@ -1333,15 +1401,14 @@ public class Main
 					// save to file
 					EnvironmentDatabase.save();
 
-					// Refresh list
+					// Refresh jlist envi
 					jlistEnviModified = true;
 					enviList.setListData(EnvironmentDatabase.getArray());
 					scrollPaneE.revalidate();
 					scrollPaneE.repaint();
 
 					enviInfo.setText("New environment has been created!");
-				} else
-					enviInfo.setText("Invalid input!");
+				}
 
 				newEnvi.setVisible(false);
 				environment.setVisible(true);
@@ -1353,77 +1420,18 @@ public class Main
 
 	private void simulation_menu()
 	{
-		panel_1 = new JPanel();
-		panel_1.setBackground(Color.WHITE);
-		panel_1.setBorder(new TitledBorder(null, "Scenario",
-		        TitledBorder.LEADING, TitledBorder.TOP, null, null));
-		panel_1.setBounds(646, 63, 260, 187);
-		result.add(panel_1);
-		panel_1.setLayout(new GridLayout(0, 1, 0, 0));
-
-		scenario = new JTextArea();
-		scenario.setLineWrap(true);
-		panel_1.add(scenario);
-
-		panel_2 = new JPanel();
-		panel_2.setBackground(Color.WHITE);
-		panel_2.setBorder(new TitledBorder(new EtchedBorder(
-		        EtchedBorder.LOWERED, null, null), "Result",
-		        TitledBorder.LEADING, TitledBorder.TOP, null,
-		        new Color(0, 0, 0)));
-		panel_2.setBounds(646, 262, 260, 201);
-		result.add(panel_2);
-		panel_2.setLayout(new GridLayout(0, 1, 0, 0));
-
-		textResult = new JTextArea();
-		textResult.setLineWrap(true);
-		panel_2.add(textResult);
-
-		panel_3 = new JPanel();
-		panel_3.setBounds(134, 63, 500, 400);
-		result.add(panel_3);
-		
-		lblNewLabel_2 = new JLabel("");
-		panel_3.add(lblNewLabel_2);
-		lblNewLabel_2.setIcon(new ImageIcon(Main.class
-		        .getResource("/images/example_pic2.gif")));
-
-		btnQuickSimulation_1 = new JButton("Quick Simulation");
-		btnQuickSimulation_1.addActionListener(new ActionListener()
-		{
-			public void actionPerformed(ActionEvent e)
-			{
-				sound.playButton2();
-				// the random simulation is here
-				Cat randomCat = new Cat("Random Cat", "Common Domestic Cat",
-				        new Emotion(random(-10, 10), random(-10, 10), random(
-				                -10, 10), random(-10, 10)));
-				String[] s = Simulator.simulationResultGUI(
-				        randomCat,
-				        EnvironmentDatabase.get(random(1,
-				                EnvironmentDatabase.getSize())),
-				        InteractionDatabase.get(random(1,
-				                InteractionDatabase.getSize())));
-				scenario.setText(s[0]);
-				textResult.setText(s[1] + " " + s[2]);
-			}
-		});
-		btnQuickSimulation_1.setBounds(573, 515, 150, 29);
-		result.add(btnQuickSimulation_1);
-
 		start = new JButton("Start");
 		start.setEnabled(false);
 		start.addActionListener(new ActionListener()
 		{
-			public void actionPerformed(ActionEvent arg0)
+			public void actionPerformed(ActionEvent e)
 			{
 				sound.playButton2();
 				// the simulation is here
 				String[] s = Simulator.simulationResultGUI(cat,
 				        EnvironmentDatabase.get(enviID),
 				        InteractionDatabase.get(inteID));
-				scenario.setText(s[0]);
-				textResult.setText(s[1] + " " + s[2]);
+				updateResultPanel(s, enviID, inteID, 0);
 
 				simulation.setVisible(false);
 				result.setVisible(true);
@@ -1438,6 +1446,13 @@ public class Main
 			public void actionPerformed(ActionEvent e)
 			{
 				sound.playButton2();
+
+				enviChosen = false;
+				inteChosen = false;
+
+				start.setEnabled(false);
+				chooseInte.setText("");
+				chooseEnvi.setText("");
 				simulation.setVisible(false);
 				main.setVisible(true);
 			}
@@ -1451,8 +1466,20 @@ public class Main
 		lblNewLabel_5.setBounds(6, 16, 988, 43);
 		simulation.add(lblNewLabel_5);
 
-		// ---
+		catStatus = new JPanel();
+		catStatus.setBackground(Color.WHITE);
+		catStatus.setBorder(new TitledBorder(null, "Current Cat Status",
+		        TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		catStatus.setBounds(27, 370, 200, 136);
+		catStatus.setLayout(new GridLayout(0, 1, 0, 0));
+		simulation.add(catStatus);
 
+		status = new JTextArea();
+		catStatus.add(status);
+		status.setLineWrap(true);
+		status.setText(cat.printStatusGUI());
+		status.setEditable(false);
+		
 		chooseInte = new JTextField();
 		chooseInte.setHorizontalAlignment(SwingConstants.CENTER);
 		chooseInte.setEditable(false);
@@ -1471,34 +1498,20 @@ public class Main
 			{
 				if (!e.getValueIsAdjusting())
 				{
-					String selected = chooseInteList.getSelectedValue()
-					        .toString();
-					chooseInte.setText(selected.substring(3));
+					if (!inteList_simulation_modified)
+					{
+						String selected = chooseInteList.getSelectedValue()
+						        .toString();
+						chooseInte.setText(selected.substring(3));
 
-					inteID = Integer.parseInt(selected.split("\\.")[0]);
+						inteID = Integer.parseInt(selected.split("\\.")[0]);
 
-					inteChosen = true;
-					if (enviChosen)
-						start.setEnabled(true);
+						inteChosen = true;
+						if (enviChosen)
+							start.setEnabled(true);
+					} else
+						inteList_simulation_modified = false;
 				}
-			}
-		});
-		chooseInteList.setModel(new AbstractListModel()
-		{
-			/**
-			 * 
-			 */
-            private static final long serialVersionUID = 1L;
-			String[] values = InteractionDatabase.getArray();
-
-			public int getSize()
-			{
-				return values.length;
-			}
-
-			public Object getElementAt(int index)
-			{
-				return values[index];
 			}
 		});
 		imenu.setViewportView(chooseInteList);
@@ -1523,36 +1536,24 @@ public class Main
 			{
 				if (!e.getValueIsAdjusting())
 				{
-					String selected = chooseEnviList.getSelectedValue()
-					        .toString();
-					chooseEnvi.setText(selected.substring(3));
+					if (!enviList_simulation_modified)
+					{
+						String selected = chooseEnviList.getSelectedValue()
 
-					enviID = Integer.parseInt(selected.split("\\.")[0]);
-					System.out.println(enviID);
-					pic_envi.setIcon(getImageIcon("envi" + enviID, 500, 400));
+						.toString();
+						chooseEnvi.setText(selected.substring(3));
 
-					enviChosen = true;
-					if (inteChosen)
-						start.setEnabled(true);
+						enviID = Integer.parseInt(selected.split("\\.")[0]);
+						pic_envi_simulation.setIcon(getImageIcon("envi"
+						        + enviID, 500, 400));
+
+						enviChosen = true;
+						if (inteChosen)
+							start.setEnabled(true);
+					} else
+						enviList_simulation_modified = false;
+
 				}
-			}
-		});
-		chooseEnviList.setModel(new AbstractListModel()
-		{
-			/**
-			 * 
-			 */
-            private static final long serialVersionUID = 1L;
-			String[] values = EnvironmentDatabase.getArray();
-
-			public int getSize()
-			{
-				return values.length;
-			}
-
-			public Object getElementAt(int index)
-			{
-				return values[index];
 			}
 		});
 		emenu.setViewportView(chooseEnviList);
@@ -1563,8 +1564,7 @@ public class Main
 		pic_cat_status.setBounds(27, 106, 200, 250);
 		simulation.add(pic_cat_status);
 
-		lblNewLabel_6 = new JLabel(
-		        "Input information for the simulation:");
+		lblNewLabel_6 = new JLabel("Input information for the simulation:");
 		lblNewLabel_6.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_6.setBounds(27, 78, 250, 16);
 		simulation.add(lblNewLabel_6);
@@ -1582,7 +1582,7 @@ public class Main
 		btnRandomEmotion = new JButton("Random Emotion");
 		btnRandomEmotion.addActionListener(new ActionListener()
 		{
-			public void actionPerformed(ActionEvent arg0)
+			public void actionPerformed(ActionEvent e)
 			{
 				sound.playButton2();
 				cat.setEmotion(random(-10, 10), random(-10, 10),
@@ -1605,12 +1605,14 @@ public class Main
 		});
 		btnResetEmotion.setBounds(156, 518, 117, 29);
 		simulation.add(btnResetEmotion);
-		
-		pic_envi = new JLabel("pic_envi");
-		pic_envi.setBounds(475, 95, 500, 400);
-		simulation.add(pic_envi);
+
+		pic_envi_simulation = new JLabel("pic_envi");
+		pic_envi_simulation.setBounds(475, 95, 500, 400);
+		pic_envi_simulation
+		        .setIcon(getImageIcon("envi" + enviMenuID, 500, 400));
+		simulation.add(pic_envi_simulation);
 	}
-	
+
 	private void behaviour_menu()
 	{
 		btnBack_4 = new JButton("Back");
@@ -1632,10 +1634,8 @@ public class Main
 		pic_credit = new JLabel("pic_credit");
 		pic_credit.setForeground(new Color(255, 255, 255));
 		pic_credit.setBackground(new Color(255, 255, 255));
-		pic_credit
-		        .setIcon(new ImageIcon(
-		                Main.class
-		                        .getResource("/images/example_pic1.gif")));
+		pic_credit.setIcon(new ImageIcon(Main.class
+		        .getResource("/images/example_pic1.gif")));
 		pic_credit.setBounds(807, 115, 130, 170);
 		credit.add(pic_credit);
 
@@ -1669,18 +1669,43 @@ public class Main
 		scrollPaneCredit.setViewportView(txtrCredit);
 	}
 
+	private void updateResultPanel(String[] s, int enviID, int inteID,
+	        int behaID)
+	{
+		// TODO inte beha pics
+		// pic_inte_result.setIcon(getImageIcon("inte" + inteID, 200, 200));
+		// pic_beha_result.setIcon(getImageIcon("beha" + s[3], 200, 200));
+		pic_envi_result.setIcon(getImageIcon("envi" + enviID, 800, 640));
+		scenario.setText(s[0]);
+		textResult.setText(s[1] + " " + s[2]);
+	}
+
+	/**
+	 * 
+	 * @param name
+	 * @param width
+	 * @param height
+	 * @return ImageIcon of the resized picture 'name'
+	 */
 	private ImageIcon getImageIcon(String name, int width, int height)
 	{
-		ImageIcon icon = new ImageIcon(Main.class.getResource("/images/"
-		        + name + ".jpg"));
-		Image image = icon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT);
+		ImageIcon icon = new ImageIcon(Main.class.getResource("/images/" + name
+		        + ".jpg"));
+		Image image = icon.getImage().getScaledInstance(width, height,
+		        Image.SCALE_DEFAULT);
 		icon.setImage(image);
 		return icon;
 	}
-	
+
+	/**
+	 * 
+	 * @param min
+	 * @param max
+	 * @return a random integer in range [min,max]
+	 */
 	private int random(int min, int max)
 	{
 		Random random = new Random();
-		return random.nextInt(max - min + 1) + min; // return min -> max
+		return random.nextInt(max - min + 1) + min;
 	}
 }

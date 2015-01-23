@@ -2,6 +2,12 @@ package object;
 
 import java.io.Serializable;
 
+/**
+ * An environment
+ * 
+ * @author DucAnh
+ *
+ */
 public class Environment implements Serializable
 {
 	/**

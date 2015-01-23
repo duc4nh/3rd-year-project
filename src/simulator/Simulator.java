@@ -265,8 +265,8 @@ public class Simulator
 		s[2] += "As a result, he " + act.getName() + " "
 		        + interaction.getName() + ".";
 
-		// status after simulation
-		s[3] += cat.printStatusGUI();
+		// behaviour ID
+		s[3] += "" + act.getId();
 
 		return s;
 	}

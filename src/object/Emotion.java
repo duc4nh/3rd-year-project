@@ -1,5 +1,11 @@
 package object;
 
+/**
+ * Each cat will have 'an Emotion'
+ * 
+ * @author DucAnh
+ *
+ */
 public class Emotion
 {
     // Emotion figures of the cat: -10 to 10
