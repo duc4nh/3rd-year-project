@@ -18,7 +18,7 @@ public class InteractionGenerator {
 
 	public static void main(String[] args) {
 		try {
-			File file = new File("resource/inte.tsv");
+			File file = new File("resource/backup/inte.tsv");
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			String line;

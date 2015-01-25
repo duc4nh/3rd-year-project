@@ -22,10 +22,10 @@ public class Sound {
 	 */
 	public Sound() {
 		try {
-			AudioData musicData = audioData("src/sound/music1.wav");
+			AudioData musicData = audioData("resource/sound/music1.wav");
 			music = new ContinuousAudioDataStream(musicData);
-			button1 = audioData("src/sound/button1.wav");
-			button2 = audioData("src/sound/button2.wav");
+			button1 = audioData("resource/sound/button1.wav");
+			button2 = audioData("resource/sound/button2.wav");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

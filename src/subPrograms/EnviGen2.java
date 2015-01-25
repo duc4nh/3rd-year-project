@@ -16,7 +16,7 @@ import java.io.IOException;
 public class EnviGen2 {
 	public static void main(String[] args) {
 		try {
-			File file = new File("resource/envi.csv");
+			File file = new File("resource/backup/envi.csv");
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			String line;

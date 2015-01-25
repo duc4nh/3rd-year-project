@@ -477,7 +477,7 @@ public class Main {
 		main.add(btnQuickSimulation);
 
 		bg1 = new JLabel("bg1");
-		bg1.setIcon(new ImageIcon(Main.class.getResource("/images/bg1.gif")));
+		bg1.setIcon(new ImageIcon("resource/images/bg1.gif"));
 		bg1.setBounds(250, 335, 500, 282);
 		main.add(bg1);
 
@@ -656,14 +656,14 @@ public class Main {
 		pic_inte_result.setSize(200, 200);
 		result.add(pic_inte_result);
 		// TODO
-		pic_inte_result.setIcon(new ImageIcon(Main.class.getResource("/images/example_pic2.gif")));
+		pic_inte_result.setIcon(new ImageIcon("resource/images/example_pic2.gif"));
 
 		pic_beha_result = new JLabel("pic_beha_result");
 		pic_beha_result.setLocation(102, 294);
 		pic_beha_result.setSize(250, 250);
 		result.add(pic_beha_result);
 		// TODO
-		pic_beha_result.setIcon(new ImageIcon(Main.class.getResource("/images/example_pic1.gif")));
+		pic_beha_result.setIcon(new ImageIcon("resource/images/example_pic1.gif"));
 
 		pic_envi_result = new JLabel("pic_envi_result");
 		pic_envi_result.setLocation(20, 65);
@@ -1435,7 +1435,7 @@ public class Main {
 		emenu.setViewportView(chooseEnviList);
 
 		pic_cat_status = new JLabel("pic_cat_status");
-		pic_cat_status.setIcon(new ImageIcon(Main.class.getResource("/images/example_status.gif")));
+		pic_cat_status.setIcon(new ImageIcon("resource/images/example_status.gif"));
 		pic_cat_status.setBounds(27, 106, 200, 250);
 		simulation.add(pic_cat_status);
 
@@ -1509,7 +1509,7 @@ public class Main {
 		pic_credit = new JLabel("pic_credit");
 		pic_credit.setForeground(new Color(255, 255, 255));
 		pic_credit.setBackground(new Color(255, 255, 255));
-		pic_credit.setIcon(new ImageIcon(Main.class.getResource("/images/example_pic1.gif")));
+		pic_credit.setIcon(new ImageIcon("resource/images/example_pic1.gif"));
 		pic_credit.setBounds(807, 115, 130, 170);
 		credit.add(pic_credit);
 
@@ -1558,7 +1558,7 @@ public class Main {
 	 * @return ImageIcon of the resized picture 'name'
 	 */
 	private ImageIcon getImageIcon(String name, int width, int height) {
-		ImageIcon icon = new ImageIcon(Main.class.getResource("/images/" + name + ".jpg"));
+		ImageIcon icon = new ImageIcon("resource/images/" + name + ".jpg");
 		Image image = icon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT);
 		icon.setImage(image);
 		return icon;
@@ -1576,12 +1576,12 @@ public class Main {
 		// create the font
 		try {
 			// create the font to use. Specify the size!
-			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("resource/font1.ttf")).deriveFont(50f);
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("resource/font/font1.ttf")).deriveFont(50f);
 		    /*GraphicsEnvironment ge = GraphicsEnvironment
 			        .getLocalGraphicsEnvironment();
 			// register the font
 			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(
-			        "resource/font1.ttf")));*/
+			        "resource/font/font1.ttf")));*/
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (FontFormatException e) {

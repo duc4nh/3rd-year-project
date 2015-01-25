@@ -18,7 +18,7 @@ public class BehaviourGen {
 
 	public static void main(String[] args) {
 		try {
-			File file = new File("resource/beha.csv");
+			File file = new File("resource/backup/beha.csv");
 			FileReader fileReader = new FileReader(file);
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
 			String line;

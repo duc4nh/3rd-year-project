@@ -19,7 +19,7 @@ public class EnvironmentDatabase {
 		// Wrap all in a try/catch block to trap I/O errors.
 		try {
 			// Open file to read from
-			FileInputStream saveFile = new FileInputStream("resource/environment.sav");
+			FileInputStream saveFile = new FileInputStream("resource/database/environment.sav");
 			// Create an ObjectInputStream to get objects from save file.
 			ObjectInputStream restore = new ObjectInputStream(saveFile);
 			// restore
@@ -76,7 +76,7 @@ public class EnvironmentDatabase {
 	public static void save() {
 		try {
 			// Open a file to write to
-			FileOutputStream saveFile = new FileOutputStream("resource/environment.sav");
+			FileOutputStream saveFile = new FileOutputStream("resource/database/environment.sav");
 			// Create an ObjectOutputStream to put objects into save file.
 			ObjectOutputStream save = new ObjectOutputStream(saveFile);
 			save.writeObject(environmentDatabase);
