@@ -6,14 +6,11 @@ import database.InteractionDatabase;
 
 /**
  * Test all databases. Not for user.
- * 
- * @author DucAnh
  *
+ * @author DucAnh
  */
-public class DatabaseTest
-{
-	public static void main(String[] args)
-	{
+public class DatabaseTest {
+	public static void main(String[] args) {
 		// CatDatabase.openDatabase();
 		EnvironmentDatabase.openDatabase();
 		InteractionDatabase.openDatabase();

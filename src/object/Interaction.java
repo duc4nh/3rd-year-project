@@ -4,80 +4,66 @@ import java.io.Serializable;
 
 /**
  * An object that the cat interacting with
- * 
- * @author DucAnh
  *
+ * @author DucAnh
  */
-public class Interaction implements Serializable
-{
+public class Interaction implements Serializable {
 	/**
-	 * 
+	 *
 	 */
-    private static final long serialVersionUID = 8091932044987609543L;
+	private static final long serialVersionUID = 8091932044987609543L;
 	private int id;
-    private String name;
-    private InteractionCategory category;
-    // how cat's emotions are likely to be affected by this interaction: -5 to 5
-    private int excited;
-    private int fearful;
-    private int relieved;
-    private int angry;
+	private String name;
+	private InteractionCategory category;
+	// how cat's emotions are likely to be affected by this interaction: -5 to 5
+	private int excited;
+	private int fearful;
+	private int relieved;
+	private int angry;
+	private String info;
 
-    public Interaction(int id, String name, InteractionCategory category, int excited,
-            int fearful, int relieved, int angry)
-    {
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.excited = excited;
-        this.fearful = fearful;
-        this.relieved = relieved;
-        this.angry = angry;
-    }
+	public Interaction(int id, String name, InteractionCategory category, int excited, int fearful, int relieved, int angry, String info) {
+		this.id = id;
+		this.name = name;
+		this.category = category;
+		this.excited = excited;
+		this.fearful = fearful;
+		this.relieved = relieved;
+		this.angry = angry;
+		this.info = info;
+	}
 
-    // GETTERS
-    public int getId()
-    {
-        return id;
-    }
-    
-    public String getName()
-    {
-        return name;
-    }
+	// GETTERS
+	public int getId() {
+		return id;
+	}
 
-    public int getExcited()
-    {
-        return excited;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public int getFearful()
-    {
-        return fearful;
-    }
+	public int getExcited() {
+		return excited;
+	}
 
-    public int getRelieved()
-    {
-        return relieved;
-    }
+	public int getFearful() {
+		return fearful;
+	}
 
-    public int getAngry()
-    {
-        return angry;
-    }
+	public int getRelieved() {
+		return relieved;
+	}
 
-    public InteractionCategory getCate()
-    {
-        return category;
-    }
+	public int getAngry() {
+		return angry;
+	}
 
-    public String infoGUI()
-    {
-        String s = "";
-        s += "Name : " + name + "\nType : " + category + "\nExicted : "
-                + excited + "\nFearful : " + fearful + "\nRelieved : "
-                + relieved + "\nAngry : " + angry;
-        return s;
-    }
+	public InteractionCategory getCate() {
+		return category;
+	}
+
+	public String getInfo() {
+		return info;
+	}
 
 }

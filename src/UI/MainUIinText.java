@@ -1,28 +1,25 @@
 package UI;
 
-import java.util.Scanner;
-
+import database.BehaviourDatabase;
+import database.EnvironmentDatabase;
+import database.InteractionDatabase;
 import object.Cat;
 import object.Emotion;
 import object.Environment;
 import object.Interaction;
-import database.BehaviourDatabase;
-import database.EnvironmentDatabase;
-import database.InteractionDatabase;
 import simulator.Simulator;
+
+import java.util.Scanner;
 
 /**
  * UI in text for testing purpose
- * 
- * @author DucAnh
  *
+ * @author DucAnh
  */
-public class MainUIinText
-{
+public class MainUIinText {
 	private static Scanner reader = new Scanner(System.in);
 
-	public static void main(String[] args)
-	{
+	public static void main(String[] args) {
 
 		// Initialize the program
 		// CatDatabase.openDatabase();
@@ -39,19 +36,15 @@ public class MainUIinText
 		cat.printStatus();
 
 		boolean exit = false;
-		while (!exit)
-		{
+		while (!exit) {
 
 			// PRE-SIMULATION
 			System.out.println("-------------------------------");
-			System.out
-			        .print("MAIN MENU: Start simulation(1), View Library(2), Exit(3): ");
+			System.out.print("MAIN MENU: Start simulation(1), View Library(2), Exit(3): ");
 			int input = reader.nextInt();
-			if (input == 2)
-			{
+			if (input == 2) {
 				Library.ViewLibrary();
-			} else if (input == 1)
-			{
+			} else if (input == 1) {
 				// SIMULATION
 				System.out.println("-------------------------------");
 				System.out.println("START SIMULATION");
@@ -87,8 +80,7 @@ public class MainUIinText
 	 * return cat; }
 	 */
 
-	private static Environment inputEnvironment()
-	{
+	private static Environment inputEnvironment() {
 		System.out.println("-------------------------------");
 		System.out.println("Choose an environment:");
 		EnvironmentDatabase.printAll();
@@ -98,8 +90,7 @@ public class MainUIinText
 		return environment;
 	}
 
-	private static Interaction inputObject()
-	{
+	private static Interaction inputObject() {
 		System.out.println("-------------------------------");
 		System.out.println("Choose an interaction:");
 		InteractionDatabase.printAll();

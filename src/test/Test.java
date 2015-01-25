@@ -1,28 +1,13 @@
 package test;
 
-public class Test
-{
+public class Test {
+	public static void main(String[] args) {
+		String selected = "1. klsfhsdalkfhdsa";
 
-    public static void main(String[] args)
-    {
-        String selected = "1. klsfhsdalkfhdsa";
+		String[] a = selected.split("\\.");
 
-        String[] a = selected.split("\\.");
-        
-        System.out.println(a[0]);
-        //System.out.println(Integer.parseInt (selected.split(".")[1]));
-    }
+		System.out.println(a[0]);
+		//System.out.println(Integer.parseInt (selected.split(".")[1]));
+		//b=2;
+	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
