@@ -1,0 +1,33 @@
+1,is cautiously watching,-2,2,-2,2,A/O/H
+2,is meowing to get attention from,3,-3,4,-2,H/A
+3,is not interested; he just ignores,-3,2,-1,2,A/O/H/F
+4,is purring simultaneously to greet,3,0,2,-3,H
+5,is trying to hide from,-2,4,-1,1,H/A
+6,is stalking,3,2,-2,1,H/A
+7,is tasting,3,-2,2,-2,F
+8,is biting,-2,3,-3,4,H/A
+9,is chasing,5,-2,2,3,A
+10,is fighting with,0,3,-3,4,A
+11,is following,3,-3,2,-3,H/A
+12,is giving love to,3,-5,4,-3,H/A
+13,is greeting,4,-4,2,-2,H
+14,is hunting,5,-5,2,2,A
+15,is curiously interacting with,3,4,-2,0,A/O
+16,is happily playing with,3,-3,5,-2,H/A/O
+17,is rubbing his body against,2,-2,5,-3,O/H
+18,is scraching,-3,5,-4,3,H/A
+19,is curiously smelling,-1,3,-3,1,F
+20,is cuddling,3,-2,4,-2,A/H
+21,is pampering,3,-2,4,-2,A/H
+22,is sprinting away from,-2,5,-3,4,A/H
+23,is pouncing,3,-2,2,-2,O/H
+24,is wrestling with,3,0,-2,4,A
+25,is frolicking on,4,-2,3,-2,A/O
+26,is cautiously sniffing at,2,4,-2,2,F
+27,is trying to entertain,2,-1,1,-1,H
+28,is romping with,3,-3,3,-4,H/A/O
+29,is purring loudly next to,2,-3,5,-3,H
+30,is whining at,-2,0,-5,3,H
+31,is adoring,3,-3,4,-5,H
+32,is toying with,4,-3,2,-3,A/H
+33,is trying to flee,-3,4,-4,3,H/A
