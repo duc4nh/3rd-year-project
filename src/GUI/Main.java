@@ -1064,14 +1064,11 @@ public class Main {
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sound.playButton2();
-				String name = newNameI.getText();
-				newNameI.setText("");
-				inputDescription.setText("");
-				if (name.equals(""))
+				if (newNameI.getText().equals(""))
 					inteInfo.setText("Invalid input!");
 				else {
 					InteractionCategory type = (InteractionCategory) newTypeI.getSelectedItem();
-					Interaction inter = new Interaction(InteractionDatabase.getSize() + 1, name, type, newE, newF, newR, newA, inputDescription.getText());
+					Interaction inter = new Interaction(InteractionDatabase.getSize() + 1, newNameI.getText(), type, newE, newF, newR, newA, inputDescription.getText());
 					InteractionDatabase.add(inter);
 					// save to file
 					InteractionDatabase.save();
@@ -1084,7 +1081,9 @@ public class Main {
 
 					inteInfo.setText("New interaction object has been created!");
 				}
-
+				newNameI.setText("");
+				inputDescription.setText("");
+				
 				newInter.setVisible(false);
 				interaction.setVisible(true);
 			}
