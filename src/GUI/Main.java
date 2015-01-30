@@ -14,6 +14,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -116,6 +117,7 @@ public class Main {
 	private JList inteList;
 	private JButton btnDelete;
 	private JButton btnBack_3;
+	private JLabel pic_inte_menu;
 	// new_interaction
 	private JButton btnNInteBack;
 	private JLabel tittle_newInte;
@@ -178,6 +180,7 @@ public class Main {
 	private JScrollPane emenu;
 	private JList chooseEnviList;
 	private JLabel pic_envi_simulation;
+	private JLabel pic_inte_simulation;
 	private JLabel pic_cat_status;
 	private JLabel lblNewLabel_6;
 	private JLabel lblEnvironment;
@@ -494,7 +497,7 @@ public class Main {
 						id = 0;
 					else
 						id++;
-					mainBackground.setIcon(getImageIcon("envi" + id, 1000, 778));
+					mainBackground.setIcon(getImageIcon("envi" + id + ".jpg", 1000, 778));
 
 					Thread.sleep(5000);
 				}
@@ -521,7 +524,7 @@ public class Main {
 		btnMusicToggle.setBounds(588, 359, 150, 40);
 		settings.add(btnMusicToggle);
 
-		btnSoundToggle = new JButton("Sound: On");
+		btnSoundToggle = new JButton("Sound: Off");
 		btnSoundToggle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sound.toggleSound();
@@ -616,10 +619,10 @@ public class Main {
 		btnNewSimulation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sound.playButton2();
+				status.setText(cat.printStatusGUI());
+				
 				result.setVisible(false);
 				simulation.setVisible(true);
-
-				status.setText(cat.printStatusGUI());
 			}
 		});
 		btnNewSimulation.setBounds(762, 515, 150, 29);
@@ -652,18 +655,14 @@ public class Main {
 		panel_2.add(textResult);
 
 		pic_inte_result = new JLabel("pic_inte_result");
-		pic_inte_result.setLocation(364, 344);
-		pic_inte_result.setSize(200, 200);
+		pic_inte_result.setLocation(20, 65);
+		pic_inte_result.setSize(675, 540);
 		result.add(pic_inte_result);
-		// TODO
-		pic_inte_result.setIcon(new ImageIcon("resource/images/example_pic2.gif"));
 
 		pic_beha_result = new JLabel("pic_beha_result");
-		pic_beha_result.setLocation(102, 294);
-		pic_beha_result.setSize(250, 250);
+		pic_beha_result.setLocation(20, 65);
+		pic_beha_result.setSize(675, 540);
 		result.add(pic_beha_result);
-		// TODO
-		pic_beha_result.setIcon(new ImageIcon("resource/images/example_pic1.gif"));
 
 		pic_envi_result = new JLabel("pic_envi_result");
 		pic_envi_result.setLocation(20, 65);
@@ -713,7 +712,7 @@ public class Main {
 						String selected = enviList.getSelectedValue().toString();
 						enviMenuID = Integer.parseInt(selected.split("\\.")[0]);
 						enviInfo.setText(EnvironmentDatabase.get(enviMenuID).getName() + ":\n" + EnvironmentDatabase.get(enviMenuID).getInfo());
-						pic_envi_menu.setIcon(getImageIcon("envi" + enviMenuID, 1000, 778));
+						pic_envi_menu.setIcon(getImageIcon("envi" + enviMenuID + ".jpg", 1000, 778));
 					} else
 						jlistEnviModified = false;
 				}
@@ -772,7 +771,7 @@ public class Main {
 
 		pic_envi_menu = new JLabel("pic_envi_menu");
 		pic_envi_menu.setBounds(0, 0, 1000, 678);
-		pic_envi_menu.setIcon(getImageIcon("envi" + enviMenuID, 1000, 778));
+		pic_envi_menu.setIcon(getImageIcon("envi" + enviMenuID + ".jpg", 1000, 778));
 		environment.add(pic_envi_menu);
 	}
 
@@ -819,6 +818,7 @@ public class Main {
 						String selected = inteList.getSelectedValue().toString();
 						inteMenuID = Integer.parseInt(selected.split("\\.")[0]);
 						inteInfo.setText(InteractionDatabase.get(inteMenuID).getName() + ":\n" + InteractionDatabase.get(inteMenuID).getInfo());
+						pic_inte_menu.setIcon(getImageIcon("inte" + inteMenuID + ".png", 1000, 778));
 					} else
 						jlistInteModified = false;
 				}
@@ -874,6 +874,11 @@ public class Main {
 		});
 		btnBack_3.setBounds(357, 201, 117, 29);
 		interaction.add(btnBack_3);
+		
+		pic_inte_menu = new JLabel("pic_inte_menu");
+		pic_inte_menu.setBounds(0, 0, 1000, 678);
+		pic_inte_menu.setIcon(getImageIcon("inte" + inteMenuID + ".jpg", 1000, 778));
+		interaction.add(pic_inte_menu);
 	}
 
 	/**
@@ -1383,8 +1388,8 @@ public class Main {
 					if (!inteList_simulation_modified) {
 						String selected = chooseInteList.getSelectedValue().toString();
 						chooseInte.setText(selected.substring(3));
-
 						inteID = Integer.parseInt(selected.split("\\.")[0]);
+						pic_inte_simulation.setIcon(getImageIcon("inte" + inteID + ".png", 500, 400));
 
 						inteChosen = true;
 						if (enviChosen)
@@ -1395,8 +1400,6 @@ public class Main {
 			}
 		});
 		imenu.setViewportView(chooseInteList);
-
-		// ---
 
 		chooseEnvi = new JTextField();
 		chooseEnvi.setHorizontalAlignment(SwingConstants.CENTER);
@@ -1418,9 +1421,8 @@ public class Main {
 
 								.toString();
 						chooseEnvi.setText(selected.substring(3));
-
 						enviID = Integer.parseInt(selected.split("\\.")[0]);
-						pic_envi_simulation.setIcon(getImageIcon("envi" + enviID, 500, 400));
+						pic_envi_simulation.setIcon(getImageIcon("envi" + enviID + ".jpg", 500, 400));
 
 						enviChosen = true;
 						if (inteChosen)
@@ -1474,10 +1476,14 @@ public class Main {
 		});
 		btnResetEmotion.setBounds(156, 518, 117, 29);
 		simulation.add(btnResetEmotion);
-
+		
+		pic_inte_simulation = new JLabel("inte");
+		pic_inte_simulation.setBounds(475, 110, 500, 400);
+		simulation.add(pic_inte_simulation);
+		
 		pic_envi_simulation = new JLabel("pic_envi");
-		pic_envi_simulation.setBounds(475, 95, 500, 400);
-		pic_envi_simulation.setIcon(getImageIcon("envi" + enviMenuID, 500, 400));
+		pic_envi_simulation.setBounds(475, 110, 500, 400);
+		pic_envi_simulation.setIcon(getImageIcon("envi" + enviMenuID + ".jpg", 500, 400));
 		simulation.add(pic_envi_simulation);
 	}
 
@@ -1506,10 +1512,8 @@ public class Main {
 	 */
 	private void credit() {
 		pic_credit = new JLabel("pic_credit");
-		pic_credit.setForeground(new Color(255, 255, 255));
-		pic_credit.setBackground(new Color(255, 255, 255));
-		pic_credit.setIcon(new ImageIcon("resource/images/example_pic1.gif"));
-		pic_credit.setBounds(807, 115, 130, 170);
+		pic_credit.setIcon(new ImageIcon("resource/images/bg2.gif"));
+		pic_credit.setBounds(682, 140, 250, 228);
 		credit.add(pic_credit);
 
 		tittle_credit = new JLabel("CREDIT");
@@ -1517,7 +1521,7 @@ public class Main {
 		credit.add(tittle_credit);
 
 		btnBack = new JButton("Back");
-		btnBack.setBounds(807, 312, 117, 29);
+		btnBack.setBounds(759, 554, 117, 29);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sound.playButton2();
@@ -1528,12 +1532,12 @@ public class Main {
 		credit.add(btnBack);
 
 		scrollPaneCredit = new JScrollPane();
-		scrollPaneCredit.setBounds(114, 115, 567, 443);
+		scrollPaneCredit.setBounds(60, 140, 567, 443);
 		credit.add(scrollPaneCredit);
 
 		txtrCredit = new JTextArea();
 		txtrCredit.setText("Cat Behaviour Simulator\n\nThird Year Project\n\nUniversity of Manchester\n\nAuthor: Duc A. Nguyen\n\nSupervisor: Dr John Sargeant\n\nReference Sources:\n-\n-\n-\n-\n-\n-\n-\n-\n-\n-\n");
-		scrollPaneCredit.setViewportView(txtrCredit);
+		scrollPaneCredit.setColumnHeaderView(txtrCredit);
 	}
 
 	private void setTittle(JLabel t) {
@@ -1545,10 +1549,9 @@ public class Main {
 	}
 
 	private void updateResultPanel(String[] s, int enviID, int inteID, int behaID) {
-		// TODO inte beha pics
-		// pic_inte_result.setIcon(getImageIcon("inte" + inteID, 200, 200));
-		// pic_beha_result.setIcon(getImageIcon("beha" + s[3], 200, 200));
-		pic_envi_result.setIcon(getImageIcon("envi" + enviID, 800, 640));
+		pic_inte_result.setIcon(getImageIcon("inte" + inteID + ".png", 675,540));
+		pic_beha_result.setIcon(getImageIcon("beha" + s[3] + ".png", 675,540));
+		pic_envi_result.setIcon(getImageIcon("envi" + enviID + ".jpg", 675,540));
 		scenario.setText(s[0]);
 		textResult.setText(s[1] + " " + s[2]);
 	}
@@ -1557,7 +1560,7 @@ public class Main {
 	 * @return ImageIcon of the resized picture 'name'
 	 */
 	private ImageIcon getImageIcon(String name, int width, int height) {
-		ImageIcon icon = new ImageIcon("resource/images/" + name + ".jpg");
+		ImageIcon icon = new ImageIcon("resource/images/" + name);
 		Image image = icon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT);
 		icon.setImage(image);
 		return icon;

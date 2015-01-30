@@ -15,7 +15,7 @@ public class Sound {
 	private AudioData button1;
 	private AudioData button2;
 	private boolean musicOn = true;
-	private boolean soundOn = true;
+	private boolean soundOn = false;
 
 	/**
 	 * Constructor
@@ -23,6 +23,7 @@ public class Sound {
 	public Sound() {
 		try {
 			AudioData musicData = audioData("resource/sound/music1.wav");
+			//AudioData musicData = audioData("resource/sound/music_special.mp3");
 			music = new ContinuousAudioDataStream(musicData);
 			button1 = audioData("resource/sound/button1.wav");
 			button2 = audioData("resource/sound/button2.wav");
