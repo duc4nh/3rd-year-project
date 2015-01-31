@@ -1,6 +1,7 @@
 package object;
 
 import java.io.Serializable;
+import java.util.Random;
 
 /**
  * A cat
@@ -16,6 +17,7 @@ public class Cat implements Serializable {
 	private String breed;
 	// private int age;
 	private Emotion emotion;
+
 	// TODO habits/memory
 
 	public Cat(String name, String breed, Emotion emotion) {
@@ -63,34 +65,39 @@ public class Cat implements Serializable {
 		System.out.println("Emotion: ");
 
 		int[] emo = getEmotion();
-		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4 && emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
+		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4
+				&& emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
 			System.out.println("The cat's emotion is neutral");
 		} else {
 			for (int i = 0; i < 4; i++) {
 				String emoType;
 				switch (i) {
-					case 0:
-						emoType = "excited";
-						break;
-					case 1:
-						emoType = "fearful";
-						break;
-					case 2:
-						emoType = "relieved";
-						break;
-					default:
-						emoType = "angry";
-						break;
+				case 0:
+					emoType = "excited";
+					break;
+				case 1:
+					emoType = "fearful";
+					break;
+				case 2:
+					emoType = "relieved";
+					break;
+				default:
+					emoType = "angry";
+					break;
 				}
 				// [-10 -8] [-7 -4] [-3 0 3] [4 7] [8 10]
 				if (emo[i] < -7) {
-					System.out.println("The cat does not feel " + emoType + " at all!! (" + emo[i] + ")");
+					System.out.println("The cat does not feel " + emoType
+							+ " at all!! (" + emo[i] + ")");
 				} else if (emo[i] < -3) {
-					System.out.println("The cat is not " + emoType + "...(" + emo[i] + ")");
+					System.out.println("The cat is not " + emoType + "...("
+							+ emo[i] + ")");
 				} else if (emo[i] > 3 && emo[i] < 8) {
-					System.out.println("The cat feels little " + emoType + "...(" + emo[i] + ")");
+					System.out.println("The cat feels little " + emoType
+							+ "...(" + emo[i] + ")");
 				} else if (emo[i] > 7) {
-					System.out.println("The cat feels extremely " + emoType + "!! (" + emo[i] + ")");
+					System.out.println("The cat feels extremely " + emoType
+							+ "!! (" + emo[i] + ")");
 				}
 			}
 		}
@@ -99,27 +106,29 @@ public class Cat implements Serializable {
 	public String printStatusGUI() {
 		String s = "";
 
-		s += "Name: " + getName() + "\n" + "Breed: " + getBreed() + "\nEmotion:\n";
+		s += "Name: " + getName() + "\n" + "Breed: " + getBreed()
+				+ "\nEmotion:\n";
 
 		int[] emo = getEmotion();
-		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4 && emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
+		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4
+				&& emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
 			s += "The cat's emotion is neutral";
 		} else {
 			for (int i = 0; i < 4; i++) {
 				String emoType;
 				switch (i) {
-					case 0:
-						emoType = "excited";
-						break;
-					case 1:
-						emoType = "fearful";
-						break;
-					case 2:
-						emoType = "relieved";
-						break;
-					default:
-						emoType = "angry";
-						break;
+				case 0:
+					emoType = "excited";
+					break;
+				case 1:
+					emoType = "fearful";
+					break;
+				case 2:
+					emoType = "relieved";
+					break;
+				default:
+					emoType = "angry";
+					break;
 				}
 				// [-10 -8] [-7 -4] [-3 0 3] [4 7] [8 10]
 				if (emo[i] < -7) {
@@ -135,5 +144,12 @@ public class Cat implements Serializable {
 		}
 
 		return s;
+	}
+
+	public int getImageNo() {
+		int[] emo = getEmotion();
+		
+		Random rand = new Random();
+		return rand.nextInt(9) + 1;
 	}
 }

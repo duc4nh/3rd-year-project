@@ -620,6 +620,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				sound.playButton2();
 				status.setText(cat.printStatusGUI());
+				pic_cat_status.setIcon(getImageIcon("status" + cat.getImageNo() + ".jpg", 200, 200));
 				
 				result.setVisible(false);
 				simulation.setVisible(true);
@@ -1436,7 +1437,7 @@ public class Main {
 		emenu.setViewportView(chooseEnviList);
 
 		pic_cat_status = new JLabel("pic_cat_status");
-		pic_cat_status.setIcon(new ImageIcon("resource/images/example_status.gif"));
+		pic_cat_status.setIcon(getImageIcon("status" + cat.getImageNo() + ".jpg", 200, 200));
 		pic_cat_status.setBounds(27, 106, 200, 250);
 		simulation.add(pic_cat_status);
 
@@ -1461,6 +1462,7 @@ public class Main {
 				sound.playButton2();
 				cat.setEmotion(random(-10, 10), random(-10, 10), random(-10, 10), random(-10, 10));
 				status.setText(cat.printStatusGUI());
+				pic_cat_status.setIcon(getImageIcon("status" + cat.getImageNo() + ".jpg", 200, 200));
 			}
 		});
 		btnRandomEmotion.setBounds(27, 518, 117, 29);
@@ -1472,6 +1474,7 @@ public class Main {
 				sound.playButton2();
 				cat.setEmotion(0, 0, 0, 0);
 				status.setText(cat.printStatusGUI());
+				pic_cat_status.setIcon(getImageIcon("status" + cat.getImageNo() + ".jpg", 200, 200));
 			}
 		});
 		btnResetEmotion.setBounds(156, 518, 117, 29);

@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dfec3d28-f53a-4102-b102-be25e0b8114b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resource/images/beha1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resource/images/beha2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resource/images/beha3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resource/images/beha5.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resource/images/bg2.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resource/images/bg3.gif" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resource/images/inte0.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resource/images/inte1.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resource/images/inte2.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resource/images/inte3.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resource/images/inte4.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resource/images/inte5.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resource/database/interaction.sav" afterPath="$PROJECT_DIR$/resource/database/interaction.sav" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/Main.java" afterPath="$PROJECT_DIR$/src/GUI/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/Sound.java" afterPath="$PROJECT_DIR$/src/GUI/Sound.java" />
-    </list>
+    <list default="true" id="dfec3d28-f53a-4102-b102-be25e0b8114b" name="Default" comment="" />
     <ignored path="3rd-year-project.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/bin/" />
@@ -61,8 +45,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GUI/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.56033057" vertical-offset="3861" max-vertical-offset="19245">
-              <caret line="473" column="0" selection-start-line="473" selection-start-column="0" selection-end-line="473" selection-end-column="0" />
+            <state vertical-scroll-proportion="1.0426009" vertical-offset="6690" max-vertical-offset="19245">
+              <caret line="696" column="0" selection-start-line="696" selection-start-column="0" selection-end-line="696" selection-end-column="0" />
               <folding>
                 <element signature="docComment;class#Main#0" expanded="false" />
                 <element signature="docComment;method#main#0;class#Main#0" expanded="false" />
@@ -105,7 +89,7 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="105">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -115,7 +99,7 @@
       <file leaf-file-name="cat-simulator.iml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/cat-simulator.iml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="255">
+            <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="255">
               <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
               <folding />
             </state>
@@ -125,7 +109,7 @@
       <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="120">
+            <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="120">
               <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
               <folding />
             </state>
@@ -222,10 +206,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1280" />
-    <option name="y" value="-77" />
-    <option name="width" value="1280" />
-    <option name="height" value="1001" />
+    <option name="x" value="65" />
+    <option name="y" value="23" />
+    <option name="width" value="1215" />
+    <option name="height" value="777" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -435,7 +419,6 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -506,6 +489,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -870,6 +854,7 @@
       <workItem from="1422453067524" duration="238000" />
       <workItem from="1422472944787" duration="2628000" />
       <workItem from="1422560764918" duration="459000" />
+      <workItem from="1422713330467" duration="307000" />
     </task>
     <task id="LOCAL-00001" summary="Minor changes">
       <created>1422226309464</created>
@@ -911,7 +896,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15793000" />
+    <option name="totallyTimeSpent" value="16100000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -934,7 +919,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="-77" width="1280" height="1001" extended-state="6" />
+    <frame x="65" y="23" width="1215" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -957,8 +942,8 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19224556" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2869757" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20289855" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28592375" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1655,7 +1640,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.2" vertical-offset="0" max-vertical-offset="120">
+        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="120">
           <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
           <folding />
         </state>
@@ -1663,8 +1648,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.56033057" vertical-offset="3861" max-vertical-offset="19245">
-          <caret line="473" column="0" selection-start-line="473" selection-start-column="0" selection-end-line="473" selection-end-column="0" />
+        <state vertical-scroll-proportion="1.0426009" vertical-offset="6690" max-vertical-offset="19245">
+          <caret line="696" column="0" selection-start-line="696" selection-start-column="0" selection-end-line="696" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#Main#0" expanded="false" />
             <element signature="docComment;method#main#0;class#Main#0" expanded="false" />
