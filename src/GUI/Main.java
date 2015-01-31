@@ -1582,11 +1582,6 @@ public class Main {
 		try {
 			// create the font to use. Specify the size!
 			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("resource/font/font1.ttf")).deriveFont(50f);
-		    /*GraphicsEnvironment ge = GraphicsEnvironment
-			        .getLocalGraphicsEnvironment();
-			// register the font
-			ge.registerFont(Font.createFont(Font.TRUETYPE_FONT, new File(
-			        "resource/font/font1.ttf")));*/
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (FontFormatException e) {
