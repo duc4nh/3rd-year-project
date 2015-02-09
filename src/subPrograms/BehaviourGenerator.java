@@ -14,8 +14,7 @@ import java.io.IOException;
  *
  * @author DucAnh
  */
-public class BehaviourGen {
-
+public class BehaviourGenerator {
 	public static void main(String[] args) {
 		try {
 			File file = new File("resource/backup/beha.csv");

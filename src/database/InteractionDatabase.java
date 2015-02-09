@@ -42,7 +42,7 @@ public class InteractionDatabase {
 		int i = 1;
 		System.out.println("INTER DATABASE: ");
 		for (Interaction interaction : interactionDatabase) {
-			System.out.println(i + ". " + interaction.getName() + "\t\t\t" + interaction.getExcited() + "\t" + interaction.getFearful() + "\t" + interaction.getRelieved() + "\t" + interaction.getAngry() + "\t" + interaction.getCate() + "\t" + interaction.getInfo());
+			System.out.println(i + ". " + interaction.getId() + "\t" + interaction.getName() + "\t\t\t" + interaction.getExcited() + "\t" + interaction.getFearful() + "\t" + interaction.getRelieved() + "\t" + interaction.getAngry() + "\t" + interaction.getCate() + "\t" + interaction.getInfo());
 			i++;
 		}
 	}

@@ -15,7 +15,7 @@ public class Sound {
 	private AudioData button1;
 	private AudioData button2;
 	private boolean musicOn = true;
-	private boolean soundOn = false;
+	private boolean soundOn = true;
 
 	/**
 	 * Constructor
@@ -56,14 +56,14 @@ public class Sound {
 		soundOn = !soundOn;
 	}
 
-	public void playButton1() {
+	public void playButton2() {
 		if (soundOn) {
 			AudioDataStream audio = new AudioDataStream(button1);
 			AudioPlayer.player.start(audio);
 		}
 	}
 
-	public void playButton2() {
+	public void playButton1() {
 		if (soundOn) {
 			AudioDataStream audio = new AudioDataStream(button2);
 			AudioPlayer.player.start(audio);

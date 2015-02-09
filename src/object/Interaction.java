@@ -65,5 +65,4 @@ public class Interaction implements Serializable {
 	public String getInfo() {
 		return info;
 	}
-
 }

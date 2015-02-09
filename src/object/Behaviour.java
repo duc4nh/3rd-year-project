@@ -63,5 +63,4 @@ public class Behaviour implements Serializable {
 	public int getScore(int[] emo) {
 		return excited * emo[0] + fearful * emo[1] + relieved * emo[2] + angry * emo[3];
 	}
-
 }

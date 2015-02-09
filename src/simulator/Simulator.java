@@ -28,8 +28,6 @@ public class Simulator {
 	/**
 	 * Simulate emotions
 	 *
-	 * @param environment
-	 * @param interaction
 	 * @return how emotions changed
 	 */
 	public static int[] simulationEmo(Environment environment, Interaction interaction) {
@@ -223,7 +221,7 @@ public class Simulator {
 
 		// action
 		Behaviour act = chooseBehaviour(cat, interaction);
-		s[2] += "As a result, he " + act.getName() + " " + interaction.getName() + ".";
+		s[2] += "As a result, he " + act.getName() + " " + interaction.getName();
 
 		// behaviour ID
 		s[3] += "" + act.getId();
@@ -233,8 +231,7 @@ public class Simulator {
 
 	// PRINT EMOTION RESULT
 	private static String simulationEmoResultGUI(int[] emo) {
-		String s = "He feels ";
-		String[] sub = {"", "", "", ""};
+		String s = "He feels...\n";
 
 		for (int i = 0; i < 4; i++) {
 			String emoType;
@@ -254,25 +251,16 @@ public class Simulator {
 			}
 			// -3] [-2 -1] 0 [1 2] [3
 			if (emo[i] < -2)
-				sub[i] += "much less " + emoType;
+				s += "- much less " + emoType + "\n";
 			else if (emo[i] < 0)
-				sub[i] += "a bit less " + emoType;
+				s += "- a bit less " + emoType + "\n";
 			else if (emo[i] != 0 && emo[i] < 3)
-				sub[i] += "a bit more " + emoType;
+				s += "- a bit more " + emoType + "\n";
 			else if (emo[i] > 2)
-				sub[i] += "much more " + emoType;
+				s += "- much more " + emoType + "\n";
 		}
 
-		boolean first = true;
-		for (int i = 0; i < 4; i++) {
-			if (sub[i] != "" && first) {
-				s += sub[i];
-				first = false;
-			} else if (sub[i] != "")
-				s += ", " + sub[i];
-		}
-
-		return s + ".";
+		return s;
 	}
 
 }

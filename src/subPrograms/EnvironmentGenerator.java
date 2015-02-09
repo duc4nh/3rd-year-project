@@ -13,7 +13,7 @@ import java.io.IOException;
  *
  * @author DucAnh
  */
-public class EnviGen2 {
+public class EnvironmentGenerator {
 	public static void main(String[] args) {
 		try {
 			File file = new File("resource/backup/envi.csv");

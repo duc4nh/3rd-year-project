@@ -1,7 +1,6 @@
 package object;
 
 import java.io.Serializable;
-import java.util.Random;
 
 /**
  * A cat
@@ -65,39 +64,34 @@ public class Cat implements Serializable {
 		System.out.println("Emotion: ");
 
 		int[] emo = getEmotion();
-		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4
-				&& emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
+		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4 && emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
 			System.out.println("The cat's emotion is neutral");
 		} else {
 			for (int i = 0; i < 4; i++) {
 				String emoType;
 				switch (i) {
-				case 0:
-					emoType = "excited";
-					break;
-				case 1:
-					emoType = "fearful";
-					break;
-				case 2:
-					emoType = "relieved";
-					break;
-				default:
-					emoType = "angry";
-					break;
+					case 0:
+						emoType = "excited";
+						break;
+					case 1:
+						emoType = "fearful";
+						break;
+					case 2:
+						emoType = "relieved";
+						break;
+					default:
+						emoType = "angry";
+						break;
 				}
 				// [-10 -8] [-7 -4] [-3 0 3] [4 7] [8 10]
 				if (emo[i] < -7) {
-					System.out.println("The cat does not feel " + emoType
-							+ " at all!! (" + emo[i] + ")");
+					System.out.println("The cat does not feel " + emoType + " at all!! (" + emo[i] + ")");
 				} else if (emo[i] < -3) {
-					System.out.println("The cat is not " + emoType + "...("
-							+ emo[i] + ")");
+					System.out.println("The cat is not " + emoType + "...(" + emo[i] + ")");
 				} else if (emo[i] > 3 && emo[i] < 8) {
-					System.out.println("The cat feels little " + emoType
-							+ "...(" + emo[i] + ")");
+					System.out.println("The cat feels little " + emoType + "...(" + emo[i] + ")");
 				} else if (emo[i] > 7) {
-					System.out.println("The cat feels extremely " + emoType
-							+ "!! (" + emo[i] + ")");
+					System.out.println("The cat feels extremely " + emoType + "!! (" + emo[i] + ")");
 				}
 			}
 		}
@@ -105,51 +99,45 @@ public class Cat implements Serializable {
 
 	public String printStatusGUI() {
 		String s = "";
-
-		s += "Name: " + getName() + "\n" + "Breed: " + getBreed()
-				+ "\nEmotion:\n";
+		s += "Name: " + getName() + "\n" + "Breed: " + getBreed() + "\nEmotion:\n";
 
 		int[] emo = getEmotion();
-		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4
-				&& emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
-			s += "The cat's emotion is neutral";
-		} else {
-			for (int i = 0; i < 4; i++) {
-				String emoType;
-				switch (i) {
-				case 0:
-					emoType = "excited";
-					break;
-				case 1:
-					emoType = "fearful";
-					break;
-				case 2:
-					emoType = "relieved";
-					break;
-				default:
-					emoType = "angry";
-					break;
-				}
-				// [-10 -8] [-7 -4] [-3 0 3] [4 7] [8 10]
-				if (emo[i] < -7) {
-					s += "The cat does not feel " + emoType + " at all!!\n";
-				} else if (emo[i] < -3) {
-					s += "The cat is not " + emoType + "...\n";
-				} else if (emo[i] > 3 && emo[i] < 8) {
-					s += "The cat feels little " + emoType + "...\n";
-				} else if (emo[i] > 7) {
-					s += "The cat feels extremely " + emoType + "!!\n";
-				}
-			}
+		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4 && emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
+			s += "The cat's emotion is neutral\n";
 		}
-
+		s += statusDisplay("Excited", emo[0]);
+		s += statusDisplay("Fearful", emo[1]);
+		s += statusDisplay("Relieved", emo[2]);
+		s += statusDisplay("Angry", emo[3]);
+		return s;
+	}
+	
+	private String statusDisplay(String name, int n) {
+		String s = name + ":\t|";
+		for (int i=-5; i<=5; i++) {
+			if (i<=n) s+="*";
+		}
+		s += "\n";
 		return s;
 	}
 
 	public int getImageNo() {
 		int[] emo = getEmotion();
-		
-		Random rand = new Random();
-		return rand.nextInt(9) + 1;
+		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4 && emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
+			return 0;
+		}
+
+		int[][] picScore = {{}, {2, 1, 1, 1}, {1, 2, 1, 1}, {1, 3, 0, 1}, {1, 1, 2, 1}, {1, 1, 1, 2}, {1, 2, 0, 2}, {0, 1, 1, 3}, {0, 2, 0, 2}};
+		int picID = 0;
+		int maxScore = -2147483648;
+		for (int i = 1; i < picScore.length; i++) {
+			int score = picScore[i][0] * emo[0] + picScore[i][1] * emo[1] + picScore[i][2] * emo[2] + picScore[i][3] * emo[3];
+			if (score > maxScore) {
+				picID = i;
+				maxScore = score;
+			}
+		}
+
+		return picID;
 	}
 }

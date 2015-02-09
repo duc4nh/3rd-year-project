@@ -34,7 +34,7 @@ public class EnvironmentDatabase {
 		int i = 1;
 		System.out.println("ENVI DATABASE: ");
 		for (Environment envi : environmentDatabase) {
-			System.out.println(i + ". " + envi.getName() + "\t\t\t" + envi.getTemperature() + "\t" + envi.getHumidity() + "\t" + envi.getLight() + "\t" + envi.getNoise());
+			System.out.println(i + ". " + envi.getId() + "\t" + envi.getName() + "\t\t\t" + envi.getTemperature() + "\t" + envi.getHumidity() + "\t" + envi.getLight() + "\t" + envi.getNoise());
 			i++;
 		}
 	}

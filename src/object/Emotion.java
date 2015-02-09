@@ -20,62 +20,61 @@ public class Emotion {
 	}
 
 	public Emotion() {
-		this.excited = this.fearful = this.relieved = this.angry = 0;
+		excited = fearful = relieved = angry = 0;
 	}
 
 	public void updateEmo(int[] emo) {
-		this.excited += emo[0];
-		this.fearful += emo[1];
-		this.relieved += emo[2];
-		this.angry += emo[3];
+		excited += emo[0];
+		fearful += emo[1];
+		relieved += emo[2];
+		angry += emo[3];
 
 		// set range -10 to 10
-		if (this.excited < -10)
-			this.excited = -10;
-		if (this.fearful < -10)
-			this.fearful = -10;
-		if (this.relieved < -10)
-			this.relieved = -10;
-		if (this.angry < -10)
-			this.angry = -10;
-		if (this.excited > 10)
-			this.excited = 10;
-		if (this.fearful > 10)
-			this.fearful = 10;
-		if (this.relieved > 10)
-			this.relieved = 10;
-		if (this.angry > 10)
-			this.angry = 10;
+		if (excited < -10)
+			excited = -10;
+		if (fearful < -10)
+			fearful = -10;
+		if (relieved < -10)
+			relieved = -10;
+		if (angry < -10)
+			angry = -10;
+		if (excited > 10)
+			excited = 10;
+		if (fearful > 10)
+			fearful = 10;
+		if (relieved > 10)
+			relieved = 10;
+		if (angry > 10)
+			angry = 10;
 
 	}
 
 	public void setEmo(int a, int b, int c, int d) {
-		this.excited = a;
-		this.fearful = b;
-		this.relieved = c;
-		this.angry = d;
+		excited = a;
+		fearful = b;
+		relieved = c;
+		angry = d;
 
 		// set range -10 to 10
-		if (this.excited < -10)
-			this.excited = -10;
-		if (this.fearful < -10)
-			this.fearful = -10;
-		if (this.relieved < -10)
-			this.relieved = -10;
-		if (this.angry < -10)
-			this.angry = -10;
-		if (this.excited > 10)
-			this.excited = 10;
-		if (this.fearful > 10)
-			this.fearful = 10;
-		if (this.relieved > 10)
-			this.relieved = 10;
-		if (this.angry > 10)
-			this.angry = 10;
+		if (excited < -10)
+			excited = -10;
+		if (fearful < -10)
+			fearful = -10;
+		if (relieved < -10)
+			relieved = -10;
+		if (angry < -10)
+			angry = -10;
+		if (excited > 10)
+			excited = 10;
+		if (fearful > 10)
+			fearful = 10;
+		if (relieved > 10)
+			relieved = 10;
+		if (angry > 10)
+			angry = 10;
 	}
 
 	public int[] getEmo() {
-		int[] emo = {excited, fearful, relieved, angry};
-		return emo;
+		return new int[]{excited, fearful, relieved, angry};
 	}
 }

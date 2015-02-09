@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/3rd-year-project.iml" filepath="$PROJECT_DIR$/3rd-year-project.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cat-simulator.iml" filepath="$PROJECT_DIR$/cat-simulator.iml" />
     </modules>
   </component>
 </project>

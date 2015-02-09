@@ -56,8 +56,22 @@ public class Environment implements Serializable {
 
 	public String getInfo() {
 		String s = "";
-		s += "Temperature : " + temperature + "\nHumidity : " + humidity + "\nLight : " + light + "\nNoise : " + noise;
-
+		s += statusDisplay("Temperature", temperature);
+		s += statusDisplay("Humidity", humidity);
+		s += statusDisplay("Light", light);
+		s += statusDisplay("Noise", noise);
+		return s;
+	}
+	
+	private String statusDisplay(String name, int n) {
+		String s = name + ":\t|";
+		for (int i=-5; i<=5; i++) {
+			//if (i==0) s+="|";
+			if (i<=n) s+="*";
+			//else s+="[-]";
+		}
+		s += "\n";
+		
 		return s;
 	}
 }
