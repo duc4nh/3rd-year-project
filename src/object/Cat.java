@@ -111,11 +111,12 @@ public class Cat implements Serializable {
 		s += statusDisplay("Angry", emo[3]);
 		return s;
 	}
-	
+
 	private String statusDisplay(String name, int n) {
 		String s = name + ":\t|";
-		for (int i=-5; i<=5; i++) {
-			if (i<=n) s+="*";
+		for (int i = -5; i <= 5; i++) {
+			if (i <= n)
+				s += "*";
 		}
 		s += "\n";
 		return s;

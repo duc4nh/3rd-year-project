@@ -62,16 +62,17 @@ public class Environment implements Serializable {
 		s += statusDisplay("Noise", noise);
 		return s;
 	}
-	
+
 	private String statusDisplay(String name, int n) {
 		String s = name + ":\t|";
-		for (int i=-5; i<=5; i++) {
+		for (int i = -5; i <= 5; i++) {
 			//if (i==0) s+="|";
-			if (i<=n) s+="*";
+			if (i <= n)
+				s += "*";
 			//else s+="[-]";
 		}
 		s += "\n";
-		
+
 		return s;
 	}
 }

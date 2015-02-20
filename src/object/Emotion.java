@@ -6,11 +6,13 @@ package object;
  * @author DucAnh
  */
 public class Emotion {
-	// Emotion figures of the cat: -10 to 10
+	// Emotion figures of the cat: MIN to MAX
 	private int excited;
 	private int fearful;
 	private int relieved;
 	private int angry;
+	private final int MAX = 10;
+	private final int MIN = -10;
 
 	public Emotion(int excited, int fearful, int relieved, int angry) {
 		this.excited = excited;
@@ -29,23 +31,23 @@ public class Emotion {
 		relieved += emo[2];
 		angry += emo[3];
 
-		// set range -10 to 10
-		if (excited < -10)
-			excited = -10;
-		if (fearful < -10)
-			fearful = -10;
-		if (relieved < -10)
-			relieved = -10;
-		if (angry < -10)
-			angry = -10;
-		if (excited > 10)
-			excited = 10;
-		if (fearful > 10)
-			fearful = 10;
-		if (relieved > 10)
-			relieved = 10;
-		if (angry > 10)
-			angry = 10;
+		// set range MIN to MAX
+		if (excited < MIN)
+			excited = MIN;
+		if (fearful < MIN)
+			fearful = MIN;
+		if (relieved < MIN)
+			relieved = MIN;
+		if (angry < MIN)
+			angry = MIN;
+		if (excited > MAX)
+			excited = MAX;
+		if (fearful > MAX)
+			fearful = MAX;
+		if (relieved > MAX)
+			relieved = MAX;
+		if (angry > MAX)
+			angry = MAX;
 
 	}
 
@@ -55,23 +57,23 @@ public class Emotion {
 		relieved = c;
 		angry = d;
 
-		// set range -10 to 10
-		if (excited < -10)
-			excited = -10;
-		if (fearful < -10)
-			fearful = -10;
-		if (relieved < -10)
-			relieved = -10;
-		if (angry < -10)
-			angry = -10;
-		if (excited > 10)
-			excited = 10;
-		if (fearful > 10)
-			fearful = 10;
-		if (relieved > 10)
-			relieved = 10;
-		if (angry > 10)
-			angry = 10;
+		// set range MIN to MAX
+		if (excited < MIN)
+			excited = MIN;
+		if (fearful < MIN)
+			fearful = MIN;
+		if (relieved < MIN)
+			relieved = MIN;
+		if (angry < MIN)
+			angry = MIN;
+		if (excited > MAX)
+			excited = MAX;
+		if (fearful > MAX)
+			fearful = MAX;
+		if (relieved > MAX)
+			relieved = MAX;
+		if (angry > MAX)
+			angry = MAX;
 	}
 
 	public int[] getEmo() {

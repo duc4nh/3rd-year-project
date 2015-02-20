@@ -149,8 +149,7 @@ public class Simulator {
 	// -------------------------------Text UI---------------------------------
 
 	public static void printSimulation(Cat cat, Environment environment, Interaction interaction) {
-		// TODO take cat parameter, results should be slightly different for
-		// different cat breeds
+		// TODO take cat parameter, results should be slightly different for different cat breeds
 		int[] emoChange = simulationEmo(environment, interaction);
 		// new emotion set
 		cat.updateEmotion(emoChange);
@@ -207,8 +206,7 @@ public class Simulator {
 	public static String[] simulationResultGUI(Cat cat, Environment environment, Interaction interaction) {
 		String[] s = {"", "", "", ""};
 
-		// TODO take cat parameter, results should be slightly different for
-		// different cat breeds
+		// TODO take cat parameter, results should be slightly different for different cat breeds
 		int[] emoChange = simulationEmo(environment, interaction);
 		// new emotion set
 		cat.updateEmotion(emoChange);
