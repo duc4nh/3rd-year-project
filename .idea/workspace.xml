@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dfec3d28-f53a-4102-b102-be25e0b8114b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/object/Cat.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/object/Cat.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/object/Environment.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/object/Environment.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$1.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$1.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$46.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$10.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$10.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$11.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$11.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$12.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$12.class" />
@@ -44,21 +42,15 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$43.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$43.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$44.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$44.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$45.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$45.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$46.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$46.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$47.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$47.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$5.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$6.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$6.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$7.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$7.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$8.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$8.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$9.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main$9.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main.class" afterPath="$PROJECT_DIR$/out/production/3rd-year-project/GUI/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.classpath" afterPath="$PROJECT_DIR$/.classpath" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/object/Cat.java" afterPath="$PROJECT_DIR$/src/object/Cat.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/object/Emotion.java" afterPath="$PROJECT_DIR$/src/object/Emotion.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/object/Environment.java" afterPath="$PROJECT_DIR$/src/object/Environment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GUI/Main.java" afterPath="$PROJECT_DIR$/src/GUI/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/simulator/Simulator.java" afterPath="$PROJECT_DIR$/src/simulator/Simulator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resource/database/environment.sav" afterPath="$PROJECT_DIR$/resource/database/environment.sav" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resource/backup/inte.tsv" afterPath="$PROJECT_DIR$/resource/backup/inte.tsv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resource/database/interaction.sav" afterPath="$PROJECT_DIR$/resource/database/interaction.sav" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -102,11 +94,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="status7.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resource/images/status7.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GUI/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.45932204" vertical-offset="3046" max-vertical-offset="7080">
-              <caret line="274" column="16" selection-start-line="274" selection-start-column="16" selection-end-line="274" selection-end-column="16" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="7710">
+              <caret line="94" column="27" selection-start-line="94" selection-start-column="27" selection-end-line="94" selection-end-column="27" />
               <folding>
                 <element signature="docComment;class#Main#0" expanded="false" />
                 <element signature="docComment;method#main#0;class#Main#0" expanded="false" />
@@ -115,23 +114,22 @@
                 <element signature="method#Main#0;class#Main#0" expanded="false" />
                 <element signature="docComment;method#initialize#0;class#Main#0" expanded="false" />
                 <element signature="method#initialize#0;class#Main#0" expanded="false" />
-                <element signature="method#disableAllPanels#0;class#Main#0" expanded="false" />
+                <element signature="method#setAllPanelHidden#0;class#Main#0" expanded="false" />
                 <element signature="method#initialize_panels#0;class#Main#0" expanded="false" />
-                <element signature="method#setTheme#0;class#Main#0" expanded="false" />
                 <element signature="method#main_panel#0;class#Main#0" expanded="false" />
                 <element signature="method#settings_panel#0;class#Main#0" expanded="false" />
                 <element signature="method#result_panel#0;class#Main#0" expanded="false" />
                 <element signature="method#envi_panel#0;class#Main#0" expanded="false" />
-                <element signature="class#19641:19924" expanded="false" />
+                <element signature="class#20620:20903" expanded="false" />
                 <element signature="method#inte_panel#0;class#Main#0" expanded="false" />
-                <element signature="class#23254:23537" expanded="false" />
+                <element signature="class#24236:24519" expanded="false" />
                 <element signature="method#new_inte_panel#0;class#Main#0" expanded="false" />
                 <element signature="method#reset_new_inte_panel#0;class#Main#0" expanded="false" />
                 <element signature="method#new_envi_panel#0;class#Main#0" expanded="false" />
                 <element signature="method#reset_new_envi_panel#0;class#Main#0" expanded="false" />
                 <element signature="method#behaviour_panel#0;class#Main#0" expanded="false" />
                 <element signature="method#credit_panel#0;class#Main#0" expanded="false" />
-                <element signature="method#setTittle#0;class#Main#0" expanded="false" />
+                <element signature="method#designTittle#0;class#Main#0" expanded="false" />
                 <element signature="method#updateResultPanel#0;class#Main#0" expanded="false" />
                 <element signature="docComment;method#getImageIcon#0;class#Main#0" expanded="false" />
                 <element signature="method#getImageIcon#0;class#Main#0" expanded="false" />
@@ -140,6 +138,71 @@
                 <element signature="method#customFont#0;class#Main#0" expanded="false" />
               </folding>
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Simulator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/simulator/Simulator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3384" max-vertical-offset="3945">
+              <caret line="264" column="0" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainUIinText.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/UI/MainUIinText.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6944444" vertical-offset="435" max-vertical-offset="1485">
+              <caret line="53" column="68" selection-start-line="53" selection-start-column="68" selection-end-line="53" selection-end-column="68" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ResetAll.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/subPrograms/ResetAll.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="225">
+              <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="status2.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resource/images/status2.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="status3.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resource/images/status3.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="status1.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resource/images/status1.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="tittle_background.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resource/images/tittle_background.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="status8.jpg" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resource/images/status8.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -170,6 +233,7 @@
         <option value="$PROJECT_DIR$/src/object/InteractionCategory.java" />
         <option value="$PROJECT_DIR$/src/GUI/Sound.java" />
         <option value="$PROJECT_DIR$/src/simulator/Simulator.java" />
+        <option value="$PROJECT_DIR$/resource/backup/inte.tsv" />
         <option value="$PROJECT_DIR$/src/GUI/Main.java" />
       </list>
     </option>
@@ -181,10 +245,10 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1280" />
-    <option name="y" value="-77" />
-    <option name="width" value="1280" />
-    <option name="height" value="1001" />
+    <option name="x" value="65" />
+    <option name="y" value="23" />
+    <option name="width" value="1215" />
+    <option name="height" value="777" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -430,6 +494,10 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="UI" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -442,10 +510,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="subPrograms" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -495,115 +559,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="GUI" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="3rd-year-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="3rd-year-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="3rd-year-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="3rd-year-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="3rd-year-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="3rd-year-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="images" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="3rd-year-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="3rd-year-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="font" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="3rd-year-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="3rd-year-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="database" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="3rd-year-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="3rd-year-project" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="backup" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -642,7 +598,7 @@
       <recent name="$PROJECT_DIR$/resource/images" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.MainUIinText">
     <configuration default="false" name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -675,6 +631,72 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="subPrograms.DatabaseTest" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="3rd-year-project" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="ResetAll" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="subPrograms.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="subPrograms.ResetAll" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="3rd-year-project" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Statistic" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="subPrograms.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="subPrograms.Statistic" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="3rd-year-project" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="MainUIinText" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="UI.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="UI.MainUIinText" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -932,14 +954,20 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.Main" />
       <item index="1" class="java.lang.String" itemvalue="Application.DatabaseTest" />
+      <item index="2" class="java.lang.String" itemvalue="Application.ResetAll" />
+      <item index="3" class="java.lang.String" itemvalue="Application.Statistic" />
+      <item index="4" class="java.lang.String" itemvalue="Application.MainUIinText" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-        <item index="1" class="java.lang.String" itemvalue="Application.DatabaseTest" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.MainUIinText" />
+        <item index="1" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="2" class="java.lang.String" itemvalue="Application.Statistic" />
+        <item index="3" class="java.lang.String" itemvalue="Application.ResetAll" />
+        <item index="4" class="java.lang.String" itemvalue="Application.DatabaseTest" />
       </list>
     </recent_temporary>
   </component>
@@ -994,6 +1022,14 @@
       <workItem from="1423521270459" duration="40000" />
       <workItem from="1423568390369" duration="1986000" />
       <workItem from="1424467243766" duration="1409000" />
+      <workItem from="1424538129710" duration="580000" />
+      <workItem from="1424716586200" duration="1581000" />
+      <workItem from="1424770186099" duration="193000" />
+      <workItem from="1424770608803" duration="304000" />
+      <workItem from="1424865087145" duration="1027000" />
+      <workItem from="1424868912793" duration="222000" />
+      <workItem from="1424957183579" duration="775000" />
+      <workItem from="1425383979898" duration="1458000" />
     </task>
     <task id="LOCAL-00001" summary="Minor changes">
       <created>1422226309464</created>
@@ -1035,7 +1071,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36570000" />
+    <option name="totallyTimeSpent" value="42710000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1058,7 +1094,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="-77" width="1280" height="1001" extended-state="6" />
+    <frame x="65" y="23" width="1215" height="777" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1078,16 +1114,16 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32748538" sideWeight="0.49957374" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32378855" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23017903" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32907075" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25201938" sideWeight="0.6136364" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2753304" sideWeight="0.49957374" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20119353" sideWeight="0.6136364" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4853801" sideWeight="0.49957374" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32894737" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1115,7 +1151,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GUI/Main.java</url>
-          <line>1123</line>
+          <line>1148</line>
           <properties />
           <option name="timeStamp" value="2" />
         </line-breakpoint>
@@ -1127,7 +1163,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GUI/Main.java</url>
-          <line>1397</line>
+          <line>1422</line>
           <properties />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
@@ -1141,135 +1177,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/subPrograms/ResetAll.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="225">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/subPrograms/InteractionGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="48" max-vertical-offset="675">
-          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/subPrograms/InteractionGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="675">
-          <caret line="20" column="50" selection-start-line="20" selection-start-column="50" selection-end-line="20" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="23835">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#Main#0" expanded="false" />
-            <element signature="docComment;method#main#0;class#Main#0" expanded="false" />
-            <element signature="method#main#0;class#Main#0" expanded="false" />
-            <element signature="docComment;method#Main#0;class#Main#0" expanded="false" />
-            <element signature="method#Main#0;class#Main#0" expanded="false" />
-            <element signature="docComment;method#initialize#0;class#Main#0" expanded="false" />
-            <element signature="method#initialize#0;class#Main#0" expanded="false" />
-            <element signature="method#disableAllPanels#0;class#Main#0" expanded="false" />
-            <element signature="method#initialize_panels#0;class#Main#0" expanded="false" />
-            <element signature="method#setTheme#0;class#Main#0" expanded="false" />
-            <element signature="method#main_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#settings_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#result_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#envi_panel#0;class#Main#0" expanded="false" />
-            <element signature="class#19641:19924" expanded="false" />
-            <element signature="method#inte_panel#0;class#Main#0" expanded="false" />
-            <element signature="class#23254:23537" expanded="false" />
-            <element signature="method#new_inte_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#reset_new_inte_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#new_envi_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#reset_new_envi_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#behaviour_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#credit_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#setTittle#0;class#Main#0" expanded="false" />
-            <element signature="method#updateResultPanel#0;class#Main#0" expanded="false" />
-            <element signature="docComment;method#getImageIcon#0;class#Main#0" expanded="false" />
-            <element signature="method#getImageIcon#0;class#Main#0" expanded="false" />
-            <element signature="docComment;method#random#0;class#Main#0" expanded="false" />
-            <element signature="method#random#0;class#Main#0" expanded="false" />
-            <element signature="method#customFont#0;class#Main#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Sound.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="1185">
-          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="23955">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#Main#0" expanded="false" />
-            <element signature="docComment;method#main#0;class#Main#0" expanded="false" />
-            <element signature="method#main#0;class#Main#0" expanded="false" />
-            <element signature="docComment;method#Main#0;class#Main#0" expanded="false" />
-            <element signature="method#Main#0;class#Main#0" expanded="false" />
-            <element signature="docComment;method#initialize#0;class#Main#0" expanded="false" />
-            <element signature="method#initialize#0;class#Main#0" expanded="false" />
-            <element signature="method#disableAllPanels#0;class#Main#0" expanded="false" />
-            <element signature="method#initialize_panels#0;class#Main#0" expanded="false" />
-            <element signature="method#setTheme#0;class#Main#0" expanded="false" />
-            <element signature="method#main_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#settings_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#result_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#envi_panel#0;class#Main#0" expanded="false" />
-            <element signature="class#19641:19924" expanded="false" />
-            <element signature="method#inte_panel#0;class#Main#0" expanded="false" />
-            <element signature="class#23254:23537" expanded="false" />
-            <element signature="method#new_inte_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#reset_new_inte_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#new_envi_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#reset_new_envi_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#behaviour_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#credit_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#setTittle#0;class#Main#0" expanded="false" />
-            <element signature="method#updateResultPanel#0;class#Main#0" expanded="false" />
-            <element signature="docComment;method#getImageIcon#0;class#Main#0" expanded="false" />
-            <element signature="method#getImageIcon#0;class#Main#0" expanded="false" />
-            <element signature="docComment;method#random#0;class#Main#0" expanded="false" />
-            <element signature="method#random#0;class#Main#0" expanded="false" />
-            <element signature="method#customFont#0;class#Main#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/GUI/Sound.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="131" max-vertical-offset="1305">
-          <caret line="16" column="24" selection-start-line="16" selection-start-column="24" selection-end-line="16" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/Simulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="4155">
-          <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/dictionaries/DucAnh.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="430">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar!/javax/swing/ImageIcon.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1936" max-vertical-offset="4410">
@@ -1312,44 +1219,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resource/backup/beha.csv">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.5" vertical-offset="0" max-vertical-offset="570">
-          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/font/font1.ttf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10320">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resource/images/beha2.png">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resource/images/beha4.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resource/images/envi1.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/images/bg2.gif">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/images/status2.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -1364,28 +1239,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resource/images/status8.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/images/status7.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/images/status4.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/UI/MainUIinText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="570" max-vertical-offset="1485">
-          <caret line="30" column="54" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/UI/Library.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2310">
@@ -1397,7 +1250,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="239" max-vertical-offset="1050">
           <caret line="27" column="27" selection-start-line="27" selection-start-column="27" selection-end-line="27" selection-end-column="27" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1405,10 +1257,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="885">
           <caret line="27" column="33" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
-          <folding>
-            <element signature="e#1224#1225#0" expanded="true" />
-            <element signature="e#1242#1243#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1416,51 +1264,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1215">
           <caret line="44" column="68" selection-start-line="44" selection-start-column="40" selection-end-line="44" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/subPrograms/ResetAll.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/subPrograms/InteractionGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="241" max-vertical-offset="660">
-          <caret line="34" column="56" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/subPrograms/DatabaseTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="420">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/subPrograms/BehaviourGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="237" max-vertical-offset="690">
-          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/subPrograms/Statistic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="257" max-vertical-offset="900">
-          <caret line="62" column="1" selection-start-line="62" selection-start-column="1" selection-end-line="62" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/subPrograms/EnvironmentGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="525">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1468,7 +1271,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="30" max-vertical-offset="2085">
           <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1483,9 +1285,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1893204" vertical-offset="60" max-vertical-offset="1245">
           <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
-          <folding>
-            <element signature="e#1752#1753#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1493,7 +1292,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5721078" vertical-offset="224" max-vertical-offset="855">
           <caret line="50" column="80" selection-start-line="50" selection-start-column="80" selection-end-line="50" selection-end-column="80" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1501,16 +1299,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5145631" vertical-offset="312" max-vertical-offset="930">
           <caret line="55" column="41" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/simulator/Simulator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2961" max-vertical-offset="4050">
-          <caret line="208" column="77" selection-start-line="208" selection-start-column="77" selection-end-line="208" selection-end-column="77" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1523,22 +1311,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resource/backup/envi.csv">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="225">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resource/database/behaviour.sav">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resource/images/inte1.png">
@@ -1550,7 +1329,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1215">
           <caret line="16" column="31" selection-start-line="16" selection-start-column="31" selection-end-line="16" selection-end-column="31" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1558,14 +1336,169 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="840">
           <caret line="37" column="0" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/subPrograms/Statistic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="573" max-vertical-offset="900">
+          <caret line="40" column="25" selection-start-line="40" selection-start-column="25" selection-end-line="40" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/subPrograms/BehaviourGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="363" max-vertical-offset="690">
+          <caret line="27" column="38" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/subPrograms/DatabaseTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="93" max-vertical-offset="420">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/subPrograms/EnvironmentGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="198" max-vertical-offset="525">
+          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/subPrograms/InteractionGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="241" max-vertical-offset="660">
+          <caret line="34" column="56" selection-start-line="34" selection-start-column="56" selection-end-line="34" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/backup/inte.tsv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.5" vertical-offset="0" max-vertical-offset="375">
+          <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/backup/beha.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.1" vertical-offset="72" max-vertical-offset="570">
+          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/database/behaviour.sav">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/database/environment.sav">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/database/interaction.sav">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="528">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/font/font1.ttf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10320">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/font/font2.ttf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="19710">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/images/beha1.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/images/beha4.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/images/bg1.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/images/bg2.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/images/status4.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/images/status2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/images/status3.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/images/status1.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/images/tittle_background.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/images/status8.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resource/images/status7.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/subPrograms/ResetAll.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
+          <caret line="6" column="27" selection-start-line="6" selection-start-column="27" selection-end-line="6" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GUI/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.45932204" vertical-offset="3046" max-vertical-offset="7080">
-          <caret line="274" column="16" selection-start-line="274" selection-start-column="16" selection-end-line="274" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="780" max-vertical-offset="7710">
+          <caret line="94" column="27" selection-start-line="94" selection-start-column="27" selection-end-line="94" selection-end-column="27" />
           <folding>
             <element signature="docComment;class#Main#0" expanded="false" />
             <element signature="docComment;method#main#0;class#Main#0" expanded="false" />
@@ -1574,23 +1507,22 @@
             <element signature="method#Main#0;class#Main#0" expanded="false" />
             <element signature="docComment;method#initialize#0;class#Main#0" expanded="false" />
             <element signature="method#initialize#0;class#Main#0" expanded="false" />
-            <element signature="method#disableAllPanels#0;class#Main#0" expanded="false" />
+            <element signature="method#setAllPanelHidden#0;class#Main#0" expanded="false" />
             <element signature="method#initialize_panels#0;class#Main#0" expanded="false" />
-            <element signature="method#setTheme#0;class#Main#0" expanded="false" />
             <element signature="method#main_panel#0;class#Main#0" expanded="false" />
             <element signature="method#settings_panel#0;class#Main#0" expanded="false" />
             <element signature="method#result_panel#0;class#Main#0" expanded="false" />
             <element signature="method#envi_panel#0;class#Main#0" expanded="false" />
-            <element signature="class#19641:19924" expanded="false" />
+            <element signature="class#20620:20903" expanded="false" />
             <element signature="method#inte_panel#0;class#Main#0" expanded="false" />
-            <element signature="class#23254:23537" expanded="false" />
+            <element signature="class#24236:24519" expanded="false" />
             <element signature="method#new_inte_panel#0;class#Main#0" expanded="false" />
             <element signature="method#reset_new_inte_panel#0;class#Main#0" expanded="false" />
             <element signature="method#new_envi_panel#0;class#Main#0" expanded="false" />
             <element signature="method#reset_new_envi_panel#0;class#Main#0" expanded="false" />
             <element signature="method#behaviour_panel#0;class#Main#0" expanded="false" />
             <element signature="method#credit_panel#0;class#Main#0" expanded="false" />
-            <element signature="method#setTittle#0;class#Main#0" expanded="false" />
+            <element signature="method#designTittle#0;class#Main#0" expanded="false" />
             <element signature="method#updateResultPanel#0;class#Main#0" expanded="false" />
             <element signature="docComment;method#getImageIcon#0;class#Main#0" expanded="false" />
             <element signature="method#getImageIcon#0;class#Main#0" expanded="false" />
@@ -1598,6 +1530,22 @@
             <element signature="method#random#0;class#Main#0" expanded="false" />
             <element signature="method#customFont#0;class#Main#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/simulator/Simulator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3384" max-vertical-offset="3945">
+          <caret line="264" column="0" selection-start-line="264" selection-start-column="0" selection-end-line="264" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/UI/MainUIinText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6944444" vertical-offset="435" max-vertical-offset="1485">
+          <caret line="53" column="68" selection-start-line="53" selection-start-column="68" selection-end-line="53" selection-end-column="68" />
+          <folding />
         </state>
       </provider>
     </entry>

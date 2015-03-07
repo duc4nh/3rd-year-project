@@ -1,13 +1,14 @@
 package subPrograms;
 
 import database.InteractionDatabase;
-import object.Interaction;
-import object.InteractionCategory;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
+import surroundingEnvironments.Interaction;
+import surroundingEnvironments.InteractionCategory;
 
 /**
  * Generate interaction database from the csv file. Not for user.

@@ -3,8 +3,8 @@ package GUI;
 import database.BehaviourDatabase;
 import database.EnvironmentDatabase;
 import database.InteractionDatabase;
-import object.*;
-import simulator.Simulator;
+import simulationHandler.Simulator;
+import surroundingEnvironments.*;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -14,6 +14,10 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import cat.Cat;
+import cat.Emotion;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +30,7 @@ import java.util.Random;
  *
  * @author DucAnh
  */
-public class Main {
+public class MainApplication {
 	// logic variables
 	private Cat cat;
 	private int enviID;
@@ -35,7 +39,7 @@ public class Main {
 	private boolean inteChosen = false;
 	private boolean jlistEnviModified = false;
 	private boolean jlistInteModified = false;
-	private Boolean firstTimeClicked = true;
+	private boolean firstTimeClicked = true;
 	private boolean enviList_simulation_modified = false;
 	private boolean inteList_simulation_modified = false;
 	private int enviMenuID;
@@ -178,6 +182,7 @@ public class Main {
 	private JTextArea txtrCredit;
 	private JButton btnBack_4;
 	private JLabel tittle_beha;
+	private JTextField txtTestresultlabel;
 
 	/**
 	 * Launch the application.
@@ -186,7 +191,7 @@ public class Main {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Main window = new Main();
+					MainApplication window = new MainApplication();
 					window.frmCatSimulator.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -198,7 +203,7 @@ public class Main {
 	/**
 	 * Create the application.
 	 */
-	public Main() {
+	public MainApplication() {
 		// open databases
 		EnvironmentDatabase.openDatabase();
 		InteractionDatabase.openDatabase();
@@ -220,7 +225,6 @@ public class Main {
 		// --- PANELS ---
 		initialize_panels();
 		menuBar();
-		setTheme();
 
 		// --- SETTINGS PANEL ---
 		settings_panel();
@@ -251,6 +255,9 @@ public class Main {
 
 		// --- CREDIT ---
 		credit_panel();
+
+		// --- set theme for GUI ---
+		setTheme();
 	}
 
 	private void menuBar() {
@@ -264,7 +271,7 @@ public class Main {
 		simulation_menuBar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sound.playButton2();
-				disableAllPanels();
+				setAllPanelHidden();
 				simulation.setVisible(true);
 
 				enviChosen = false;
@@ -293,7 +300,7 @@ public class Main {
 		inte_menuBar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sound.playButton2();
-				disableAllPanels();
+				setAllPanelHidden();
 				interaction.setVisible(true);
 			}
 		});
@@ -303,7 +310,7 @@ public class Main {
 		envi_menuBar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sound.playButton2();
-				disableAllPanels();
+				setAllPanelHidden();
 				environment.setVisible(true);
 			}
 		});
@@ -313,7 +320,7 @@ public class Main {
 		settings_menuBar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sound.playButton2();
-				disableAllPanels();
+				setAllPanelHidden();
 				settings.setVisible(true);
 			}
 		});
@@ -332,18 +339,18 @@ public class Main {
 		JMenu help = new JMenu("Help");
 		menu.add(help);
 
-		JMenuItem about = new JMenuItem("About");
+		JMenuItem about = new JMenuItem("About Cat Simulator");
 		about.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sound.playButton2();
-				disableAllPanels();
+				setAllPanelHidden();
 				credit.setVisible(true);
 			}
 		});
 		help.add(about);
 	}
 
-	private void disableAllPanels() {
+	private void setAllPanelHidden() {
 		main.setVisible(false);
 		newInter.setVisible(false);
 		newEnvi.setVisible(false);
@@ -425,30 +432,53 @@ public class Main {
 	}
 
 	private void setTheme() {
-		Color color;
+		Color backgroundColor;
+		Color fontColor;
+		int background_main_id;
 		switch (theme) {
 		case 0:
-			color = Color.WHITE;
+			backgroundColor = Color.WHITE;
+			fontColor = Color.BLACK;
+			background_main_id = 1;
 			break;
 		default:
-			color = Color.DARK_GRAY;
+			backgroundColor = Color.DARK_GRAY;
+			fontColor = Color.WHITE;
+			background_main_id = 2;
 			break;
 		}
-		main.setBackground(color);
-		newInter.setBackground(color);
-		newEnvi.setBackground(color);
-		credit.setBackground(color);
-		simulation.setBackground(color);
-		environment.setBackground(color);
-		interaction.setBackground(color);
-		behaviour.setBackground(color);
-		result.setBackground(color);
-		settings.setBackground(color);
+		main.setBackground(backgroundColor);
+		newInter.setBackground(backgroundColor);
+		newEnvi.setBackground(backgroundColor);
+		credit.setBackground(backgroundColor);
+		simulation.setBackground(backgroundColor);
+		environment.setBackground(backgroundColor);
+		interaction.setBackground(backgroundColor);
+		behaviour.setBackground(backgroundColor);
+		result.setBackground(backgroundColor);
+		settings.setBackground(backgroundColor);
+
+		tittle_main.setForeground(fontColor);
+		tittle_newInte.setForeground(fontColor);
+		tittle_newEnvi.setForeground(fontColor);
+		tittle_credit.setForeground(fontColor);
+		tittle_simulation.setForeground(fontColor);
+		tittle_envi.setForeground(fontColor);
+		tittle_inte.setForeground(fontColor);
+		tittle_beha.setForeground(fontColor);
+		tittle_result.setForeground(fontColor);
+		tittle_settings.setForeground(fontColor);
+
+		mainBackground.setIcon(getImageIcon("resource/images/envi/envi" + background_main_id + ".jpg", 1000, 778));
+
+		lblNewLabel_6.setForeground(fontColor);
+		lblEnvironment.setForeground(fontColor);
+		lblInteraction.setForeground(fontColor);
 	}
 
 	private void main_panel() {
 		tittle_main = new JLabel("CAT SIMULATOR");
-		setTittle(tittle_main);
+		designTittle(tittle_main);
 		main.add(tittle_main);
 
 		bg1 = new JLabel("bg1");
@@ -459,6 +489,7 @@ public class Main {
 		mainBackground = new JLabel("");
 		mainBackground.setBounds(0, 0, 1000, 678);
 		main.add(mainBackground);
+		/*
 		SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>() {
 			@Override
 			protected Void doInBackground() throws Exception {
@@ -466,21 +497,20 @@ public class Main {
 				int id = 1;
 				while (true) {
 					// TODO threading
-					/*
 					 * if (id == 4) id = 0; else id++;
-					 */
-					mainBackground.setIcon(getImageIcon("envi" + id + ".jpg",
+					mainBackground.setIcon(getImageIcon("resource/images/envi/envi" + id + ".jpg",
 							1000, 778));
 					Thread.sleep(20000);
 				}
 			}
 		};
 		worker.execute();
+		*/
 	}
 
 	private void settings_panel() {
 		tittle_settings = new JLabel("Settings");
-		setTittle(tittle_settings);
+		designTittle(tittle_settings);
 		settings.add(tittle_settings);
 
 		btnMusicToggle = new JButton("Music: Off");
@@ -566,7 +596,7 @@ public class Main {
 				String[] s = Simulator.simulationResultGUI(cat,
 						EnvironmentDatabase.get(random_envi),
 						InteractionDatabase.get(random_inte));
-				updateResultPanel(s, random_envi, random_inte, 0);
+				updateResultPanel(s, random_envi, random_inte);
 			}
 		});
 		btnQuickSimulation_1.setBounds(793, 522, 150, 29);
@@ -577,7 +607,7 @@ public class Main {
 			public void actionPerformed(ActionEvent e) {
 				sound.playButton2();
 				status.setText(cat.printStatusGUI());
-				pic_cat_status.setIcon(getImageIcon("status" + cat.getImageNo()
+				pic_cat_status.setIcon(getImageIcon("resource/images/status/status" + cat.getImageNo()
 						+ ".jpg", 200, 200));
 
 				result.setVisible(false);
@@ -588,7 +618,7 @@ public class Main {
 		result.add(btnNewSimulation);
 
 		tittle_result = new JLabel("Simulation Result");
-		setTittle(tittle_result);
+		designTittle(tittle_result);
 		result.add(tittle_result);
 
 		scenario_panel_reuslt = new JPanel();
@@ -631,7 +661,15 @@ public class Main {
 		status_result.setLineWrap(true);
 		status_result.setEditable(false);
 		catStatus_result.add(status_result);
-
+		
+		txtTestresultlabel = new JTextField();
+		txtTestresultlabel.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTestresultlabel.setFont(new Font("Lucida Grande", Font.BOLD | Font.ITALIC, 18));
+		txtTestresultlabel.setEditable(false);
+		txtTestresultlabel.setBounds(76, 141, 575, 54);
+		result.add(txtTestresultlabel);
+		txtTestresultlabel.setColumns(10);
+		
 		pic_inte_result = new JLabel("pic_inte_result");
 		pic_inte_result.setLocation(30, 115);
 		pic_inte_result.setSize(675, 540);
@@ -661,7 +699,7 @@ public class Main {
 		environment.add(create_envi_menu);
 
 		tittle_envi = new JLabel("Environment LIB");
-		setTittle(tittle_envi);
+		designTittle(tittle_envi);
 		environment.add(tittle_envi);
 
 		info_panel_envi_menu = new JPanel();
@@ -691,7 +729,7 @@ public class Main {
 								.getName()
 								+ ":\n"
 								+ EnvironmentDatabase.get(enviMenuID).getInfo());
-						pic_envi_menu.setIcon(getImageIcon("envi"
+						pic_envi_menu.setIcon(getImageIcon("resource/images/envi/envi"
 								+ EnvironmentDatabase.get(enviMenuID).getId()
 								+ ".jpg", 1000, 778));
 					} else
@@ -759,7 +797,7 @@ public class Main {
 
 		pic_envi_menu = new JLabel("pic_envi_menu");
 		pic_envi_menu.setBounds(0, 0, 1000, 678);
-		pic_envi_menu.setIcon(getImageIcon("envi0.jpg", 1000, 778));
+		pic_envi_menu.setIcon(getImageIcon("resource/images/envi/envi0.jpg", 1000, 778));
 		environment.add(pic_envi_menu);
 	}
 
@@ -776,7 +814,7 @@ public class Main {
 		interaction.add(create_inte_menu);
 
 		tittle_inte = new JLabel("Interaction LIB");
-		setTittle(tittle_inte);
+		designTittle(tittle_inte);
 		interaction.add(tittle_inte);
 
 		info_panel_inte_menu = new JPanel();
@@ -807,7 +845,7 @@ public class Main {
 								.getName()
 								+ ":\n"
 								+ InteractionDatabase.get(inteMenuID).getInfo());
-						pic_inte_menu.setIcon(getImageIcon("inte"
+						pic_inte_menu.setIcon(getImageIcon("resource/images/inte/inte"
 								+ InteractionDatabase.get(inteMenuID).getId()
 								+ ".png", 1000, 778));
 					} else
@@ -874,7 +912,7 @@ public class Main {
 
 		pic_inte_menu = new JLabel("pic_inte_menu");
 		pic_inte_menu.setBounds(0, 0, 1000, 678);
-		pic_inte_menu.setIcon(getImageIcon("inte_bg.jpeg", 1000, 778));
+		pic_inte_menu.setIcon(getImageIcon("resource/images/inte_bg.jpeg", 1000, 778));
 		interaction.add(pic_inte_menu);
 	}
 
@@ -892,7 +930,7 @@ public class Main {
 		newInter.add(btnNInteBack);
 
 		tittle_newInte = new JLabel("New Interaction");
-		setTittle(tittle_newInte);
+		designTittle(tittle_newInte);
 		newInter.add(tittle_newInte);
 
 		lblInteractionName = new JLabel("Interaction Name :");
@@ -1138,7 +1176,7 @@ public class Main {
 		newEnvi.add(btnBack_1);
 
 		tittle_newEnvi = new JLabel("New Environment");
-		setTittle(tittle_newEnvi);
+		designTittle(tittle_newEnvi);
 		newEnvi.add(tittle_newEnvi);
 
 		lblNewEnvironmentDetails = new JLabel("Environment Name:");
@@ -1355,7 +1393,7 @@ public class Main {
 				String[] s = Simulator.simulationResultGUI(cat,
 						EnvironmentDatabase.get(random_envi),
 						InteractionDatabase.get(random_inte));
-				updateResultPanel(s, random_envi, random_inte, 0);
+				updateResultPanel(s, random_envi, random_inte);
 
 				simulation.setVisible(false);
 				result.setVisible(true);
@@ -1373,7 +1411,7 @@ public class Main {
 				String[] s = Simulator.simulationResultGUI(cat,
 						EnvironmentDatabase.get(enviID),
 						InteractionDatabase.get(inteID));
-				updateResultPanel(s, enviID, inteID, 0);
+				updateResultPanel(s, enviID, inteID);
 
 				simulation.setVisible(false);
 				result.setVisible(true);
@@ -1394,7 +1432,7 @@ public class Main {
 		simulation.add(btnNewButton_9);
 
 		tittle_simulation = new JLabel("Simulation");
-		setTittle(tittle_simulation);
+		designTittle(tittle_simulation);
 		simulation.add(tittle_simulation);
 
 		catStatus = new JPanel();
@@ -1431,7 +1469,7 @@ public class Main {
 								.toString();
 						chooseInte.setText(selected.substring(3));
 						inteID = Integer.parseInt(selected.split("\\.")[0]);
-						pic_inte_simulation.setIcon(getImageIcon("inte"
+						pic_inte_simulation.setIcon(getImageIcon("resource/images/inte/inte"
 								+ InteractionDatabase.get(inteID).getId()
 								+ ".png", 500, 400));
 
@@ -1466,7 +1504,7 @@ public class Main {
 						.toString();
 						chooseEnvi.setText(selected.substring(3));
 						enviID = Integer.parseInt(selected.split("\\.")[0]);
-						pic_envi_simulation.setIcon(getImageIcon("envi"
+						pic_envi_simulation.setIcon(getImageIcon("resource/images/envi/envi"
 								+ EnvironmentDatabase.get(enviID).getId()
 								+ ".jpg", 500, 400));
 
@@ -1482,7 +1520,7 @@ public class Main {
 		emenu.setViewportView(chooseEnviList);
 
 		pic_cat_status = new JLabel("pic_cat_status");
-		pic_cat_status.setIcon(getImageIcon("status" + cat.getImageNo()
+		pic_cat_status.setIcon(getImageIcon("resource/images/status/status" + cat.getImageNo()
 				+ ".jpg", 200, 200));
 		pic_cat_status.setBounds(27, 135, 200, 200);
 		simulation.add(pic_cat_status);
@@ -1509,7 +1547,7 @@ public class Main {
 				cat.setEmotion(random(-10, 10), random(-10, 10),
 						random(-10, 10), random(-10, 10));
 				status.setText(cat.printStatusGUI());
-				pic_cat_status.setIcon(getImageIcon("status" + cat.getImageNo()
+				pic_cat_status.setIcon(getImageIcon("resource/images/status/status" + cat.getImageNo()
 						+ ".jpg", 200, 200));
 			}
 		});
@@ -1522,20 +1560,20 @@ public class Main {
 				sound.playButton2();
 				cat.setEmotion(0, 0, 0, 0);
 				status.setText(cat.printStatusGUI());
-				pic_cat_status.setIcon(getImageIcon("status" + cat.getImageNo()
+				pic_cat_status.setIcon(getImageIcon("resource/images/status/status" + cat.getImageNo()
 						+ ".jpg", 200, 200));
 			}
 		});
 		btnResetEmotion.setBounds(156, 591, 117, 29);
 		simulation.add(btnResetEmotion);
 
-		pic_inte_simulation = new JLabel("inte");
+		pic_inte_simulation = new JLabel();
 		pic_inte_simulation.setBounds(475, 150, 500, 400);
 		simulation.add(pic_inte_simulation);
 
-		pic_envi_simulation = new JLabel("pic_envi");
+		pic_envi_simulation = new JLabel();
 		pic_envi_simulation.setBounds(475, 150, 500, 400);
-		pic_envi_simulation.setIcon(getImageIcon("envi0.jpg", 500, 400));
+		pic_envi_simulation.setIcon(getImageIcon("resource/images/envi/envi0.jpg", 500, 400));
 		simulation.add(pic_envi_simulation);
 	}
 
@@ -1552,7 +1590,7 @@ public class Main {
 		behaviour.add(btnBack_4);
 
 		tittle_beha = new JLabel("New label");
-		setTittle(tittle_beha);
+		designTittle(tittle_beha);
 		behaviour.add(tittle_beha);
 	}
 
@@ -1563,7 +1601,7 @@ public class Main {
 		credit.add(pic_credit);
 
 		tittle_credit = new JLabel("CREDIT");
-		setTittle(tittle_credit);
+		designTittle(tittle_credit);
 		credit.add(tittle_credit);
 
 		btnBack = new JButton("Back");
@@ -1588,34 +1626,33 @@ public class Main {
 		scrollPaneCredit.setColumnHeaderView(txtrCredit);
 	}
 
-	private void setTittle(JLabel t) {
-		t.setBounds(0, 10, 1000, 120);
-		t.setForeground(Color.BLACK);
+	private void designTittle(JLabel t) {
+		t.setBounds(0, 0, 1000, 120);
+		//t.setForeground(Color.BLACK);
 		t.setFont(customFont);
 		t.setHorizontalAlignment(SwingConstants.CENTER);
 		t.setHorizontalTextPosition(JLabel.CENTER);
-		// t.setIcon(getImageIcon("tittle_background.png", 900, 85));
+		// t.setIcon(getImageIcon("resource/images/tittle_background.png", 900, 85));
 	}
 
-	private void updateResultPanel(String[] s, int enviID, int inteID,
-			int behaID) {
-		pic_inte_result.setIcon(getImageIcon(
-				"inte" + InteractionDatabase.get(inteID).getId() + ".png", 675,
+	private void updateResultPanel(String[] s, int enviID, int inteID) {
+		pic_inte_result.setIcon(getImageIcon("resource/images/inte/inte" + InteractionDatabase.get(inteID).getId() + ".png", 675,
 				540));
-		pic_beha_result.setIcon(getImageIcon("beha" + s[3] + ".png", 675, 540));
+		pic_beha_result.setIcon(getImageIcon("resource/images/beha/beha" + s[3] + ".png", 675, 540));
 		pic_envi_result.setIcon(getImageIcon(
-				"envi" + EnvironmentDatabase.get(enviID).getId() + ".jpg", 675,
+				"resource/images/envi/envi" + EnvironmentDatabase.get(enviID).getId() + ".jpg", 675,
 				540));
 		scenario.setText(s[0]);
 		status_result.setText(cat.printStatusGUI());
-		textResult.setText(s[1] + s[2]);
+		textResult.setText(s[1]);
+		txtTestresultlabel.setText(s[2]);
 	}
 
 	/**
 	 * @return ImageIcon of the resized picture 'name'
 	 */
 	private ImageIcon getImageIcon(String name, int width, int height) {
-		ImageIcon icon = new ImageIcon("resource/images/" + name);
+		ImageIcon icon = new ImageIcon(name);
 		Image image = icon.getImage().getScaledInstance(width, height,
 				Image.SCALE_DEFAULT);
 		icon.setImage(image);

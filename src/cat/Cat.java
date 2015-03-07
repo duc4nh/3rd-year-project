@@ -1,6 +1,7 @@
-package object;
+package cat;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 /**
  * A cat
@@ -64,34 +65,39 @@ public class Cat implements Serializable {
 		System.out.println("Emotion: ");
 
 		int[] emo = getEmotion();
-		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4 && emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
+		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4
+				&& emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
 			System.out.println("The cat's emotion is neutral");
 		} else {
 			for (int i = 0; i < 4; i++) {
 				String emoType;
 				switch (i) {
-					case 0:
-						emoType = "excited";
-						break;
-					case 1:
-						emoType = "fearful";
-						break;
-					case 2:
-						emoType = "relieved";
-						break;
-					default:
-						emoType = "angry";
-						break;
+				case 0:
+					emoType = "excited";
+					break;
+				case 1:
+					emoType = "fearful";
+					break;
+				case 2:
+					emoType = "relieved";
+					break;
+				default:
+					emoType = "angry";
+					break;
 				}
 				// [-10 -8] [-7 -4] [-3 0 3] [4 7] [8 10]
 				if (emo[i] < -7) {
-					System.out.println("The cat does not feel " + emoType + " at all!! (" + emo[i] + ")");
+					System.out.println("The cat does not feel " + emoType
+							+ " at all!! (" + emo[i] + ")");
 				} else if (emo[i] < -3) {
-					System.out.println("The cat is not " + emoType + "...(" + emo[i] + ")");
+					System.out.println("The cat is not " + emoType + "...("
+							+ emo[i] + ")");
 				} else if (emo[i] > 3 && emo[i] < 8) {
-					System.out.println("The cat feels little " + emoType + "...(" + emo[i] + ")");
+					System.out.println("The cat feels little " + emoType
+							+ "...(" + emo[i] + ")");
 				} else if (emo[i] > 7) {
-					System.out.println("The cat feels extremely " + emoType + "!! (" + emo[i] + ")");
+					System.out.println("The cat feels extremely " + emoType
+							+ "!! (" + emo[i] + ")");
 				}
 			}
 		}
@@ -99,15 +105,40 @@ public class Cat implements Serializable {
 
 	public String printStatusGUI() {
 		String s = "";
-		s += "Name: " + getName() + "\n" + "Breed: " + getBreed() + "\nEmotion:\n";
+		s += "Name: " + getName() + "\n" + "Breed: " + getBreed()
+				+ "\nEmotion:\n";
 
 		int[] emo = getEmotion();
-		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4 && emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
+		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4
+				&& emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
 			s += "The cat's emotion is neutral\n";
+		} else {
+			int maxIndex = 0;
+			int maxValue = emo[0];
+			for (int i = 1; i < 4; i++) {
+				if (emo[i] > maxValue) {
+					maxIndex = i;
+					maxValue = emo[i];
+				}
+			}
+			switch (maxIndex) {
+			case 0:
+				s += "Our cat is feeling excited\n";
+				break;
+			case 1:
+				s += "Our cat is feeling fearful\n";
+				break;
+			case 2:
+				s += "Our cat is feeling relieved\n";
+				break;
+			default:
+				s += "Our cat is feeling angry\n";
+				break;
+			}
 		}
 		s += statusDisplay("Excited", emo[0]);
-		s += statusDisplay("Fearful", emo[1]);
 		s += statusDisplay("Relieved", emo[2]);
+		s += statusDisplay("Fearful", emo[1]);	
 		s += statusDisplay("Angry", emo[3]);
 		return s;
 	}
@@ -124,15 +155,19 @@ public class Cat implements Serializable {
 
 	public int getImageNo() {
 		int[] emo = getEmotion();
-		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4 && emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
+		if (emo[0] < 4 && emo[0] > -4 && emo[1] < 4 && emo[1] > -4
+				&& emo[2] < 4 && emo[2] > -4 && emo[3] < 4 && emo[3] > -4) {
 			return 0;
 		}
 
-		int[][] picScore = {{}, {2, 1, 1, 1}, {1, 2, 1, 1}, {1, 3, 0, 1}, {1, 1, 2, 1}, {1, 1, 1, 2}, {1, 2, 0, 2}, {0, 1, 1, 3}, {0, 2, 0, 2}};
+		int[][] picScore = { {}, { 2, 1, 1, 1 }, { 1, 2, 1, 1 },
+				{ 1, 3, 0, 1 }, { 1, 1, 2, 1 }, { 1, 1, 1, 2 }, { 1, 2, 0, 2 },
+				{ 0, 1, 1, 3 }, { 0, 2, 0, 2 } };
 		int picID = 0;
-		int maxScore = -2147483648;
+		int maxScore = -2147483648; //A very small integer
 		for (int i = 1; i < picScore.length; i++) {
-			int score = picScore[i][0] * emo[0] + picScore[i][1] * emo[1] + picScore[i][2] * emo[2] + picScore[i][3] * emo[3];
+			int score = picScore[i][0] * emo[0] + picScore[i][1] * emo[1]
+					+ picScore[i][2] * emo[2] + picScore[i][3] * emo[3];
 			if (score > maxScore) {
 				picID = i;
 				maxScore = score;

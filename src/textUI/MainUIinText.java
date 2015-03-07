@@ -1,15 +1,16 @@
-package UI;
+package textUI;
 
 import database.BehaviourDatabase;
 import database.EnvironmentDatabase;
 import database.InteractionDatabase;
-import object.Cat;
-import object.Emotion;
-import object.Environment;
-import object.Interaction;
-import simulator.Simulator;
+import simulationHandler.Simulator;
+import surroundingEnvironments.Environment;
+import surroundingEnvironments.Interaction;
 
 import java.util.Scanner;
+
+import cat.Cat;
+import cat.Emotion;
 
 /**
  * UI in text for testing purpose

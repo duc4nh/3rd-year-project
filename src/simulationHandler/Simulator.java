@@ -1,13 +1,14 @@
-package simulator;
+package simulationHandler;
 
 import database.BehaviourDatabase;
-import object.Behaviour;
-import object.Cat;
-import object.Environment;
-import object.Interaction;
 
 import java.util.List;
 import java.util.Random;
+
+import surroundingEnvironments.Environment;
+import surroundingEnvironments.Interaction;
+import cat.Behaviour;
+import cat.Cat;
 
 /**
  * Handle the simulation
@@ -219,7 +220,7 @@ public class Simulator {
 
 		// action
 		Behaviour act = chooseBehaviour(cat, interaction);
-		s[2] += "As a result, he " + act.getName() + " " + interaction.getName();
+		s[2] += "Our cat " + act.getName() + " " + interaction.getName();
 
 		// behaviour ID
 		s[3] += "" + act.getId();

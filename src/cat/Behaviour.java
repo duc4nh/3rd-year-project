@@ -1,6 +1,8 @@
-package object;
+package cat;
 
 import java.io.Serializable;
+
+import surroundingEnvironments.InteractionCategory;
 
 /**
  * A behaviour that the cat may perform

@@ -1,12 +1,13 @@
 package subPrograms;
 
 import database.EnvironmentDatabase;
-import object.Environment;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
+import surroundingEnvironments.Environment;
 
 /**
  * Generate environment database from the csv file. Not for user.

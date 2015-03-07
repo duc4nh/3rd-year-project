@@ -1,13 +1,13 @@
 package database;
 
-import object.Cat;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+import cat.Cat;
 
 public class CatDatabase {
 

@@ -1,12 +1,13 @@
-package UI;
+package textUI;
 
 import database.EnvironmentDatabase;
 import database.InteractionDatabase;
-import object.Environment;
-import object.Interaction;
-import object.InteractionCategory;
 
 import java.util.Scanner;
+
+import surroundingEnvironments.Environment;
+import surroundingEnvironments.Interaction;
+import surroundingEnvironments.InteractionCategory;
 
 /**
  * Part of the UI in text

@@ -1,13 +1,14 @@
 package subPrograms;
 
 import database.BehaviourDatabase;
-import object.Behaviour;
-import object.InteractionCategory;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+
+import surroundingEnvironments.InteractionCategory;
+import cat.Behaviour;
 
 /**
  * Generate behaviour database from the csv file. Not for user.

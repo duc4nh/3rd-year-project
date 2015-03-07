@@ -1,4 +1,4 @@
-package object;
+package cat;
 
 /**
  * Each cat will have 'an Emotion'
