@@ -12,8 +12,8 @@ import java.io.InputStream;
  */
 public class Sound {
 	private ContinuousAudioDataStream music;
-	private AudioData button1;
-	private AudioData button2;
+	private AudioData button;
+	private AudioData buttonResult;
 	private boolean musicOn = true;
 	private boolean soundOn = true;
 
@@ -25,8 +25,8 @@ public class Sound {
 			AudioData musicData = audioData("resource/sound/music1.wav");
 			//AudioData musicData = audioData("resource/sound/music_special.mp3");
 			music = new ContinuousAudioDataStream(musicData);
-			button1 = audioData("resource/sound/button1.wav");
-			button2 = audioData("resource/sound/button2.wav");
+			buttonResult = audioData("resource/sound/buttonResult.wav");
+			button = audioData("resource/sound/button2.wav");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -56,16 +56,16 @@ public class Sound {
 		soundOn = !soundOn;
 	}
 
-	public void playButton2() {
+	public void playButton() {
 		if (soundOn) {
-			AudioDataStream audio = new AudioDataStream(button1);
+			AudioDataStream audio = new AudioDataStream(button);
 			AudioPlayer.player.start(audio);
 		}
 	}
 
-	public void playButton1() {
+	public void playButtonResult() {
 		if (soundOn) {
-			AudioDataStream audio = new AudioDataStream(button2);
+			AudioDataStream audio = new AudioDataStream(buttonResult);
 			AudioPlayer.player.start(audio);
 		}
 	}

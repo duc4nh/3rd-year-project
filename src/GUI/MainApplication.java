@@ -264,13 +264,13 @@ public class MainApplication {
 		JMenuBar menu = new JMenuBar();
 		frmCatSimulator.setJMenuBar(menu);
 
-		JMenu action = new JMenu("Click Me!");
+		JMenu action = new JMenu("Menu");
 		menu.add(action);
 
 		JMenuItem simulation_menuBar = new JMenuItem("Simulation");
 		simulation_menuBar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				setAllPanelHidden();
 				simulation.setVisible(true);
 
@@ -299,7 +299,7 @@ public class MainApplication {
 		JMenuItem inte_menuBar = new JMenuItem("Interaction Library");
 		inte_menuBar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				setAllPanelHidden();
 				interaction.setVisible(true);
 			}
@@ -309,7 +309,7 @@ public class MainApplication {
 		JMenuItem envi_menuBar = new JMenuItem("Environment Library");
 		envi_menuBar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				setAllPanelHidden();
 				environment.setVisible(true);
 			}
@@ -319,7 +319,7 @@ public class MainApplication {
 		JMenuItem settings_menuBar = new JMenuItem("Settings");
 		settings_menuBar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				setAllPanelHidden();
 				settings.setVisible(true);
 			}
@@ -342,7 +342,7 @@ public class MainApplication {
 		JMenuItem about = new JMenuItem("About Cat Simulator");
 		about.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				setAllPanelHidden();
 				credit.setVisible(true);
 			}
@@ -442,7 +442,7 @@ public class MainApplication {
 			background_main_id = 1;
 			break;
 		default:
-			backgroundColor = Color.DARK_GRAY;
+			backgroundColor = Color.BLACK;
 			fontColor = Color.WHITE;
 			background_main_id = 2;
 			break;
@@ -474,6 +474,22 @@ public class MainApplication {
 		lblNewLabel_6.setForeground(fontColor);
 		lblEnvironment.setForeground(fontColor);
 		lblInteraction.setForeground(fontColor);
+		
+		lblInteractionName.setForeground(fontColor);
+		lblInteractionType.setForeground(fontColor);
+		lblHowDoesThis.setForeground(fontColor);
+		lblExicted.setForeground(fontColor);
+		lblFearful.setForeground(fontColor);
+		lblRelieved.setForeground(fontColor);
+		lblAngry.setForeground(fontColor);
+		lblDescription.setForeground(fontColor);
+		
+		lblNewEnvironmentDetails.setForeground(fontColor);
+		lblPleaseSpecifyThe.setForeground(fontColor);
+		lblTemperature.setForeground(fontColor);
+		lblHumidity.setForeground(fontColor);
+		lblLight.setForeground(fontColor);
+		lblNoise.setForeground(fontColor);
 	}
 
 	private void main_panel() {
@@ -517,7 +533,7 @@ public class MainApplication {
 		btnMusicToggle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sound.toggleMusic();
-				sound.playButton2();
+				sound.playButton();
 				if (sound.isMusicOn())
 					btnMusicToggle.setText("Music: On");
 				else
@@ -531,7 +547,7 @@ public class MainApplication {
 		btnSoundToggle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sound.toggleSound();
-				sound.playButton2();
+				sound.playButton();
 				if (sound.isSoundOn())
 					btnSoundToggle.setText("Sound: On");
 				else
@@ -544,7 +560,7 @@ public class MainApplication {
 		btnBack_5 = new JButton("Back");
 		btnBack_5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				settings.setVisible(false);
 				main.setVisible(true);
 			}
@@ -555,7 +571,7 @@ public class MainApplication {
 		btnTheme = new JButton("Theme: Light");
 		btnTheme.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				switch (theme) {
 					case 0:
 						btnTheme.setText("Theme: Dark");
@@ -578,7 +594,7 @@ public class MainApplication {
 		btnNewButton_13 = new JButton("Main Menu");
 		btnNewButton_13.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				result.setVisible(false);
 				main.setVisible(true);
 			}
@@ -589,7 +605,7 @@ public class MainApplication {
 		btnQuickSimulation_1 = new JButton("Quick Simulation");
 		btnQuickSimulation_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButtonResult();
 				// Let the cat meet with random interaction and environment
 				int random_envi = random(1, EnvironmentDatabase.getSize());
 				int random_inte = random(1, InteractionDatabase.getSize());
@@ -605,7 +621,7 @@ public class MainApplication {
 		btnNewSimulation = new JButton("Run Again");
 		btnNewSimulation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				status.setText(cat.printStatusGUI());
 				pic_cat_status.setIcon(getImageIcon("resource/images/status/status" + cat.getImageNo()
 						+ ".jpg", 200, 200));
@@ -670,17 +686,17 @@ public class MainApplication {
 		result.add(txtTestresultlabel);
 		txtTestresultlabel.setColumns(10);
 		
-		pic_inte_result = new JLabel("pic_inte_result");
+		pic_inte_result = new JLabel();
 		pic_inte_result.setLocation(30, 115);
 		pic_inte_result.setSize(675, 540);
 		result.add(pic_inte_result);
 
-		pic_beha_result = new JLabel("pic_beha_result");
+		pic_beha_result = new JLabel();
 		pic_beha_result.setLocation(30, 115);
 		pic_beha_result.setSize(675, 540);
 		result.add(pic_beha_result);
 
-		pic_envi_result = new JLabel("pic_envi_result");
+		pic_envi_result = new JLabel();
 		pic_envi_result.setLocation(30, 115);
 		pic_envi_result.setSize(675, 540);
 		result.add(pic_envi_result);
@@ -690,12 +706,12 @@ public class MainApplication {
 		create_envi_menu = new JButton("Create");
 		create_envi_menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				newEnvi.setVisible(true);
 				environment.setVisible(false);
 			}
 		});
-		create_envi_menu.setBounds(729, 463, 117, 29);
+		create_envi_menu.setBounds(729, 400, 117, 29);
 		environment.add(create_envi_menu);
 
 		tittle_envi = new JLabel("Environment LIB");
@@ -704,7 +720,7 @@ public class MainApplication {
 
 		info_panel_envi_menu = new JPanel();
 		info_panel_envi_menu.setBorder(new LineBorder(new Color(0, 0, 0)));
-		info_panel_envi_menu.setBounds(249, 364, 400, 210);
+		info_panel_envi_menu.setBounds(100, 364, 270, 150);
 		environment.add(info_panel_envi_menu);
 		info_panel_envi_menu.setLayout(new GridLayout(1, 0, 0, 0));
 
@@ -714,7 +730,7 @@ public class MainApplication {
 		info_panel_envi_menu.add(enviInfo);
 
 		scrollPaneE = new JScrollPane();
-		scrollPaneE.setBounds(249, 156, 400, 180);
+		scrollPaneE.setBounds(100, 156, 270, 180);
 		environment.add(scrollPaneE);
 
 		enviList = new JList();
@@ -757,7 +773,7 @@ public class MainApplication {
 		delete_envi_menu = new JButton("Delete");
 		delete_envi_menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 
 				if (enviMenuID != 0) {
 					int reply = JOptionPane.showConfirmDialog(null,
@@ -780,23 +796,23 @@ public class MainApplication {
 							JOptionPane.ERROR_MESSAGE);
 			}
 		});
-		delete_envi_menu.setBounds(729, 504, 117, 29);
+		delete_envi_menu.setBounds(729, 441, 117, 29);
 		environment.add(delete_envi_menu);
 
 		back_envi_menu = new JButton("Back");
 		back_envi_menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				enviInfo.setText("");
 				environment.setVisible(false);
 				main.setVisible(true);
 			}
 		});
-		back_envi_menu.setBounds(729, 545, 117, 29);
+		back_envi_menu.setBounds(729, 482, 117, 29);
 		environment.add(back_envi_menu);
 
-		pic_envi_menu = new JLabel("pic_envi_menu");
-		pic_envi_menu.setBounds(0, 0, 1000, 678);
+		pic_envi_menu = new JLabel();
+		pic_envi_menu.setBounds(0, 115, 1000, 470);
 		pic_envi_menu.setIcon(getImageIcon("resource/images/envi/envi0.jpg", 1000, 778));
 		environment.add(pic_envi_menu);
 	}
@@ -805,7 +821,7 @@ public class MainApplication {
 		create_inte_menu = new JButton("Create");
 		create_inte_menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				newInter.setVisible(true);
 				interaction.setVisible(false);
 			}
@@ -873,7 +889,7 @@ public class MainApplication {
 		delete_inte_menu = new JButton("Delete");
 		delete_inte_menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				if (inteMenuID != 0) {
 					int reply = JOptionPane.showConfirmDialog(null,
 							"Are you sure you want to delete?", "Delete?",
@@ -901,7 +917,7 @@ public class MainApplication {
 		back_inte_menu = new JButton("Back");
 		back_inte_menu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				inteInfo.setText("");
 				interaction.setVisible(false);
 				main.setVisible(true);
@@ -910,7 +926,7 @@ public class MainApplication {
 		back_inte_menu.setBounds(750, 238, 117, 29);
 		interaction.add(back_inte_menu);
 
-		pic_inte_menu = new JLabel("pic_inte_menu");
+		pic_inte_menu = new JLabel();
 		pic_inte_menu.setBounds(0, 0, 1000, 678);
 		pic_inte_menu.setIcon(getImageIcon("resource/images/inte_bg.jpeg", 1000, 778));
 		interaction.add(pic_inte_menu);
@@ -920,7 +936,7 @@ public class MainApplication {
 		btnNInteBack = new JButton("Back");
 		btnNInteBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				reset_new_inte_panel();
 				newInter.setVisible(false);
 				interaction.setVisible(true);
@@ -1102,7 +1118,7 @@ public class MainApplication {
 		btnNewButton_6 = new JButton("OK");
 		btnNewButton_6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 
 				if (newNameI.getText().equals(""))
 					JOptionPane.showMessageDialog(null, "Invalid input!",
@@ -1166,7 +1182,7 @@ public class MainApplication {
 		btnBack_1 = new JButton("Back");
 		btnBack_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				reset_new_envi_panel();
 				newEnvi.setVisible(false);
 				environment.setVisible(true);
@@ -1338,7 +1354,7 @@ public class MainApplication {
 		btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 
 				if (newNameE.getText().equals(""))
 					JOptionPane.showMessageDialog(null, "Invalid input!",
@@ -1386,7 +1402,7 @@ public class MainApplication {
 		btnQuickSimulation = new JButton("Quick Simulation");
 		btnQuickSimulation.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButtonResult();
 				// Let the cat meet with random interaction and environment
 				int random_envi = random(1, EnvironmentDatabase.getSize());
 				int random_inte = random(1, InteractionDatabase.getSize());
@@ -1406,7 +1422,7 @@ public class MainApplication {
 		start.setEnabled(false);
 		start.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButtonResult();
 				// the simulation is here
 				String[] s = Simulator.simulationResultGUI(cat,
 						EnvironmentDatabase.get(enviID),
@@ -1423,7 +1439,7 @@ public class MainApplication {
 		btnNewButton_9 = new JButton("Back");
 		btnNewButton_9.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				simulation.setVisible(false);
 				main.setVisible(true);
 			}
@@ -1519,7 +1535,7 @@ public class MainApplication {
 		});
 		emenu.setViewportView(chooseEnviList);
 
-		pic_cat_status = new JLabel("pic_cat_status");
+		pic_cat_status = new JLabel();
 		pic_cat_status.setIcon(getImageIcon("resource/images/status/status" + cat.getImageNo()
 				+ ".jpg", 200, 200));
 		pic_cat_status.setBounds(27, 135, 200, 200);
@@ -1540,10 +1556,10 @@ public class MainApplication {
 		lblInteraction.setBounds(288, 370, 127, 16);
 		simulation.add(lblInteraction);
 
-		btnRandomEmotion = new JButton("Random Emotion");
+		btnRandomEmotion = new JButton("Random Emo");
 		btnRandomEmotion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				cat.setEmotion(random(-10, 10), random(-10, 10),
 						random(-10, 10), random(-10, 10));
 				status.setText(cat.printStatusGUI());
@@ -1557,7 +1573,7 @@ public class MainApplication {
 		btnResetEmotion = new JButton("Reset Emotion");
 		btnResetEmotion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				cat.setEmotion(0, 0, 0, 0);
 				status.setText(cat.printStatusGUI());
 				pic_cat_status.setIcon(getImageIcon("resource/images/status/status" + cat.getImageNo()
@@ -1581,7 +1597,7 @@ public class MainApplication {
 		btnBack_4 = new JButton("Back");
 		btnBack_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				behaviour.setVisible(false);
 				main.setVisible(true);
 			}
@@ -1595,7 +1611,7 @@ public class MainApplication {
 	}
 
 	private void credit_panel() {
-		pic_credit = new JLabel("pic_credit");
+		pic_credit = new JLabel();
 		pic_credit.setIcon(new ImageIcon("resource/images/bg2.gif"));
 		pic_credit.setBounds(682, 140, 250, 228);
 		credit.add(pic_credit);
@@ -1608,7 +1624,7 @@ public class MainApplication {
 		btnBack.setBounds(759, 554, 117, 29);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				sound.playButton2();
+				sound.playButton();
 				main.setVisible(true);
 				credit.setVisible(false);
 			}
